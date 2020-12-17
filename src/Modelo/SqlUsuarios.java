@@ -9,6 +9,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -149,17 +150,17 @@ public class SqlUsuarios extends Conexion {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-        String sql = "SELECT usuario, contraseña from usuarios WHERE usuario=?";
+        String sql = "SELECT contraseña from usuarios WHERE id_usuario=?";
 
          try {
 
             ps = con.prepareStatement(sql);
-            ps.setString(1, usr.getUsuario());
+            ps.setInt(1, usr.getId());
             rs = ps.executeQuery();
 
             if (rs.next()) {
 
-                if (usr.getPassword().equals(rs.getString(2))) {
+                if (usr.getPassword().equals(rs.getString(1))) {
        
       //              ps.execute();
 
@@ -301,6 +302,58 @@ public class SqlUsuarios extends Conexion {
 
     }
  
+    
+    /*
+     public void mostrarUsuarios () {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "SELECT id_usuario, usuario, nombre, correo, nombretipo "
+                + "from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario ";
+     
+
+         try {
+
+            ps = con.prepareCall(sql);
+         rs = ps.executeQuery();
+           
+         ResultSetMetaData rsMd = rs.getMetaData();
+         int cantidadColumnas = rsMd.getColumnCount();
+            while (rs.next()) {
+
+           usuarios usu = new usuarios();
+           Object[] filas = new Object[cantidadColumnas];
+           
+            for(int i = 0; i<cantidadColumnas; i++){
+            filas[i]= rs.getObject(i+1);
+            }
+         Tabla.addRow(filas);
+            }
+           
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
+        }finally{
+    if(con!=null){  
+        try {
+            rs.close();
+            ps.close();
+            con.close();
+            rs=null;
+            ps=null;
+            con=null;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+   
+    }
+*/
+    
  public boolean eliminarUsuario(usuarios usr){
         PreparedStatement ps = null;
         ResultSet rs = null;

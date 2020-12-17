@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -24,12 +26,12 @@ public class SqlMarca extends Conexion{
 
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql = "INSERT INTO marca (descripcion_m, estado1) VALUES (?, (SELECT id_estado FROM estado WHERE nom_estado=?))";
+        String sql = "INSERT INTO marca (descripcion_m, estado1) VALUES (?, ?)";
 
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, mar.getDescripcion());
-            ps.setString(2, mar.getEstado1());
+            ps.setInt(2, mar.getEstado1());
             ps.execute();
             return true;
             
@@ -134,4 +136,104 @@ try {
     }
  }
 }
+      public boolean modificar(marca marc){
+          
+        PreparedStatement ps = null;
+        Connection con = getConexion();
+        String sql="UPDATE marca SET descripcion_m=?, estado1=? WHERE id_marca=?";
+        
+        try {
+         ps= con.prepareStatement(sql);
+         ps.setString(1, marc.getDescripcion());
+         ps.setInt(2, marc.getEstado1());
+         ps.setInt(3, marc.getCodigo());
+         ps.execute();
+         return true;
+        } catch (SQLException ex) {
+        Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, ex);
+        return false;
+        }finally{
+        if(con!=null){
+            try{
+        con.close();
+        } catch (SQLException ex)
+        {JOptionPane.showMessageDialog(null, ex);}
+        }
+        }
+      }
+      
+      public List mostrarMarca(){
+         PreparedStatement ps = null;
+         ResultSet rs = null;
+         Connection con =getConexion();
+          String sql = "SELECT id_marca,descripcion_m, nom_estado "
+                + "from marca inner join estado on marca.estado1=estado.id_estado ";
+        List lista_marca = new ArrayList();
+
+         try {
+
+            ps = con.prepareCall(sql);
+         rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+           marca mar = new marca();
+           mar.setCodigo(rs.getInt("id_marca"));
+           mar.setDescripcion(rs.getString("descripcion_m"));
+           mar.setNombre_est(rs.getString("nom_estado"));
+           lista_marca.add(mar);
+        
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
+        }finally{
+    if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+  return lista_marca;
+      }
+      
+      public boolean eliminarMarca(marca ma){
+       PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "delete from marca where id_marca=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, ma.getCodigo());
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                 
+                return true;
+
+            }
+            return false;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+    if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    }
+      
+      
 }

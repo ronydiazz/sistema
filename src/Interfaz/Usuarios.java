@@ -5,9 +5,16 @@
  */
 package Interfaz;
 
+import Modelo.Conexion;
 import Modelo.SqlUsuarios;
 import Modelo.usuarios;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +25,7 @@ import javax.swing.table.TableColumnModel;
  * @author DELL
  */
 public final class Usuarios extends javax.swing.JFrame {
-ModificarUsuario frmodificar;
+public static ModificarUsuario frmodificar;
 public static Registro frregistro;
 SqlUsuarios usuario = new SqlUsuarios();
 usuarios usu = new usuarios();
@@ -28,8 +35,10 @@ usuarios usu = new usuarios();
     public Usuarios() {
         initComponents();
          setLocationRelativeTo(null);
+         txt_ide.setVisible(false);
          tablaUsuario();
          propiedadesTabla();
+         
          
 //if(JFrame){}
 //    }
@@ -57,6 +66,8 @@ usuarios usu = new usuarios();
         txt_bus = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usu = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        txt_ide = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(33, 45, 62));
@@ -106,24 +117,43 @@ usuarios usu = new usuarios();
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Buscar usuario:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 31, -1, -1));
+
+        txt_bus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_busKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_bus, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 26, 268, -1));
 
-        tabla_usu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         tabla_usu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla_usuMouseClicked(evt);
             }
         });
+        tabla_usu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabla_usuKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla_usu);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 710, 430));
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        txt_ide.setEditable(false);
+        txt_ide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ideActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_ide, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,39 +180,56 @@ usuarios usu = new usuarios();
 
     private void btnEliminarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProvActionPerformed
         // TODO add your handling code here:
+          SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
+        
+        
         int fila= tabla_usu.getSelectedRow();
-        int id =(int) tabla_usu.getValueAt(fila, 0);
+    //    txt_ide.setText(String.valueOf(tabla_usu.getValueAt(fila, 0)));
+    //    String ide = String.valueOf(tabla_usu.getValueAt(fila, 0));
+       int ide = (int)tabla_usu.getValueAt(fila, 0);
+    //    int id = Integer.parseInt(ide);
+         
+      //  JOptionPane.showMessageDialog(this, ide+id);
         DefaultTableModel Tabla = new DefaultTableModel();
         try {
             if(fila<0){
             JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
            
             }else {
-                 usu.setId(id);
+                 mod.setId(ide);
                 if(JOptionPane.showConfirmDialog(this, "¿Eliminar el registro?", "",
                         JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
-                if(usuario.eliminarUsuario(usu)){
-                
+                if(modSql.eliminarUsuario(mod)){
+                    
+                           
                 JOptionPane.showMessageDialog(this, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
-                Tabla.removeRow(id);
+      //          Tabla.removeRow(fila);
+                tablaUsuario();
+                          propiedadesTabla();
                 }else{
                 JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
                 }
                 }
             }
-            JOptionPane.showMessageDialog(null, "Error al eliminar");
             
      
         }catch (Exception e){
         e.printStackTrace();
+         JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnEliminarProvActionPerformed
 
     private void btnModificarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProvActionPerformed
-       if(frmodificar== null){
+     
+        
+        if(frmodificar== null){
        frmodificar= new ModificarUsuario();
+       
        frmodificar.setVisible(true);
+      // selectTabla();
        }
+
 
 
 
@@ -190,12 +237,7 @@ usuarios usu = new usuarios();
 
     private void tabla_usuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_usuMouseClicked
  
-        int fila =tabla_usu.getSelectedRow();
-        ModificarUsuario.txt_cod.setText(String.valueOf(tabla_usu.getValueAt(fila, 0)));
-        ModificarUsuario.txtUsuario.setText(String.valueOf(tabla_usu.getValueAt(fila, 1)));
-        ModificarUsuario.txtNombre.setText(String.valueOf(tabla_usu.getValueAt(fila, 2)));
-        ModificarUsuario.txtCorreo.setText(String.valueOf(tabla_usu.getValueAt(fila, 3)));
-        ModificarUsuario.combo_tipo.setSelectedItem(String.valueOf(tabla_usu.getValueAt(fila, 4)));
+   //     selectTabla();
         
         
     }//GEN-LAST:event_tabla_usuMouseClicked
@@ -205,17 +247,42 @@ usuarios usu = new usuarios();
         Menu.frusuarios=null;
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        tablaUsuario();
+        propiedadesTabla();
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void tabla_usuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_usuKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabla_usuKeyPressed
+
+    private void txt_ideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ideActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ideActionPerformed
+
+    private void txt_busKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_busKeyReleased
+        // TODO add your handling code here:
+        cargar(txt_bus.getText());
+    }//GEN-LAST:event_txt_busKeyReleased
+
     
+   
     
     public void tablaUsuario(){
+        SqlUsuarios sqlusu = new SqlUsuarios();
+        usuarios usus = new usuarios();
     String [] columnas ={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
     Object[] obj= new Object[5];
     DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
     List ls;
     try{
     ls= usuario.mostrarUsuarios();
+    
     for (int i=0;i<ls.size(); i++){
-        usu = (usuarios) ls.get(i);
+        
+        usu =  (usuarios) ls.get(i);
         obj[0] = usu.getId();
         obj[1] = usu.getUsuario();
         obj[2] = usu.getNombre();
@@ -223,12 +290,59 @@ usuarios usu = new usuarios();
         obj[4] = usu.getNombre_tipo();    
         Tabla.addRow(obj);
     }
-    tabla_usu.setModel(Tabla);
+   tabla_usu.setModel(Tabla);
    }catch (Exception e){
  //  e.printStackTrace();
    System.out.println(e);
    }
+
+/*
+       try{
+       DefaultTableModel Tabla = new DefaultTableModel();
+       tabla_usu.setModel(Tabla);
+       
+
+      }catch (Exception e){
+    //  e.printStackTrace();
+       System.out.println(e);
+  }
+*/
     }
+    
+    void cargar(String valor){
+         
+    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
+    String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
+    String []Registros=new String[5];
+   DefaultTableModel model= new DefaultTableModel(null,titulos);
+  
+        try {
+           Conexion cc = new Conexion(); 
+          Connection cn=cc.getConexion();
+              Statement st = cn.createStatement();
+              ResultSet rs = st.executeQuery(mostrar);
+              while(rs.next())
+              {
+                  Registros[0]= rs.getString("id_usuario");
+                  Registros[1]= rs.getString("usuario");
+                  Registros[2]= rs.getString("nombre");
+                  Registros[3]= rs.getString("correo");
+                  Registros[4]= rs.getString("nombreTipo");        
+                  model.addRow(Registros);
+              }
+              tabla_usu.setModel(model);
+              tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = tabla_usu.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+         columnModel.getColumn(3).setPreferredWidth(200);
+         columnModel.getColumn(4).setPreferredWidth(200);
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+  }
     
     public void propiedadesTabla(){
              tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -277,13 +391,17 @@ usuarios usu = new usuarios();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminarProv;
     public static javax.swing.JButton btnModificarProv;
     private javax.swing.JButton btnRegUsuario;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_usu;
+    public static javax.swing.JTable tabla_usu;
     private javax.swing.JTextField txt_bus;
+    private javax.swing.JTextField txt_ide;
     // End of variables declaration//GEN-END:variables
+
+    
 }

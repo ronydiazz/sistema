@@ -107,7 +107,7 @@ usuarios mod;
             }
         });
 
-        usuadm.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        usuadm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         usuadm.setForeground(new java.awt.Color(255, 255, 255));
         usuadm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(33, 45, 62)));
 

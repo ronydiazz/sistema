@@ -7,7 +7,11 @@ package Interfaz;
 
 import Modelo.SqlMarca;
 import Modelo.marca;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -15,12 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarMarca extends javax.swing.JFrame {
 SqlMarca mar= new SqlMarca();
-  
+marca m = new marca();
+  public static RegistrarMarca frregistrar;
     public RegistrarMarca() {
         initComponents();
          setLocationRelativeTo(null);
         
         mar.consultar_estado(combo_estado);
+        tablaMarca();
     }
 
 
@@ -38,12 +44,17 @@ SqlMarca mar= new SqlMarca();
         jLabel5 = new javax.swing.JLabel();
         txt_costo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_prov = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tabla_marca = new javax.swing.JTable();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(33, 45, 62));
 
@@ -93,7 +104,7 @@ SqlMarca mar= new SqlMarca();
             }
         });
 
-        tabla_prov.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_marca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,35 +112,40 @@ SqlMarca mar= new SqlMarca();
 
             }
         ));
-        jScrollPane1.setViewportView(tabla_prov);
+        tabla_marca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_marcaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla_marca);
 
-        jButton1.setBackground(new java.awt.Color(33, 45, 62));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setBackground(new java.awt.Color(33, 45, 62));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(33, 45, 62));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Modificar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(new java.awt.Color(33, 45, 62));
+        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(33, 45, 62));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(33, 45, 62));
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -140,7 +156,7 @@ SqlMarca mar= new SqlMarca();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2)
@@ -151,8 +167,8 @@ SqlMarca mar= new SqlMarca();
                                 .addComponent(jLabel3)
                                 .addComponent(combo_estado, 0, 166, Short.MAX_VALUE)))
                         .addComponent(txt_desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -182,11 +198,11 @@ SqlMarca mar= new SqlMarca();
                         .addGap(18, 18, 18)
                         .addComponent(txt_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -217,7 +233,7 @@ SqlMarca mar= new SqlMarca();
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_costoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         marca marca= new marca();
         if(txt_desc.getText().equals(""))
@@ -226,12 +242,15 @@ SqlMarca mar= new SqlMarca();
         }else{
             
             marca.setDescripcion(txt_desc.getText());
-            marca.setEstado1(combo_estado.getSelectedItem().toString());
-  //           String p=  combo_estado.getSelectedItem().toString();
-   //    mar.ingresar_marca(p);
-            
+            if(combo_estado.getSelectedItem().toString().equals("Activo")){
+             marca.setEstado1(1);
+            }else{
+            marca.setEstado1(2);
+            }
             if(mar.registrar_marca(marca)){
+                
        JOptionPane.showMessageDialog(null, "Registro Guardado");
+       tablaMarca();
       
       }else{
       
@@ -239,19 +258,111 @@ SqlMarca mar= new SqlMarca();
        
       }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         marca marca= new marca();
+        if(txt_desc.getText().equals(""))
+        { 
+            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+        }else{
+            
+            marca.setDescripcion(txt_desc.getText());
+            if(combo_estado.getSelectedItem().toString().equals("Activo")){
+            marca.setEstado1(1);    
+            }else{
+            marca.setEstado1(2);
+            }
+              
+            if(mar.modificar(marca)){
+       JOptionPane.showMessageDialog(null, "Registro Modificado");
+       tablaMarca();
+      
+      }else{
+      
+       JOptionPane.showMessageDialog(null, "Error al Modificar");   
+       
+      }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    
+        int fila= tabla_marca.getSelectedRow();
+        int id =(int) tabla_marca.getValueAt(fila, 0);
+        DefaultTableModel Tabla = new DefaultTableModel();
+        try {
+            if(fila<0){
+            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
+           
+            }else {
+                 m.setCodigo(id);
+                if(JOptionPane.showConfirmDialog(this, "¿Eliminar el registro?", "",
+                        JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+                if(mar.eliminarMarca(m)){
+                tablaMarca();
+                JOptionPane.showMessageDialog(this, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
+                Tabla.removeRow(id);
+                }else{
+                JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
+                }
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Error al eliminar");
+            
+     
+        }catch (Exception e){
+        e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tabla_marcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_marcaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int fila = tabla_marca.getSelectedRow();
+        this.txt_cod.setText(String.valueOf(tabla_marca.getValueAt(fila, 0)));
+        this.txt_desc.setText(String.valueOf(tabla_marca.getValueAt(fila, 1)));
+        this.combo_estado.setSelectedItem(String.valueOf(tabla_marca.getValueAt(fila, 2)));
+    }//GEN-LAST:event_tabla_marcaMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+       Menu.frmarca=null;
+    }//GEN-LAST:event_formWindowClosing
+
+
+    
+   public void tablaMarca(){
+         
+    String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
+    Object[] obj= new Object[3];
+    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+    List ls;
+    try{
+    ls= mar.mostrarMarca();
+    for (int i=0;i<ls.size(); i++){
+        m = (marca) ls.get(i);
+        obj[0] = m.getCodigo();
+        obj[1] = m.getDescripcion();
+        obj[2] = m.getEstado1(); 
+        Tabla.addRow(obj);
+    }
+    tabla_marca.setModel(Tabla);
+   }catch (Exception e){
+ //  e.printStackTrace();
+   System.out.println(e);
+   }
+           tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = tabla_marca.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(80);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+  
+    }
+    
+   
+            
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -285,17 +396,17 @@ SqlMarca mar= new SqlMarca();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> combo_estado;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_prov;
+    private javax.swing.JTable tabla_marca;
     private javax.swing.JTextField txt_cod;
     private javax.swing.JTextField txt_costo;
     private javax.swing.JTextField txt_desc;

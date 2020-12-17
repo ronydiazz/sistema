@@ -303,7 +303,7 @@ public class Registro extends javax.swing.JFrame {
 
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-    Usuarios u = new Usuarios();
+  //  Usuarios u = new Usuarios();
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
 
@@ -337,9 +337,11 @@ public class Registro extends javax.swing.JFrame {
                         if (modSql.registrar(mod)) {
                          //   Menu.frregistro=null;
                             JOptionPane.showMessageDialog(null, "Registro guardado");
-                            limpiar();
-                            u.tablaUsuario();
                             
+                            
+//                            u.tablaUsuario();
+//                           u.propiedadesTabla();
+                           limpiar();
 
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Guardar");

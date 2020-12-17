@@ -17,7 +17,15 @@ public class proveedor {
     private String sitioweb;
     private String email;
     private String direccion_pro;
-    
+    private int id_prov;
+
+    public int getId_prov() {
+        return id_prov;
+    }
+
+    public void setId_prov(int id_prov) {
+        this.id_prov = id_prov;
+    }
     public String getNombre_prov() {
         return nombre_prov;
     }

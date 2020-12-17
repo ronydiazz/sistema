@@ -5,18 +5,29 @@
  */
 package Interfaz;
 
+import Modelo.SqlProveedor;
+import Modelo.proveedor;
+import java.awt.HeadlessException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author DELL
  */
-public class Proveedor extends javax.swing.JFrame {
+public final class Proveedor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Proveedor
-     */
+  public static RegistrarProveedor frproveedor;
+  public static ModificarProveedor frmodificarprov;
+     
+       
     public Proveedor() {
         initComponents();
          setLocationRelativeTo(null);
+         tablaProveedor();
     }
 
     /**
@@ -39,6 +50,11 @@ public class Proveedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(33, 45, 62));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(33, 45, 62));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,6 +106,11 @@ public class Proveedor extends javax.swing.JFrame {
 
             }
         ));
+        tabla_prov.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_provMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla_prov);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 670, 440));
@@ -112,19 +133,101 @@ public class Proveedor extends javax.swing.JFrame {
 
     private void btnRegProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegProdActionPerformed
         // TODO add your handling code here:
+        
+        if(frproveedor==null){
+        frproveedor = new RegistrarProveedor();
+        frproveedor.setVisible(true);
+        }
     }//GEN-LAST:event_btnRegProdActionPerformed
 
     private void btnEliminarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProvActionPerformed
-        // TODO add your handling code here:
+
+          SqlProveedor prov = new SqlProveedor();
+       proveedor p = new proveedor();
+        int fila = tabla_prov.getSelectedRow();
+        int id = (int) tabla_prov.getValueAt(fila, 0);
+        DefaultTableModel tabla= new DefaultTableModel();
+        
+        try{
+            if(fila<0){
+                
+            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
+           
+            }else {
+           p.setId_prov(id);
+           if(JOptionPane.showConfirmDialog(this, "¿Eliminar registro?", "", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+         
+            if(prov.eliminarUsuario(p)){
+            JOptionPane.showMessageDialog(null, "Eliminado correctamente","Información", JOptionPane.OK_OPTION);
+            tablaProveedor();
+            tabla.removeRow(id);
+           }else{
+                JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);}
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Error al eliminar");
+           
+           }catch(HeadlessException e){
+           JOptionPane.showMessageDialog(null, e);
+        
+        }
     }//GEN-LAST:event_btnEliminarProvActionPerformed
 
     private void btnModificarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProvActionPerformed
-        // TODO add your handling code here:
+    if(frmodificarprov== null){
+       frmodificarprov= new ModificarProveedor();
+     //  selectTablaprov();
+       frmodificarprov.setVisible(true);
+    }
+   
+    
     }//GEN-LAST:event_btnModificarProvActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handliang code here:
+        RegistrarProveedor.frregistrarprov=null;
+        ModificarProveedor.frmodificarprov=null;
+    }//GEN-LAST:event_formWindowClosing
+
+    private void tabla_provMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_provMouseClicked
+     
+    }//GEN-LAST:event_tabla_provMouseClicked
+    
+ 
+    
+    public void tablaProveedor(){
+     
+           SqlProveedor prov = new SqlProveedor();
+       proveedor p = new proveedor();
+    String [] columnas ={"CODIGO","PROVEEDOR","EMAIL", "CONTACTO"};
+    Object[] obj= new Object[4];
+    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+    List ls;
+    try{
+    ls= prov.mostrarProveedores();
+    for (int i=0;i<ls.size(); i++){
+        p = (proveedor) ls.get(i);
+        obj[0] = p.getId_prov();
+        obj[1] = p.getNombre_prov();
+        obj[2] = p.getEmail(); 
+        obj[3] = p.getContacto(); 
+        Tabla.addRow(obj);
+    }
+    tabla_prov.setModel(Tabla);
+   }catch (Exception e){
+ //  e.printStackTrace();
+   System.out.println(e);
+   }
+    
+     tabla_prov.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = tabla_prov.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+         columnModel.getColumn(3).setPreferredWidth(200);
+    }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -164,7 +267,7 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_prov;
+    public static javax.swing.JTable tabla_prov;
     private javax.swing.JTextField txt_busdesc;
     // End of variables declaration//GEN-END:variables
 }

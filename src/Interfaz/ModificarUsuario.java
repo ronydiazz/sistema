@@ -5,26 +5,27 @@
  */
 package Interfaz;
 
+import static Interfaz.Usuarios.tabla_usu;
 import Modelo.SqlUsuarios;
 import Modelo.hash;
 import Modelo.usuarios;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author rony
  */
-public class ModificarUsuario extends javax.swing.JFrame {
+public final class ModificarUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form IniciarSesion
      */
+   //     Usuarios us = new Usuarios();
     public ModificarUsuario() {
         initComponents();
         setLocationRelativeTo(null);
-    //    txt_cod.setEnabled(false);
+        txt_cod.setEnabled(false);
+        selectTabla();
 
     }
 
@@ -76,6 +77,11 @@ public class ModificarUsuario extends javax.swing.JFrame {
         txt_cod = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
@@ -165,7 +171,12 @@ public class ModificarUsuario extends javax.swing.JFrame {
         txtCorreo.setCaretColor(new java.awt.Color(73, 181, 172));
         txtCorreo.setDisabledTextColor(new java.awt.Color(33, 45, 62));
         txtCorreo.setSelectionColor(new java.awt.Color(33, 45, 62));
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 330, 30));
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 330, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Lock_25px.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 33, 35));
@@ -343,7 +354,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
+ //   Usuarios us = new Usuarios();
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
         usuarios mod1 = new usuarios();
@@ -352,12 +363,18 @@ public class ModificarUsuario extends javax.swing.JFrame {
         String pass = new String(txtPassword.getPassword());
         String passCon = new String(txtConfirmarPassword.getPassword());
         String nuevoPass = hash.sha1(pass);
-  
+    //    int fila= tabla_usu.getSelectedRow();
+        
+//      if(fila<0){
+//            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
+           
+//      }else {
         if (txtUsuario.getText().equals("") || passCon.equals("") || txtNombre.getText().equals("") || txtCorreo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
             
         } else {
-            mod1.setUsuario(txtUsuario.getText());
+    //        mod1.setUsuario(txtUsuario.getText());
+            mod1.setId(Integer.parseInt(txt_cod.getText()));
             mod1.setPassword(pass_actual);
             
             if(modSql.contraseña_actual(mod1)){
@@ -379,6 +396,8 @@ public class ModificarUsuario extends javax.swing.JFrame {
 
                         if (modSql.modificar(mod)) {
                             JOptionPane.showMessageDialog(null, "Modificación Guardada");
+                        //tablaUsuario();
+                         //   us.propiedadesTabla();
 
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Guardar");
@@ -395,6 +414,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Las contranseña actual es incorrecta");
             } 
         }
+   //   }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -409,7 +429,26 @@ public class ModificarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_tipoActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+        Usuarios.frmodificar= null;
+    }//GEN-LAST:event_formWindowClosing
 
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
+
+ public void selectTabla(){
+   // ModificarUsuario =null;
+   
+        int fila = tabla_usu.getSelectedRow();
+       txt_cod.setText(String.valueOf(tabla_usu.getValueAt(fila, 0)));
+       txtUsuario.setText(String.valueOf(tabla_usu.getValueAt(fila, 1)));
+       txtNombre.setText(String.valueOf(tabla_usu.getValueAt(fila, 2)));
+       txtCorreo.setText(String.valueOf(tabla_usu.getValueAt(fila, 3)));
+       combo_tipo.setSelectedItem(String.valueOf(tabla_usu.getValueAt(fila, 4)));
+    }
     /**
      * @param args the command line arguments
      */

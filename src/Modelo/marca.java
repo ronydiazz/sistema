@@ -11,10 +11,29 @@ package Modelo;
  */
 public class marca {
     
+    private int codigo;
     private String descripcion;
-    private String estado1;
+    private int estado1;
     private String fecha;
+    private String nombre_est;
 
+    public String getNombre_est() {
+        return nombre_est;
+    }
+
+    public void setNombre_est(String nombre_est) {
+        this.nombre_est = nombre_est;
+    }
+
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getDescripcion() {
         return descripcion;
     }
@@ -23,11 +42,11 @@ public class marca {
         this.descripcion = descripcion;
     }
 
-    public String getEstado1() {
+    public int getEstado1() {
         return estado1;
     }
 
-    public void setEstado1(String estado1) {
+    public void setEstado1(int estado1) {
         this.estado1 = estado1;
     }
 
