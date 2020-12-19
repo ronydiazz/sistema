@@ -6,7 +6,7 @@
 package Interfaz;
 
 
-import Modelo.usuarios;
+import controlador.usuarios;
 
 /**
  *

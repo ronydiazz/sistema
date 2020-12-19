@@ -1,5 +1,5 @@
 
-package Modelo;
+package controlador;
 
 
 public class hash {

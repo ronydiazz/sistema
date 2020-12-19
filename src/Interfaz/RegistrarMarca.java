@@ -6,7 +6,7 @@
 package Interfaz;
 
 import Modelo.SqlMarca;
-import Modelo.marca;
+import controlador.marca;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;

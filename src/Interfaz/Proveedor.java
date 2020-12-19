@@ -6,7 +6,7 @@
 package Interfaz;
 
 import Modelo.SqlProveedor;
-import Modelo.proveedor;
+import controlador.proveedor;
 import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.JOptionPane;

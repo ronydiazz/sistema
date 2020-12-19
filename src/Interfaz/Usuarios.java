@@ -7,7 +7,7 @@ package Interfaz;
 
 import Modelo.Conexion;
 import Modelo.SqlUsuarios;
-import Modelo.usuarios;
+import controlador.usuarios;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

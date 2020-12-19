@@ -7,7 +7,7 @@ package Interfaz;
 
 import static Interfaz.Proveedor.tabla_prov;
 import Modelo.SqlProveedor;
-import Modelo.proveedor;
+import controlador.proveedor;
 import java.util.List;
 import javax.swing.JOptionPane;
 
