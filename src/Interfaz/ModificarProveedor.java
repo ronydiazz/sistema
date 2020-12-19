@@ -8,6 +8,7 @@ package Interfaz;
 import static Interfaz.Proveedor.tabla_prov;
 import Modelo.SqlProveedor;
 import Modelo.proveedor;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public final class ModificarProveedor extends javax.swing.JFrame {
     public static ModificarProveedor frmodificarprov;
-SqlProveedor provSql= new SqlProveedor();
+
     /**
      * Creates new form RegistrarProveedor
      */
@@ -272,6 +273,7 @@ SqlProveedor provSql= new SqlProveedor();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       SqlProveedor provSql= new SqlProveedor();
         Proveedor pro =new Proveedor();
         proveedor prov= new proveedor();
         if(txt_cod.getText().equals("")|| txt_nomp.getText().equals("") || txt_cont.getText().equals("") || txt_cont2.getText().equals("") || txt_sitio.getText().equals("") || txt_email.getText().equals("") || txt_direc.getText().equals(""))
@@ -334,14 +336,29 @@ SqlProveedor provSql= new SqlProveedor();
 
    
        public void selectTablaprov(){
+           try{
+           proveedor p=new proveedor();
+           SqlProveedor provSql= new SqlProveedor();
+          List ls;
+           ls=provSql.mostrarProveedores();
+           
+         for(int i=0; i<ls.size(); i++)
+          {
+           p= (proveedor) ls.get(i);
+           ModificarProveedor.txt_cont2.setText(p.getContacto2());
+     ModificarProveedor.txt_sitio.setText(p.getSitioweb());
+     ModificarProveedor.txt_direc.setText(p.getDireccion_pro());
+          }
+         
+           
      int fila = tabla_prov.getSelectedRow();
        ModificarProveedor.txt_cod.setText(String.valueOf(tabla_prov.getValueAt(fila, 0)));
        ModificarProveedor.txt_nomp.setText(String.valueOf(tabla_prov.getValueAt(fila, 1)));
-       ModificarProveedor.txt_cont.setText(String.valueOf(tabla_prov.getValueAt(fila, 2)));
-       ModificarProveedor.txt_cont2.setText(String.valueOf(tabla_prov.getValueAt(fila, 3)));
-       ModificarProveedor.txt_sitio.setText(String.valueOf(tabla_prov.getValueAt(fila, 4)));
-       ModificarProveedor.txt_email.setText(String.valueOf(tabla_prov.getValueAt(fila, 5)));
-       ModificarProveedor.txt_direc.setText(String.valueOf(tabla_prov.getValueAt(fila, 6)));
+       ModificarProveedor.txt_email.setText(String.valueOf(tabla_prov.getValueAt(fila, 2)));
+       ModificarProveedor.txt_cont.setText(String.valueOf(tabla_prov.getValueAt(fila, 3)));
+       
+           }catch(Exception e){
+           System.out.println(e);}
     }
        
     public static void main(String args[]) {

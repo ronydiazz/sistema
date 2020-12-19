@@ -28,6 +28,7 @@ public final class Proveedor extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(null);
          tablaProveedor();
+       //  cargar("");
     }
 
     /**
@@ -113,7 +114,7 @@ public final class Proveedor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_prov);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 670, 440));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 610, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,7 +222,7 @@ public final class Proveedor extends javax.swing.JFrame {
     
      tabla_prov.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = tabla_prov.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(0).setPreferredWidth(80);
          columnModel.getColumn(1).setPreferredWidth(150);
          columnModel.getColumn(2).setPreferredWidth(200);
          columnModel.getColumn(3).setPreferredWidth(200);

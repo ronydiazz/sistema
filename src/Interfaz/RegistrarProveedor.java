@@ -277,7 +277,7 @@ SqlProveedor provSql= new SqlProveedor();
             prov.setContacto2(txt_cont2.getText());
             prov.setSitioweb(txt_sitio.getText());
             prov.setEmail(txt_email.getText());
-            prov.setEmail(txt_direc.getText());
+            prov.setDireccion_pro(txt_direc.getText());
             
             if(provSql.registrar_prov(prov)){
        JOptionPane.showMessageDialog(null, "Registro Guardado");

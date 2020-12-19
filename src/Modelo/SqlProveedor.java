@@ -150,7 +150,7 @@ try {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro";
+        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor";
         List listaProveedor = new ArrayList();
 
          try {

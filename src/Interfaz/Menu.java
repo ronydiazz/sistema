@@ -31,6 +31,7 @@ usuarios mod;
    public Menu(usuarios mod){
        initComponents();
          setLocationRelativeTo(null);
+         this.setExtendedState(MAXIMIZED_BOTH);
        this.mod=mod;
        
        if(mod.getId_tipo()==1){
