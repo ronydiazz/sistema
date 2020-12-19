@@ -8,8 +8,8 @@ package Interfaz;
 import Modelo.SqlMarca;
 import Modelo.SqlProductos;
 import Modelo.SqlProveedor;
-import controlador.productos;
-import controlador.proveedor;
+import Modelo.productos;
+import Modelo.proveedor;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 

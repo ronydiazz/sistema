@@ -6,7 +6,7 @@
 package Interfaz;
 
 import Modelo.SqlProveedor;
-import controlador.proveedor;
+import Modelo.proveedor;
 import javax.swing.JOptionPane;
 
 /**

@@ -6,8 +6,8 @@
 package Interfaz;
 
 import Modelo.SqlUsuarios;
-import controlador.hash;
-import controlador.usuarios;
+import Modelo.hash;
+import Modelo.usuarios;
 import javax.swing.JOptionPane;
 
 /**

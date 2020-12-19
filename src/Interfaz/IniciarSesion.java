@@ -7,8 +7,8 @@ package Interfaz;
 
 
 import Modelo.SqlUsuarios;
-import controlador.hash;
-import controlador.usuarios;
+import Modelo.hash;
+import Modelo.usuarios;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
