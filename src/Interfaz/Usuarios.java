@@ -118,6 +118,11 @@ usuarios usu = new usuarios();
         jLabel2.setText("Buscar usuario:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 31, -1, -1));
 
+        txt_bus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_busActionPerformed(evt);
+            }
+        });
         txt_bus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_busKeyReleased(evt);
@@ -267,8 +272,10 @@ usuarios usu = new usuarios();
         cargar(txt_bus.getText());
     }//GEN-LAST:event_txt_busKeyReleased
 
-    
-   
+    private void txt_busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_busActionPerformed
+
+    }//GEN-LAST:event_txt_busActionPerformed
+
     
     public void tablaUsuario(){
         SqlUsuarios sqlusu = new SqlUsuarios();
