@@ -3,13 +3,23 @@ package controlador;
 
 
 import Interfaz.Usuarios;
+import Modelo.Conexion;
+
 import Modelo.SqlUsuarios;
 import Modelo.hash;
 import Modelo.usuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 
 public class ctrlUsuarios implements ActionListener {
@@ -27,6 +37,41 @@ public class ctrlUsuarios implements ActionListener {
     this.frusu.btnEliminarProv.addActionListener(this);
     this.frusu.txt_bus.addActionListener(this);
     }
+    
+  public void cargar(String valor){
+         
+    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
+    String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
+    String []Registros=new String[5];
+    DefaultTableModel model= new DefaultTableModel(null,titulos);
+  
+          Conexion cc = new Conexion(); 
+        try {
+          Connection cn=cc.getConexion();
+              Statement st = cn.createStatement();
+              ResultSet rs = st.executeQuery(mostrar);
+              while(rs.next())
+              {
+                  Registros[0]= rs.getString("id_usuario");
+                  Registros[1]= rs.getString("usuario");
+                  Registros[2]= rs.getString("nombre");
+                  Registros[3]= rs.getString("correo");
+                  Registros[4]= rs.getString("nombreTipo");        
+                  model.addRow(Registros);
+              }
+              frusu.tabla_usu.setModel(model);
+              frusu.tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = frusu.tabla_usu.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+         columnModel.getColumn(3).setPreferredWidth(200);
+         columnModel.getColumn(4).setPreferredWidth(200);
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+  }
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -163,3 +208,5 @@ public class ctrlUsuarios implements ActionListener {
       }
   }
 }
+
+
