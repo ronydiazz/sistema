@@ -340,7 +340,7 @@ public final class ModificarUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(txt_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 90, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 440, 670));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 440, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

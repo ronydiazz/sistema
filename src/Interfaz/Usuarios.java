@@ -67,6 +67,37 @@ usuarios usu = new usuarios();
         txt_bus = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        loginlogo3 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtConfirmarPassword = new javax.swing.JPasswordField();
+        txtCorreo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        loginlogo7 = new javax.swing.JLabel();
+        txtPasswordA = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        txtUsuario = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        loginlogo8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        loginlogo9 = new javax.swing.JLabel();
+        loginlogo10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        loginlogo11 = new javax.swing.JLabel();
+        combo_tipo = new javax.swing.JComboBox<>();
+        btnModificar = new javax.swing.JButton();
+        loginlogo12 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        jSeparator6 = new javax.swing.JSeparator();
+        loginlogo6 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        txt_cod = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnEliminarProv = new javax.swing.JButton();
         btnModificarProv = new javax.swing.JButton();
@@ -135,7 +166,7 @@ usuarios usu = new usuarios();
                         .addComponent(txt_bus, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnActualizar)
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addGap(0, 134, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -152,7 +183,7 @@ usuarios usu = new usuarios();
                             .addComponent(txt_bus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -160,15 +191,219 @@ usuarios usu = new usuarios();
 
         jPanel3.setBackground(new java.awt.Color(33, 45, 62));
 
+        jPanel6.setBackground(new java.awt.Color(33, 45, 62));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loginlogo3.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo3.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo3.setText("CODIGO:");
+        jPanel6.add(loginlogo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 24));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/email_30px.png"))); // NOI18N
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 29, 40));
+
+        txtConfirmarPassword.setBackground(new java.awt.Color(33, 45, 62));
+        txtConfirmarPassword.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtConfirmarPassword.setForeground(new java.awt.Color(73, 181, 172));
+        txtConfirmarPassword.setBorder(null);
+        txtConfirmarPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel6.add(txtConfirmarPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, -1));
+
+        txtCorreo.setBackground(new java.awt.Color(33, 45, 62));
+        txtCorreo.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(73, 181, 172));
+        txtCorreo.setBorder(null);
+        txtCorreo.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtCorreo.setDisabledTextColor(new java.awt.Color(33, 45, 62));
+        txtCorreo.setSelectionColor(new java.awt.Color(33, 45, 62));
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 250, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Lock_25px.png"))); // NOI18N
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 33, 35));
+
+        jSeparator1.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator1.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 270, 10));
+
+        jSeparator2.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator2.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 90, 10));
+
+        loginlogo7.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo7.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo7.setText("CONTRASEÑA ACTUAL");
+        jPanel6.add(loginlogo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 220, 30));
+
+        txtPasswordA.setBackground(new java.awt.Color(33, 45, 62));
+        txtPasswordA.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtPasswordA.setForeground(new java.awt.Color(73, 181, 172));
+        txtPasswordA.setBorder(null);
+        txtPasswordA.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPasswordA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordAActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtPasswordA, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 230, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Lock_25px.png"))); // NOI18N
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 30, 30));
+
+        jSeparator3.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator3.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 290, 10));
+
+        txtUsuario.setBackground(new java.awt.Color(33, 45, 62));
+        txtUsuario.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(73, 181, 172));
+        txtUsuario.setBorder(null);
+        txtUsuario.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtUsuario.setDisabledTextColor(new java.awt.Color(33, 45, 62));
+        txtUsuario.setSelectionColor(new java.awt.Color(33, 45, 62));
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 85, 230, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator4.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 290, 10));
+
+        loginlogo8.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo8.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo8.setText("CONFIRMAR CONTRASEÑA");
+        jPanel6.add(loginlogo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 29, -1));
+
+        loginlogo9.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo9.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo9.setText("TIPO");
+        jPanel6.add(loginlogo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+
+        loginlogo10.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo10.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo10.setText("NOMBRE Y APELLIDO");
+        jPanel6.add(loginlogo10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 29, 40));
+
+        txtNombre.setBackground(new java.awt.Color(33, 45, 62));
+        txtNombre.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(73, 181, 172));
+        txtNombre.setBorder(null);
+        txtNombre.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNombre.setDisabledTextColor(new java.awt.Color(33, 45, 62));
+        txtNombre.setSelectionColor(new java.awt.Color(33, 45, 62));
+        jPanel6.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 250, 30));
+
+        jSeparator5.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator5.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 290, 10));
+
+        loginlogo11.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo11.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo11.setText("CORREO");
+        jPanel6.add(loginlogo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
+
+        combo_tipo.setBackground(new java.awt.Color(33, 45, 62));
+        combo_tipo.setFont(new java.awt.Font("Gotham Thin", 0, 14)); // NOI18N
+        combo_tipo.setForeground(new java.awt.Color(255, 255, 255));
+        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
+        combo_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_tipoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(combo_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 240, 30));
+
+        btnModificar.setBackground(new java.awt.Color(33, 45, 62));
+        btnModificar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 260, 50));
+
+        loginlogo12.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo12.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo12.setText("CONTRASEÑA");
+        jPanel6.add(loginlogo12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 190, 41));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Lock_25px.png"))); // NOI18N
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 33, 35));
+
+        txtPassword.setBackground(new java.awt.Color(33, 45, 62));
+        txtPassword.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(73, 181, 172));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 240, -1));
+
+        jSeparator6.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator6.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 270, 10));
+
+        loginlogo6.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        loginlogo6.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo6.setText("USUARIO");
+        jPanel6.add(loginlogo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 115, 24));
+
+        jSeparator7.setBackground(new java.awt.Color(73, 181, 172));
+        jSeparator7.setForeground(new java.awt.Color(73, 181, 172));
+        jPanel6.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 270, 10));
+
+        txt_cod.setEditable(false);
+        txt_cod.setBackground(new java.awt.Color(33, 45, 62));
+        txt_cod.setFont(new java.awt.Font("Gotham Thin", 0, 24)); // NOI18N
+        txt_cod.setForeground(new java.awt.Color(73, 181, 172));
+        txt_cod.setBorder(null);
+        txt_cod.setCaretColor(new java.awt.Color(73, 181, 172));
+        txt_cod.setDisabledTextColor(new java.awt.Color(33, 45, 62));
+        txt_cod.setSelectionColor(new java.awt.Color(33, 45, 62));
+        txt_cod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txt_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 90, 20));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 612, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
+            .addGap(0, 418, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jTabbedPane1.addTab("Registrar/Modificar", jPanel3);
@@ -190,7 +425,7 @@ usuarios usu = new usuarios();
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 50, 540, 420));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 10, 630, 460));
 
         jPanel5.setBackground(new java.awt.Color(33, 45, 62));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -235,7 +470,7 @@ usuarios usu = new usuarios();
                     .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,32 +481,32 @@ usuarios usu = new usuarios();
                 .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 160, 410));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 150, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegUsuarioActionPerformed
-        if(frregistro== null)
-        {
-        frregistro= new Registro();
-        frregistro.setVisible(true);
-        }
-        
+//        if(frregistro== null)
+//        {
+//        frregistro= new Registro();
+//        frregistro.setVisible(true);
+//        }
+//        
     }//GEN-LAST:event_btnRegUsuarioActionPerformed
 
     private void btnEliminarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProvActionPerformed
@@ -362,6 +597,94 @@ usuarios usu = new usuarios();
     private void txt_busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_busActionPerformed
 
     }//GEN-LAST:event_txt_busActionPerformed
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void txtPasswordAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordAActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void combo_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_tipoActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        //   Usuarios us = new Usuarios();
+        SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
+        usuarios mod1 = new usuarios();
+        String pas_act = new String(txtPasswordA.getPassword());
+        String pass_actual = hash.sha1(pas_act);
+        String pass = new String(txtPassword.getPassword());
+        String passCon = new String(txtConfirmarPassword.getPassword());
+        String nuevoPass = hash.sha1(pass);
+        //    int fila= tabla_usu.getSelectedRow();
+
+        //      if(fila<0){
+            //            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
+
+            //      }else {
+            if (txtUsuario.getText().equals("") || passCon.equals("") || txtNombre.getText().equals("") || txtCorreo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+
+            } else {
+                //        mod1.setUsuario(txtUsuario.getText());
+                mod1.setId(Integer.parseInt(txt_cod.getText()));
+                mod1.setPassword(pass_actual);
+
+                if(modSql.contraseña_actual(mod1)){
+
+                    if (pass.equals(passCon)) {
+                        if (modSql.esEmail(txtCorreo.getText())) {
+                            mod.setUsuario(txtUsuario.getText());
+                            mod.setPassword(nuevoPass);
+                            mod.setNombre(txtNombre.getText());
+                            mod.setCorreo(txtCorreo.getText());
+
+                            if(combo_tipo.getSelectedItem().toString().equals("Administrador")){
+                                mod.setId_tipo(1);
+                            }else{
+                                mod.setId_tipo(2);
+                            }
+
+                            mod.setId(Integer.parseInt(txt_cod.getText()));
+
+                            if (modSql.modificar(mod)) {
+                                JOptionPane.showMessageDialog(null, "Modificación Guardada");
+                                //tablaUsuario();
+                                //   us.propiedadesTabla();
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al Guardar");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null,"El correo electronico no es valido");
+                        }
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Las contraseñas no coiciden");
+                    }
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Las contranseña actual es incorrecta");
+                }
+            }
+            //   }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txt_codActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codActionPerformed
 
     
     public void tablaUsuario(){
@@ -486,19 +809,50 @@ usuarios usu = new usuarios();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnEliminarProv;
-    public static javax.swing.JButton btnModificarProv;
-    private javax.swing.JButton btnRegUsuario;
+    public javax.swing.JButton btnEliminarProv;
+    private javax.swing.JButton btnModificar;
+    public javax.swing.JButton btnModificarProv;
+    public javax.swing.JButton btnRegUsuario;
+    public javax.swing.JComboBox<String> combo_tipo;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel loginlogo10;
+    private javax.swing.JLabel loginlogo11;
+    private javax.swing.JLabel loginlogo12;
+    private javax.swing.JLabel loginlogo3;
+    private javax.swing.JLabel loginlogo6;
+    private javax.swing.JLabel loginlogo7;
+    private javax.swing.JLabel loginlogo8;
+    private javax.swing.JLabel loginlogo9;
     public static javax.swing.JTable tabla_usu;
-    private javax.swing.JTextField txt_bus;
+    public javax.swing.JPasswordField txtConfirmarPassword;
+    public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JPasswordField txtPassword;
+    public javax.swing.JPasswordField txtPasswordA;
+    public javax.swing.JTextField txtUsuario;
+    public javax.swing.JTextField txt_bus;
+    public javax.swing.JTextField txt_cod;
     // End of variables declaration//GEN-END:variables
 
     
