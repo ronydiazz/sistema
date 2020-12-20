@@ -32,13 +32,14 @@ public static Registro frregistro;
 public static ctrlUsuarios ctrlusu;
 SqlUsuarios usuario = new SqlUsuarios();
 usuarios usu = new usuarios();
+
     /**
      * Creates new form Proveedor
      */
     public Usuarios() {
         initComponents();
          setLocationRelativeTo(null);
-         ctrlusu.cargar("");
+         
 //         tablaUsuario();
 //         propiedadesTabla();
 //         
@@ -51,6 +52,11 @@ usuarios usu = new usuarios();
 //catch(Exception e){
 //    System.out.println(e);
 //}
+Usuarios u = new Usuarios();
+ctrlUsuarios ctr= new ctrlUsuarios(usu, usuario, u);
+ctr.cargar("");
+u.setVisible(true);
+
 }
 
     @SuppressWarnings("unchecked")
