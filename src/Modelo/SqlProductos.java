@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Modelo.productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

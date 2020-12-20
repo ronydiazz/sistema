@@ -5,7 +5,7 @@
  */
 package Interfaz;
 
-import static Interfaz.Proveedor.tabla_prov;
+
 import Modelo.SqlProveedor;
 import Modelo.proveedor;
 import java.util.List;
@@ -351,11 +351,11 @@ public final class ModificarProveedor extends javax.swing.JFrame {
           }
          
            
-     int fila = tabla_prov.getSelectedRow();
-       ModificarProveedor.txt_cod.setText(String.valueOf(tabla_prov.getValueAt(fila, 0)));
-       ModificarProveedor.txt_nomp.setText(String.valueOf(tabla_prov.getValueAt(fila, 1)));
-       ModificarProveedor.txt_email.setText(String.valueOf(tabla_prov.getValueAt(fila, 2)));
-       ModificarProveedor.txt_cont.setText(String.valueOf(tabla_prov.getValueAt(fila, 3)));
+//     int fila = tabla_prov.getSelectedRow();
+//       ModificarProveedor.txt_cod.setText(String.valueOf(tabla_prov.getValueAt(fila, 0)));
+//       ModificarProveedor.txt_nomp.setText(String.valueOf(tabla_prov.getValueAt(fila, 1)));
+//       ModificarProveedor.txt_email.setText(String.valueOf(tabla_prov.getValueAt(fila, 2)));
+//       ModificarProveedor.txt_cont.setText(String.valueOf(tabla_prov.getValueAt(fila, 3)));
        
            }catch(Exception e){
            System.out.println(e);}

@@ -5,9 +5,9 @@
  */
 package Interfaz;
 
-import Modelo.Conexion;
 import Modelo.SqlUsuarios;
 import Modelo.usuarios;
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +35,6 @@ usuarios usu = new usuarios();
     public Usuarios() {
         initComponents();
          setLocationRelativeTo(null);
-         txt_ide.setVisible(false);
          tablaUsuario();
          propiedadesTabla();
          
@@ -59,15 +58,19 @@ usuarios usu = new usuarios();
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnRegUsuario = new javax.swing.JButton();
-        btnEliminarProv = new javax.swing.JButton();
-        btnModificarProv = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        txt_bus = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usu = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txt_bus = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
-        txt_ide = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        btnEliminarProv = new javax.swing.JButton();
+        btnModificarProv = new javax.swing.JButton();
+        btnRegUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(33, 45, 62));
@@ -80,55 +83,10 @@ usuarios usu = new usuarios();
         jPanel1.setBackground(new java.awt.Color(33, 45, 62));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegUsuario.setBackground(new java.awt.Color(33, 45, 62));
-        btnRegUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegUsuario.setText("Registrar Usuario");
-        btnRegUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 24, 160, 56));
+        jPanel4.setBackground(new java.awt.Color(33, 45, 62));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnEliminarProv.setBackground(new java.awt.Color(33, 45, 62));
-        btnEliminarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminarProv.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarProv.setText("Eliminar Usuario");
-        btnEliminarProv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarProvActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 162, 56));
-
-        btnModificarProv.setBackground(new java.awt.Color(33, 45, 62));
-        btnModificarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnModificarProv.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificarProv.setText("Modificar Usuario");
-        btnModificarProv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarProvActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 161, 56));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Buscar usuario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 31, -1, -1));
-
-        txt_bus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_busActionPerformed(evt);
-            }
-        });
-        txt_bus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_busKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txt_bus, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 26, 268, -1));
+        jPanel2.setBackground(new java.awt.Color(33, 45, 62));
 
         tabla_usu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,7 +100,20 @@ usuarios usu = new usuarios();
         });
         jScrollPane1.setViewportView(tabla_usu);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 710, 430));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Buscar usuario:");
+
+        txt_bus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_busActionPerformed(evt);
+            }
+        });
+        txt_bus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_busKeyReleased(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,21 +121,141 @@ usuarios usu = new usuarios();
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
-        txt_ide.setEditable(false);
-        txt_ide.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_bus, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnActualizar)
+                        .addGap(0, 44, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_bus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizar))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Buscar", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(33, 45, 62));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 378, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Registrar/Modificar", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 50, 540, 420));
+
+        jPanel5.setBackground(new java.awt.Color(33, 45, 62));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnEliminarProv.setBackground(new java.awt.Color(33, 45, 62));
+        btnEliminarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarProv.setText("Eliminar ");
+        btnEliminarProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ideActionPerformed(evt);
+                btnEliminarProvActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_ide, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 80, -1));
+
+        btnModificarProv.setBackground(new java.awt.Color(33, 45, 62));
+        btnModificarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnModificarProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificarProv.setText("Modificar ");
+        btnModificarProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarProvActionPerformed(evt);
+            }
+        });
+
+        btnRegUsuario.setBackground(new java.awt.Color(33, 45, 62));
+        btnRegUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegUsuario.setText("Registrar");
+        btnRegUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 160, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,10 +354,6 @@ usuarios usu = new usuarios();
         // TODO add your handling code here:
     }//GEN-LAST:event_tabla_usuKeyPressed
 
-    private void txt_ideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ideActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_ideActionPerformed
-
     private void txt_busKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_busKeyReleased
         // TODO add your handling code here:
         cargar(txt_bus.getText());
@@ -324,7 +411,7 @@ usuarios usu = new usuarios();
    DefaultTableModel model= new DefaultTableModel(null,titulos);
   
         try {
-           Conexion cc = new Conexion(); 
+          Conexion cc = new Conexion(); 
           Connection cn=cc.getConexion();
               Statement st = cn.createStatement();
               ResultSet rs = st.executeQuery(mostrar);
@@ -404,10 +491,14 @@ usuarios usu = new usuarios();
     private javax.swing.JButton btnRegUsuario;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTable tabla_usu;
     private javax.swing.JTextField txt_bus;
-    private javax.swing.JTextField txt_ide;
     // End of variables declaration//GEN-END:variables
 
     
