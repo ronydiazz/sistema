@@ -32,12 +32,15 @@ public class ctrlUsuarios implements ActionListener {
     
     this.usu= usu;
     this.sqlusu=sqlusu;
+    this.frusu= frusu;
     this.frusu.btnRegUsuario.addActionListener(this);
     this.frusu.btnModificarProv.addActionListener(this);
     this.frusu.btnEliminarProv.addActionListener(this);
     this.frusu.txt_bus.addActionListener(this);
     }
-    
+    public void iniciar(){
+       frusu.setVisible(true);
+    }
   public void cargar(String valor){
          
     String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
