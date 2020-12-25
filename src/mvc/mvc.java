@@ -20,13 +20,13 @@ public class mvc{
     
 public static void main(String[] args){
     
-    SqlUsuarios usuario = new SqlUsuarios();
-    usuarios usu = new usuarios();
-    Usuarios u = new Usuarios();
-
-ctrlUsuarios ctr= new ctrlUsuarios(usu, usuario, u);
-//  ctr.cargar("");
-u.setVisible(true);
+//    SqlUsuarios usuario = new SqlUsuarios();
+//    usuarios usu = new usuarios();
+//    Usuarios u = new Usuarios();
+//
+//ctrlUsuarios ctr= new ctrlUsuarios(usu, usuario, u);
+//  ctr.iniciar();
+//u.setVisible(true);
  }
 
  

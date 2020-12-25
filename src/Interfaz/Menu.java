@@ -6,7 +6,9 @@
 package Interfaz;
 
 
+import Modelo.SqlUsuarios;
 import Modelo.usuarios;
+import controlador.ctrlUsuarios;
 
 /**
  *
@@ -20,7 +22,11 @@ public static Usuarios frusuarios;
 public static Menu frmenu;
 public static Registro frregistro;
 public static IniciarSesion frlogin;
+public static ctrlUsuarios ctr;
 
+ SqlUsuarios usuario = new SqlUsuarios();
+    usuarios usu = new usuarios();
+   
 usuarios mod;   
 
     public Menu() {
@@ -214,8 +220,14 @@ usuarios mod;
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         if(frusuarios == null){
-           frusuarios = new Usuarios();
-        frusuarios.setVisible(true);
+         //  frusuarios = new Usuarios();
+       // frusuarios.setVisible(true);
+ 
+   frusuarios = new Usuarios(Menu.frmenu, true);
+   ctr= new ctrlUsuarios(usu, usuario, frusuarios);
+
+  ctr.iniciar();
+frusuarios.setVisible(true);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

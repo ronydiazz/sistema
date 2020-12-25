@@ -313,12 +313,12 @@ public static  Registro frmReg;
             mod.setLast_session(fechaHora.format(date));
 
             if (modSql.login(mod)) {
-             this.dispose();
+             
            Menu.frlogin=null;
             
-             Menu frmenu=new Menu(mod);
+                 Menu frmenu=new Menu(mod);
              frmenu.setVisible(true);
-            
+            this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Datos incorrectos");
 
