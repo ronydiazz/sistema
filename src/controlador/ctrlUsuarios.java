@@ -11,7 +11,6 @@ import Modelo.hash;
 import Modelo.usuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.Connection;
@@ -44,44 +43,11 @@ public class ctrlUsuarios implements ActionListener  {
     }
     
     public void iniciar(){
-       cargar("");
+       SqlUsuarios.cargar("");
       bloqueoform();
     }
     
-    public void cargar(String valor){
-         
-    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
-    String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
-    String []Registros=new String[5];
-    DefaultTableModel model= new DefaultTableModel(null,titulos);
-  
-          Conexion cc = new Conexion(); 
-        try {
-          Connection cn=cc.getConexion();
-              Statement st = cn.createStatement();
-              ResultSet rs = st.executeQuery(mostrar);
-              while(rs.next())
-              {
-                  Registros[0]= rs.getString("id_usuario");
-                  Registros[1]= rs.getString("usuario");
-                  Registros[2]= rs.getString("nombre");
-                  Registros[3]= rs.getString("correo");
-                  Registros[4]= rs.getString("nombreTipo");        
-                  model.addRow(Registros);
-              }
-              frusu.tabla_usu.setModel(model);
-              frusu.tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = frusu.tabla_usu.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(200);
-         columnModel.getColumn(3).setPreferredWidth(200);
-         columnModel.getColumn(4).setPreferredWidth(200);
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-  }
+   
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -122,7 +88,7 @@ public class ctrlUsuarios implements ActionListener  {
                         if (sqlusu.registrar(usu)) {
                             JOptionPane.showMessageDialog(null, "Registro guardado");
                             limpiar_reg();
-                            cargar("");
+                             SqlUsuarios.cargar("");
                             frusu.tablepane.setSelectedIndex(0);
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Guardar");
@@ -193,7 +159,7 @@ public class ctrlUsuarios implements ActionListener  {
                         if (sqlusu.modificar(usu)) {
                             JOptionPane.showMessageDialog(null, "Modificación Guardada");
                             limpiar_mod();
-                            cargar("");
+                             SqlUsuarios.cargar("");
                             frusu.tablepane.setSelectedIndex(0);
                             
                         } else {
@@ -233,7 +199,7 @@ public class ctrlUsuarios implements ActionListener  {
                     
                 JOptionPane.showMessageDialog(null, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
       //          Tabla.removeRow(fila);
-               cargar("");
+              SqlUsuarios.  cargar("");
                 }else{
                 JOptionPane.showMessageDialog(null, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
                 }
@@ -247,7 +213,7 @@ public class ctrlUsuarios implements ActionListener  {
         @Override
         public void keyReleased(KeyEvent ke) {
          if(ke.getSource()==frusu.txt_bus){
-         cargar(frusu.txt_bus.getText());
+         SqlUsuarios. cargar(frusu.txt_bus.getText());
          }  
         }
 

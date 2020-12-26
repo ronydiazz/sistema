@@ -6,12 +6,14 @@
 package Modelo;
 
 
+import Interfaz.Usuarios;
 import Modelo.usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,12 +21,59 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author DELL
  */
 public class SqlUsuarios extends Conexion {
+     
+    public static void cargar(String valor){
+         
+    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
+    String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
+    String []Registros=new String[5];
+    DefaultTableModel model= new DefaultTableModel(null,titulos);
+  
+          Conexion cc = new Conexion(); 
+          Connection cn=cc.getConexion();
+        try {
+          
+              Statement st = cn.createStatement();
+              ResultSet rs = st.executeQuery(mostrar);
+              while(rs.next())
+              {
+                  Registros[0]= rs.getString("id_usuario");
+                  Registros[1]= rs.getString("usuario");
+                  Registros[2]= rs.getString("nombre");
+                  Registros[3]= rs.getString("correo");
+                  Registros[4]= rs.getString("nombreTipo");        
+                  model.addRow(Registros);
+              }
+            Usuarios.tabla_usu.setModel(model);
+                    Usuarios.tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Usuarios.tabla_usu.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+         columnModel.getColumn(3).setPreferredWidth(200);
+         columnModel.getColumn(4).setPreferredWidth(200);
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+    if(cn!=null){  
+        try {  cn.close();
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    
+  }
 
     public boolean registrar(usuarios usr) {
 
