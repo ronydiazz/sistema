@@ -30,10 +30,10 @@ public class Productos extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnProducto = new javax.swing.JButton();
+        btnRegProducto = new javax.swing.JButton();
         btnMarca = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         btnCategoria = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -84,13 +84,13 @@ public class Productos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 45, 62));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnProducto.setBackground(new java.awt.Color(33, 45, 62));
-        btnProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnProducto.setText("Registrar Producto");
-        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+        btnRegProducto.setBackground(new java.awt.Color(33, 45, 62));
+        btnRegProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegProducto.setText("Registrar Producto");
+        btnRegProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductoActionPerformed(evt);
+                btnRegProductoActionPerformed(evt);
             }
         });
 
@@ -114,13 +114,13 @@ public class Productos extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar1.setBackground(new java.awt.Color(33, 45, 62));
-        btnEliminar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setText("Eliminar Producto");
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(33, 45, 62));
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar Producto");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -146,20 +146,20 @@ public class Productos extends javax.swing.JFrame {
                             .addComponent(btnCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnRegProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -486,6 +486,8 @@ public class Productos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registrar/Modificar", jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(33, 45, 62));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -498,6 +500,8 @@ public class Productos extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Gestionar Categoria", jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(33, 45, 62));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -563,11 +567,11 @@ public class Productos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+    private void btnRegProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegProductoActionPerformed
         // TODO add your handling code here:
         RegistrarProducto p= new RegistrarProducto();
         p.setVisible(true);
-    }//GEN-LAST:event_btnProductoActionPerformed
+    }//GEN-LAST:event_btnRegProductoActionPerformed
 
     private void btnMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcaActionPerformed
         // TODO add your handling code here:
@@ -586,9 +590,9 @@ public class Productos extends javax.swing.JFrame {
         Menu.frproductos=null;
     }//GEN-LAST:event_formWindowClosing
 
-    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminar1ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txt_codActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codActionPerformed
         // TODO add your handling code here:
@@ -675,10 +679,10 @@ public class Productos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCategoria;
-    public javax.swing.JButton btnEliminar1;
+    public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnMarca;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JButton btnProducto;
+    public javax.swing.JButton btnRegProducto;
     public javax.swing.JComboBox<String> combo_medida;
     public javax.swing.JComboBox<String> combo_pro;
     public javax.swing.JComboBox<String> como_marca;
@@ -705,7 +709,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTable tabla_prod;
+    public static javax.swing.JTable tabla_prod;
     public javax.swing.JTextField txt_buscod;
     public javax.swing.JTextField txt_busdesc;
     public javax.swing.JTextField txt_cod;

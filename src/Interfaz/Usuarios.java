@@ -1,64 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package Interfaz;
 
-import Modelo.hash;
-import Modelo.SqlUsuarios;
-import Modelo.usuarios;
-import Modelo.Conexion;
 import controlador.ctrlUsuarios;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
-/**
- *
- * @author DELL
- */
+
 public final class Usuarios extends JDialog {
-public static ModificarUsuario frmodificar;
 public static Registro frregistro;
 public static ctrlUsuarios ctrlusu;
-//SqlUsuarios usuario = new SqlUsuarios();
-//usuarios usu = new usuarios();
-//Usuarios u= new Usuarios();
-    /**
-     * Creates new form Proveedor
-     */
+    
     public  Usuarios(Menu frmenu, boolean modal) {
          super(frmenu, modal);
         initComponents();
          setLocationRelativeTo(null);
-         
-      //   ctrlUsuarios c = new ctrlUsuarios(usu, usuario, u);
-      //   c.cargar("");
-//         tablaUsuario();
-//         propiedadesTabla();
-//         
-//    SqlUsuarios usuario = new SqlUsuarios();
-//    usuarios usu = new usuarios();
-//    Usuarios u = new Usuarios();
-//
-//ctrlUsuarios ctr= new ctrlUsuarios(usu, usuario, u);
-//  ctr.iniciar();
-
-
 }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -632,90 +588,27 @@ public static ctrlUsuarios ctrlusu;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegUsuarioActionPerformed
-//        if(frregistro== null)
-//        {
-//        frregistro= new Registro();
-//        frregistro.setVisible(true);
-//        }
-//        
+
     }//GEN-LAST:event_btnRegUsuarioActionPerformed
 
     private void btnEliminarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProvActionPerformed
-        // TODO add your handling code here:
-        /*
-          SqlUsuarios modSql = new SqlUsuarios();
-        usuarios mod = new usuarios();
-        
-        
-        int fila= tabla_usu.getSelectedRow();
-    //    txt_ide.setText(String.valueOf(tabla_usu.getValueAt(fila, 0)));
-    //    String ide = String.valueOf(tabla_usu.getValueAt(fila, 0));
-       int ide = (int)tabla_usu.getValueAt(fila, 0);
-    //    int id = Integer.parseInt(ide);
-         
-      //  JOptionPane.showMessageDialog(this, ide+id);
-        DefaultTableModel Tabla = new DefaultTableModel();
-        try {
-            if(fila<0){
-            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
-           
-            }else {
-                 mod.setId(ide);
-                if(JOptionPane.showConfirmDialog(this, "¿Eliminar el registro?", "",
-                        JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
-                if(modSql.eliminarUsuario(mod)){
-                    
-                           
-                JOptionPane.showMessageDialog(this, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
-      //          Tabla.removeRow(fila);
-                tablaUsuario();
-                          propiedadesTabla();
-                }else{
-                JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
-                }
-                }
-            }
-            
-     
-        }catch (Exception e){
-        e.printStackTrace();
-         JOptionPane.showMessageDialog(null, e);
-        }
-        */
+      
     }//GEN-LAST:event_btnEliminarProvActionPerformed
 
     private void btnModificarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProvActionPerformed
-     
-//        
-//        if(frmodificar== null){
-//       frmodificar= new ModificarUsuario();
-//       
-//       frmodificar.setVisible(true);
-      // selectTabla();
-//      }
-
-
-
 
     }//GEN-LAST:event_btnModificarProvActionPerformed
 
     private void tabla_usuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_usuMouseClicked
  
-   //     selectTabla();
-        
-        
     }//GEN-LAST:event_tabla_usuMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        Menu.frusuarios=null;
+      Menu.frusuarios=null;
     }//GEN-LAST:event_formWindowClosing
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-//        tablaUsuario();
-//        propiedadesTabla();
-        
+ 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void tabla_usuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_usuKeyPressed
@@ -723,9 +616,7 @@ public static ctrlUsuarios ctrlusu;
     }//GEN-LAST:event_tabla_usuKeyPressed
 
     private void txt_busKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_busKeyReleased
-        // TODO add your handling code here:
-//        ctrlUsuarios ctr = new ctrlUsuarios();
-//        ctr.cargar(txt_bus.getText());
+
     }//GEN-LAST:event_txt_busKeyReleased
 
     private void txt_busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_busActionPerformed
@@ -772,82 +663,6 @@ public static ctrlUsuarios ctrlusu;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cod1ActionPerformed
 
-    /*
-    public void tablaUsuario(){
-        SqlUsuarios sqlusu = new SqlUsuarios();
-        usuarios usus = new usuarios();
-    String [] columnas ={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
-    Object[] obj= new Object[5];
-    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
-    List ls;
-    try{
-    ls= usuario.mostrarUsuarios();
-    
-    for (int i=0;i<ls.size(); i++){
-        
-        usu =  (usuarios) ls.get(i);
-        obj[0] = usu.getId();
-        obj[1] = usu.getUsuario();
-        obj[2] = usu.getNombre();
-        obj[3] = usu.getCorreo();
-        obj[4] = usu.getNombre_tipo();    
-        Tabla.addRow(obj);
-    }
-   tabla_usu.setModel(Tabla);
-   }catch (Exception e){
- //  e.printStackTrace();
-   System.out.println(e);
-   }
-
-    }
-    */
-    
-    /*
-    void cargar(String valor){
-         
-    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
-    String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
-    String []Registros=new String[5];
-   DefaultTableModel model= new DefaultTableModel(null,titulos);
-  
-        try {
-          Conexion cc = new Conexion(); 
-          Connection cn=cc.getConexion();
-              Statement st = cn.createStatement();
-              ResultSet rs = st.executeQuery(mostrar);
-              while(rs.next())
-              {
-                  Registros[0]= rs.getString("id_usuario");
-                  Registros[1]= rs.getString("usuario");
-                  Registros[2]= rs.getString("nombre");
-                  Registros[3]= rs.getString("correo");
-                  Registros[4]= rs.getString("nombreTipo");        
-                  model.addRow(Registros);
-              }
-              tabla_usu.setModel(model);
-              tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = tabla_usu.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(200);
-         columnModel.getColumn(3).setPreferredWidth(200);
-         columnModel.getColumn(4).setPreferredWidth(200);
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-  }
-    
-    public void propiedadesTabla(){
-             tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = tabla_usu.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(200);
-         columnModel.getColumn(3).setPreferredWidth(200);
-         columnModel.getColumn(4).setPreferredWidth(200);
-    }
-    */
     
     
     public static void main(String args[]) {

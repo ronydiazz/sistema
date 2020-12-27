@@ -440,7 +440,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
        if(txt_cod.getText().equals("") || txt_desc.getText().equals("") || txt_costo.getText().equals("") ||txt_venta.getText().equals("") || txt_mayo.getText().equals("") || txt_descue.getText().equals("") || txt_iva.getText().equals("") || txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
        }else{
-      if(prodSql.existeUsusario(txt_cod.getText()) == 0){
+      if(prodSql.existeProducto(txt_cod.getText()) == 0){
        prod.setCodigo(txt_cod.getText());
        prod.setDescripcion(txt_desc.getText());
        prod.setPrecio_costo(Float.parseFloat(txt_costo.getText()));

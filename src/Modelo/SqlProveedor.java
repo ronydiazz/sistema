@@ -41,7 +41,7 @@ public class SqlProveedor extends Conexion  {
             return true;
             
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProveedor.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             return false;
         }finally{
@@ -132,7 +132,7 @@ try {
             ps.execute();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProveedor.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             return false;
         }finally{
@@ -172,7 +172,7 @@ try {
            listaProveedor.add(prov);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProveedor.class.getName()).log(Level.SEVERE, null, ex);
               JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex);
         }finally{
@@ -205,7 +205,7 @@ try {
             return false;
 
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProveedor.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
             return false;
         }finally{
