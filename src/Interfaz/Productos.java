@@ -708,7 +708,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTable tabla_prod;
     public javax.swing.JTextField txt_buscod;
     public javax.swing.JTextField txt_busdesc;

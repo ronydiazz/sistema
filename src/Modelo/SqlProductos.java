@@ -155,4 +155,38 @@ public class SqlProductos extends Conexion{
     }
  }
     }
+     
+    public boolean eliminar(productos produ) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "delete from productos where cod_producto=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, produ.getCodigo());
+            rs=ps.executeQuery();
+            
+            if(rs.next()){
+            return true;
+            }
+            
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+            
+        if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    }
 }
