@@ -5,20 +5,131 @@
  */
 package Modelo;
 
+import Interfaz.Productos;
 import Modelo.productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author DELL
  */
 public class SqlProductos extends Conexion{
+    
+    public static void cargar(String valor ){
+         
+    String mostrar="SELECT cod_producto, descripcion, precio_venta, stock, "
+            + "unidad_med, descripcion_m, descripcion_c from productos "
+            + "inner join marca on productos.id_marca1=marca.id_marca "
+           + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
+            + "WHERE descripcion LIKE '%"+valor+"%' or cod_producto LIKE '%"+valor+"%'";
+    String []titulos={"CODIGO","PRODUCTO","PRECIO","STOCK","U.M","MARCA","CATEGORIA"};
+    String []Registros=new String[7];
+    DefaultTableModel model= new DefaultTableModel(null,titulos);
+  
+          Conexion cc = new Conexion(); 
+          Connection cn=cc.getConexion();
+        try {
+          
+              Statement st = cn.createStatement();
+              ResultSet rs = st.executeQuery(mostrar);
+              while(rs.next())
+              {
+                  Registros[0]= rs.getString("cod_producto");
+                  Registros[1]= rs.getString("descripcion");
+                  Registros[2]= rs.getString("precio_venta");
+                  Registros[3]= rs.getString("stock");
+                  Registros[4]= rs.getString("unidad_med");        
+                 Registros[5]= rs.getString("descripcion_m");        
+                 Registros[6]= rs.getString("descripcion_c");        
+                  model.addRow(Registros); 
+                  
+              }
+            Productos.tabla_prod.setModel(model);
+                   Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(200);
+         columnModel.getColumn(2).setPreferredWidth(150);
+         columnModel.getColumn(3).setPreferredWidth(130);
+         columnModel.getColumn(4).setPreferredWidth(30);
+         columnModel.getColumn(5).setPreferredWidth(150);
+         columnModel.getColumn(6).setPreferredWidth(150);
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+        }finally{
+    if(cn!=null){  
+        try {  cn.close();
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+  }  
+ }
+    public static List mostrarP(String valor ){
+         
+    String mostrar="SELECT cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
+            + "stock, obs, unidad_med, nombre_pov, descripcion_m, descripcion_c from productos "
+            + "inner join proveedor on productos.id_proveedor1=proveedor.id_proveedor "
+            + "inner join marca on productos.id_marca1=marca.id_marca "
+           + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
+            + "WHERE cod_producto ="+valor+"";
+  
+    List listpro=new ArrayList();
+          Conexion cc = new Conexion(); 
+          Connection cn=cc.getConexion();
+          
+        try {
+              Statement st = cn.createStatement();
+              ResultSet rs = st.executeQuery(mostrar);
+              while(rs.next())
+              {
+                  productos prod = new productos();
+                 prod.setCodigo(rs.getString("cod_producto"));
+                  prod.setDescripcion(rs.getString("descripcion"));
+                  prod.setPrecio_costo(rs.getFloat("precio_costo"));
+                  prod.setPrecio_venta(rs.getFloat("precio_venta"));
+                  prod.setPrecio_mayor(rs.getFloat("precio_mayori"));        
+                 prod.setDescuento(rs.getFloat("descuento"));        
+                prod.setIva(rs.getInt("iva")); 
+                 prod.setStock(rs.getInt("stock")); 
+                 prod.setObs(rs.getString("obs")); 
+                 prod.setUnidad_med(rs.getString("unidad_med")); 
+                prod.setId_proveedor(rs.getString("nombre_prov"));  
+                 prod.setId_marca(rs.getString("descripcion_m")); 
+                 prod.setId_categoria(rs.getString("descripcion_c")); 
+                  listpro.add(prod);
+              }
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+        } 
+        finally{
+    if(cn!=null){  
+        try {  cn.close();
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+       return listpro;
+    }
      public boolean registrar(productos prod) {
 
         PreparedStatement ps = null;
@@ -44,7 +155,7 @@ public class SqlProductos extends Conexion{
             return true;
             
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, ex);
             return false;
@@ -60,10 +171,10 @@ public class SqlProductos extends Conexion{
             JOptionPane.showMessageDialog(null, ex);
         }
     }
- }
-    }
+   }
+  }
      
-     public int existeUsusario(String producto) {
+     public int existeProducto(String producto) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
@@ -82,7 +193,7 @@ public class SqlProductos extends Conexion{
             return 1;
 
         } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
             return 1;
         }finally{
     if(con!=null){  
@@ -93,6 +204,40 @@ public class SqlProductos extends Conexion{
             rs=null;
             ps=null;
             con=null;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    }
+     
+    public boolean eliminar(productos produ) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "delete from productos where cod_producto=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, produ.getCodigo());
+            rs=ps.executeQuery();
+            
+            if(rs.next()){
+            return true;
+            }
+            
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+            
+        if(con!=null){  
+        try {
+            con.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

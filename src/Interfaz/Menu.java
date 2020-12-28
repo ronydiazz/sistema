@@ -6,8 +6,11 @@
 package Interfaz;
 
 
+import Modelo.SqlProductos;
 import Modelo.SqlUsuarios;
+import Modelo.productos;
 import Modelo.usuarios;
+import controlador.ctrlProductos;
 import controlador.ctrlUsuarios;
 
 /**
@@ -23,8 +26,11 @@ public static Menu frmenu;
 public static Registro frregistro;
 public static IniciarSesion frlogin;
 public static ctrlUsuarios ctr;
+public static ctrlProductos ctrp;
 
- SqlUsuarios usuario = new SqlUsuarios();
+SqlProductos sqlpro= new SqlProductos();
+productos pro = new productos();
+SqlUsuarios usuario = new SqlUsuarios();
     usuarios usu = new usuarios();
    
 usuarios mod;   
@@ -194,8 +200,11 @@ usuarios mod;
     private void BtnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosActionPerformed
         // TODO add your handling code here:
          if(frproductos == null){
-          frproductos = new Productos();
+       frproductos = new Productos(frmenu, true);
+          ctrp= new ctrlProductos(pro, sqlpro, frproductos);
+          ctrp.iniciar();
         frproductos.setVisible(true);
+       
         }
         
         

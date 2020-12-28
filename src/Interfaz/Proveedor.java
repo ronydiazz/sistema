@@ -76,7 +76,6 @@ public final class Proveedor extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Buscar proveedor:");
 
-        tabla_prov.setBackground(new java.awt.Color(33, 45, 62));
         tabla_prov.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -370,7 +369,7 @@ public final class Proveedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_prov;
+    public static javax.swing.JTable tabla_prov;
     private javax.swing.JTextField txt_busdesc;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,6 +25,15 @@ public class productos {
     private String id_proveedor;
     private String id_marca;
     private String unidad_med;
+    private String id_categoria;
+
+    public String getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(String id_categoria) {
+        this.id_categoria = id_categoria;
+    }
 
     public int getId() {
         return id;
