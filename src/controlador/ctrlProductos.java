@@ -187,33 +187,14 @@ public class ctrlProductos implements ActionListener {
     
     public void mostrar(){
     int fila = Productos.tabla_prod.getSelectedRow();
-    frpro.txt_cod.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 0)));
-    frpro.txt_desc.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 1)));
-    frpro.txt_costo.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 2)));
-    frpro.txt_venta.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 3)));
-    frpro.txt_mayo.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 4)));
-    frpro.txt_descue.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 5)));
-    frpro.txt_iva.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 6)));
-    frpro.txt_stock.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 7)));
-    frpro.txt_obs.setText(String.valueOf(Productos.tabla_prod.getValueAt(fila, 8)));
-    frpro.combo_pro.setSelectedItem(String.valueOf(Productos.tabla_prod.getValueAt(fila, 9)));
-    frpro.como_marca.setSelectedItem(String.valueOf(Productos.tabla_prod.getValueAt(fila, 10)));
-    frpro.combo_medida.setSelectedItem(String.valueOf(Productos.tabla_prod.getValueAt(fila, 11)));
+    String codigo;
+    codigo=String.valueOf(Productos.tabla_prod.getValueAt(fila, 0));
     List ls;
     
     try{
-        ls=SqlProductos.mostrarP(frpro.txt_cod.getText());
+        ls=SqlProductos.mostrarP(codigo);
         for(int i = 0; i<ls.size();i++){
-             pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
-       pro.setPrecio_venta(Float.parseFloat(frpro.txt_venta.getText()));
-       pro.setPrecio_mayor(Float.parseFloat(frpro.txt_mayo.getText()));
-       pro.setDescuento(Float.parseFloat(frpro.txt_descue.getText()));
-       pro.setIva(Integer.parseInt(frpro.txt_iva.getText()));
-       pro.setStock(Integer.parseInt(frpro.txt_stock.getText()));
-       pro.setObs(frpro.txt_obs.getText());
-       pro.setId_proveedor(frpro.combo_pro.getSelectedItem().toString());
-       pro.setId_marca(frpro.como_marca.getSelectedItem().toString());
-       pro.setUnidad_med(frpro.combo_medida.getSelectedItem().toString());
+ 
     productos prod = new productos();
     prod= (productos) ls.get(i);
     frpro.txt_cod.setText(prod.getCodigo());
@@ -222,12 +203,17 @@ public class ctrlProductos implements ActionListener {
     frpro.txt_venta.setText(Float.toString(prod.getPrecio_venta()));
     frpro.txt_mayo.setText(Float.toString(prod.getPrecio_mayor()));
     frpro.txt_descue.setText(Float.toString(prod.getDescuento()));
-    frpro.txt_iva.setText(Integer.toString(pro.getIva()));
+    frpro.txt_iva.setText(Integer.toString(prod.getIva()));
     frpro.txt_stock.setText(Integer.toString(prod.getStock()));
     frpro.txt_obs.setText(prod.getObs());
-    frpro.combo_pro.setSelectedItem(prod.getId_proveedor());
-    frpro.como_marca.setSelectedItem(prod.getId_marca());
+    frpro.combo_pro.addItem(prod.getId_proveedor());
+    frpro.como_marca.addItem(prod.getId_marca());
+   
+     frpro.combo_cate.setSelectedItem(prod.getId_marca());
     frpro.combo_medida.setSelectedItem(prod.getUnidad_med());
+   // String prove,marca;
+  //  prove=prod.getId_proveedor();
+   //  JOptionPane.showMessageDialog(null, prove);
         }
     }catch(Exception e){
     System.out.println(e);

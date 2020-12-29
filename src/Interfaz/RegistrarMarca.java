@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Modelo.SqlEstado;
 import Modelo.SqlMarca;
 import Modelo.marca;
 import java.util.List;
@@ -19,13 +20,14 @@ import javax.swing.table.TableColumnModel;
  */
 public class RegistrarMarca extends javax.swing.JFrame {
 SqlMarca mar= new SqlMarca();
+SqlEstado est= new SqlEstado();
 marca m = new marca();
   public static RegistrarMarca frregistrar;
     public RegistrarMarca() {
         initComponents();
          setLocationRelativeTo(null);
         
-        mar.consultar_estado(combo_estado);
+        est.consultar_estado(combo_estado);
         tablaMarca();
     }
 

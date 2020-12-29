@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Modelo.marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,23 +20,23 @@ import javax.swing.JOptionPane;
  *
  * @author DELL
  */
-public class SqlMarca extends Conexion{
+public class SqlCategoria extends Conexion{
     
-    public boolean registrar_marca(marca mar) {
+    public boolean registrar_categoria(categoria cat) {
 
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql = "INSERT INTO marca (descripcion_m, estado1) VALUES (?, ?)";
+        String sql = "INSERT INTO categoria (descripcion_c, estadoc) VALUES (?, ?)";
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, mar.getDescripcion());
-            ps.setInt(2, mar.getEstado1());
+            ps.setString(1, cat.getDescripcion_c());
+            ps.setInt(2, cat.getEstado());
             ps.execute();
             return true;
             
         } catch (SQLException ex) {
-            Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             return false;
         } finally{
@@ -54,22 +53,22 @@ public class SqlMarca extends Conexion{
     }
     
     
-     public void consultar_marca(JComboBox cbx_marca){
+     public void consultar_categoria(JComboBox cbx_categoria){
          
  Connection con = getConexion();    
 PreparedStatement ps = null;
 ResultSet rs = null;
-String SSQL = "SELECT descripcion_m FROM marca ORDER BY descripcion_m ASC";
+String SSQL = "SELECT descripcion_c FROM categoria ORDER BY descripcion_c ASC";
 
 try {
 
    ps = con.prepareStatement(SSQL);
    rs = ps.executeQuery();
-   cbx_marca.addItem("Seleccione una opción");
+   cbx_categoria.addItem("Seleccione una opción");
    
    while(rs.next()){
    
-       cbx_marca.addItem(rs.getString("descripcion_m"));
+       cbx_categoria.addItem(rs.getString("descripcion_c"));
    
    }
 } catch (SQLException e) {
@@ -89,28 +88,22 @@ try {
     }
  }
 }
-     
 
-   
-        
-  
-
-     
-      public boolean modificar(marca marc){
+      public boolean modificar(categoria cate){
           
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql="UPDATE marca SET descripcion_m=?, estado1=? WHERE id_marca=?";
+        String sql="UPDATE categoria SET descripcion_c=?, estadoc=? WHERE id_categoria=?";
         
         try {
          ps= con.prepareStatement(sql);
-         ps.setString(1, marc.getDescripcion());
-         ps.setInt(2, marc.getEstado1());
-         ps.setInt(3, marc.getCodigo());
+         ps.setString(1, cate.getDescripcion_c());
+         ps.setInt(2, cate.getEstado());
+         ps.setInt(3, cate.getId_categoria());
          ps.execute();
          return true;
         } catch (SQLException ex) {
-        Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(null, ex);
         return false;
         }finally{
@@ -123,12 +116,12 @@ try {
         }
       }
       
-      public List mostrarMarca(){
+      public List mostrarCategoria(){
          PreparedStatement ps = null;
          ResultSet rs = null;
          Connection con =getConexion();
-          String sql = "SELECT id_marca,descripcion_m, nom_estado "
-                + "from marca inner join estado on marca.estado1=estado.id_estado ";
+          String sql = "SELECT id_categoria,descripcion_c, nom_estado "
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado ";
         List lista_marca = new ArrayList();
 
          try {
@@ -139,14 +132,14 @@ try {
             while (rs.next()) {
 
            marca mar = new marca();
-           mar.setCodigo(rs.getInt("id_marca"));
-           mar.setDescripcion(rs.getString("descripcion_m"));
+           mar.setCodigo(rs.getInt("id_categoria"));
+           mar.setDescripcion(rs.getString("descripcion_c"));
            mar.setNombre_est(rs.getString("nom_estado"));
            lista_marca.add(mar);
         
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
               JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex);
         }finally{
@@ -161,16 +154,16 @@ try {
   return lista_marca;
       }
       
-      public boolean eliminarMarca(marca ma){
+      public boolean eliminarCategoria(categoria ma){
        PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-        String sql = "delete from marca where id_marca=?";
+        String sql = "delete from categoria where id_categoria=?";
 
         try {
             ps = con.prepareStatement(sql);
 
-            ps.setInt(1, ma.getCodigo());
+            ps.setInt(1, ma.getId_categoria());
             rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -181,7 +174,7 @@ try {
             return false;
 
         } catch (SQLException ex) {
-            Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
             return false;
         }finally{

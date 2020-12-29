@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -83,7 +84,7 @@ public class SqlProductos extends Conexion{
     public static List mostrarP(String valor ){
          
     String mostrar="SELECT cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
-            + "stock, obs, unidad_med, nombre_pov, descripcion_m, descripcion_c from productos "
+            + "stock, obs, unidad_med, nombre_prov, descripcion_m, descripcion_c from productos "
             + "inner join proveedor on productos.id_proveedor1=proveedor.id_proveedor "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
@@ -244,4 +245,6 @@ public class SqlProductos extends Conexion{
     }
  }
     }
+    
+     
 }
