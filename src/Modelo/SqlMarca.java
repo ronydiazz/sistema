@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Modelo.marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -123,12 +122,12 @@ try {
         }
       }
       
-      public List mostrarMarca(){
+      public List mostrarMarca( String m){
          PreparedStatement ps = null;
          ResultSet rs = null;
          Connection con =getConexion();
           String sql = "SELECT id_marca,descripcion_m, nom_estado "
-                + "from marca inner join estado on marca.estado1=estado.id_estado ";
+                + "from marca inner join estado on marca.estado1=estado.id_estado WHERE LIKE '%"+m+"%'";
         List lista_marca = new ArrayList();
 
          try {

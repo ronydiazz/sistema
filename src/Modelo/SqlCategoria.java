@@ -116,12 +116,12 @@ try {
         }
       }
       
-      public List mostrarCategoria(){
+      public List mostrarCategoria( String v){
          PreparedStatement ps = null;
          ResultSet rs = null;
          Connection con =getConexion();
           String sql = "SELECT id_categoria,descripcion_c, nom_estado "
-                + "from categoria inner join estado on categoria.estadoc=estado.id_estado ";
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%'" ;
         List lista_marca = new ArrayList();
 
          try {

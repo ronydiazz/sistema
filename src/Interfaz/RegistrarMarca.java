@@ -341,7 +341,7 @@ marca m = new marca();
     DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
     List ls;
     try{
-    ls= mar.mostrarMarca();
+    ls= mar.mostrarMarca("");
     for (int i=0;i<ls.size(); i++){
         m = (marca) ls.get(i);
         obj[0] = m.getCodigo();

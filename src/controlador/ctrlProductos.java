@@ -7,7 +7,10 @@ package controlador;
 
 import Interfaz.Productos;
 import Interfaz.Usuarios;
+import Modelo.SqlCategoria;
+import Modelo.SqlMarca;
 import Modelo.SqlProductos;
+import Modelo.SqlProveedor;
 import Modelo.SqlUsuarios;
 import Modelo.productos;
 import Modelo.usuarios;
@@ -24,6 +27,9 @@ public class ctrlProductos implements ActionListener {
     private productos pro;
     private SqlProductos sqlpro;
     private Productos frpro;
+    SqlCategoria cate = new SqlCategoria ();
+    SqlProveedor prove = new SqlProveedor ();
+    SqlMarca marca = new SqlMarca ();
     
     public ctrlProductos (productos pro, SqlProductos sqlpro, Productos frpro){
     this.pro=pro;
@@ -42,6 +48,7 @@ public class ctrlProductos implements ActionListener {
  
      public void iniciar(){
        SqlProductos.cargar("");
+       
     }
     
     @Override
@@ -50,6 +57,9 @@ public class ctrlProductos implements ActionListener {
       if(ae.getSource()== frpro.btnRegProducto){
         if(this.frpro.jTabbedPane1.getSelectedIndex()==0 ||this.frpro.jTabbedPane1.getSelectedIndex()==2 || this.frpro.jTabbedPane1.getSelectedIndex()==3){
          frpro.jTabbedPane1.setSelectedIndex(1);
+         cate.consultar_categoria(frpro.combo_cate);
+         prove.consultar_proveedores(frpro.combo_pro);
+         marca.consultar_marca(frpro.como_marca);
         }else{
         
             if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_descue.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
@@ -67,6 +77,7 @@ public class ctrlProductos implements ActionListener {
        pro.setObs(frpro.txt_obs.getText());
        pro.setId_proveedor(frpro.combo_pro.getSelectedItem().toString());
        pro.setId_marca(frpro.como_marca.getSelectedItem().toString());
+       pro.setId_categoria(frpro.combo_cate.getSelectedItem().toString());
        pro.setUnidad_med(frpro.combo_medida.getSelectedItem().toString());
        
        
@@ -117,11 +128,12 @@ public class ctrlProductos implements ActionListener {
        pro.setObs(frpro.txt_obs.getText());
        pro.setId_proveedor(frpro.combo_pro.getSelectedItem().toString());
        pro.setId_marca(frpro.como_marca.getSelectedItem().toString());
+       pro.setId_categoria(frpro.combo_cate.getSelectedItem().toString());
        pro.setUnidad_med(frpro.combo_medida.getSelectedItem().toString());
        
        
 
-      if(sqlpro.registrar(pro)){
+      if(sqlpro.modificar(pro)){
        JOptionPane.showMessageDialog(null, "Registro Guardado");
       limpiar();
       SqlProductos.cargar("");
@@ -208,12 +220,8 @@ public class ctrlProductos implements ActionListener {
     frpro.txt_obs.setText(prod.getObs());
     frpro.combo_pro.addItem(prod.getId_proveedor());
     frpro.como_marca.addItem(prod.getId_marca());
-   
-     frpro.combo_cate.setSelectedItem(prod.getId_marca());
+     frpro.combo_cate.addItem(prod.getId_categoria());
     frpro.combo_medida.setSelectedItem(prod.getUnidad_med());
-   // String prove,marca;
-  //  prove=prod.getId_proveedor();
-   //  JOptionPane.showMessageDialog(null, prove);
         }
     }catch(Exception e){
     System.out.println(e);

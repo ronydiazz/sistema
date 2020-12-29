@@ -135,8 +135,8 @@ public class SqlProductos extends Conexion{
 
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql = "INSERT INTO productos (cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, stock, obs, id_proveedor1, id_marca1, unidad_med)"
-                + " VALUES (?,?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),?)";
+        String sql = "INSERT INTO productos (cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, stock, obs, id_proveedor1, id_marca1, id_categoria1, unidad_med)"
+                + " VALUES (?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),(SELECT id_categoria FROM categoria WHERE descripcion_c=?),?)";
 
         try {
             ps = con.prepareStatement(sql);
@@ -151,7 +151,8 @@ public class SqlProductos extends Conexion{
             ps.setString(9, prod.getObs());
             ps.setString(10, prod.getId_proveedor());
             ps.setString(11, prod.getId_marca());
-            ps.setString(12, prod.getUnidad_med());
+            ps.setString(12, prod.getId_categoria());
+            ps.setString(13, prod.getUnidad_med());
             ps.execute();
             return true;
             
@@ -244,7 +245,51 @@ public class SqlProductos extends Conexion{
         }
     }
  }
+}
+    public boolean modificar(productos prod) {
+
+        PreparedStatement ps = null;
+        Connection con = getConexion();
+        String sql = "UPDATE productos set descripcion=?, precio_costo=?, precio_venta=?, precio_mayori=?, descuento=?, iva=?, stock=?, obs=?, "
+                + "id_proveedor1=(SELECT id_proveedor FROM proveedor WHERE nombre_prov=?), id_marca1=(SELECT id_marca FROM marca WHERE descripcion_m=?),"
+                + "id_categoria1=(SELECT id_categoria FROM categoria WHERE descripcion_c=?), unidad_med=? where cod_producto=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, prod.getDescripcion());
+            ps.setFloat(2, prod.getPrecio_costo());
+            ps.setFloat(3, prod.getPrecio_venta());
+            ps.setFloat(4, prod.getPrecio_mayor());
+            ps.setFloat(5, prod.getDescuento());
+            ps.setInt(6, prod.getIva());
+            ps.setInt(7, prod.getStock());
+            ps.setString(8, prod.getObs());
+            ps.setString(9, prod.getId_proveedor());
+            ps.setString(10, prod.getId_marca());
+            ps.setString(11, prod.getId_categoria());
+            ps.setString(12, prod.getUnidad_med());
+            ps.setString(13, prod.getCodigo());
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+            
+        if(con!=null){  
+        try {
+            ps.close();
+            con.close();
+            ps=null;
+            con=null;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
-    
+   }
+  }    
      
 }
