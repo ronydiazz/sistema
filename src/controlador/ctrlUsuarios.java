@@ -179,19 +179,18 @@ public class ctrlUsuarios implements ActionListener  {
         }
       }
   }
-    }
+ }
     
     //Boton Eliminar
       if(e.getSource() == frusu.btnEliminarProv){
       
-        int fila= frusu.tabla_usu.getSelectedRow();
-         int ide = Integer.parseInt(frusu.tabla_usu.getValueAt(fila, 0).toString());
-        DefaultTableModel Tabla = new DefaultTableModel();
-     
+        int fila= Usuarios.tabla_usu.getSelectedRow();
+        
             if(fila<0){
             JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
-           
+           frusu.tablepane.setSelectedIndex(0);
             }else {
+                 int ide = Integer.parseInt(Usuarios.tabla_usu.getValueAt(fila, 0).toString());
                  usu.setId(ide);
                 if(JOptionPane.showConfirmDialog(null, "¿Eliminar el registro?", "",
                         JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){

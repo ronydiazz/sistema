@@ -72,20 +72,19 @@ String SSQL = "SELECT nombre_prov FROM proveedor ORDER BY nombre_prov ASC";
 
 //Establecemos bloque try-catch-finally
 try {
-       
-   //Establecemos conexión con la BD 
-//   conectar = con.dataSource.getConnection();  
-   //Preparamos la consulta SQL
-   pst = con.prepareStatement(SSQL);
+ 
+    if(cbx_proveedor.getSelectedIndex()>=0){
+      //  cbx_proveedor.removeAllItems();
+   }else{
+        pst = con.prepareStatement(SSQL);
    //Ejecutamos la consulta
    result = pst.executeQuery();
-   
-   //LLenamos nuestro ComboBox
    cbx_proveedor.addItem("Seleccione una opción");
    
    while(result.next()){
    
        cbx_proveedor.addItem(result.getString("nombre_prov"));
+   }
    }
  
 } catch (SQLException e) {
@@ -98,10 +97,10 @@ try {
         
         try {
             con.close();
-            result.close();
+       //     result.close();
             
             con=null;
-            result=null;
+     //       result=null;
             
         } catch (SQLException ex) {
             

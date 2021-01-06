@@ -284,6 +284,7 @@ public final class Proveedor extends javax.swing.JFrame {
         // TODO add your handliang code here:
         RegistrarProveedor.frregistrarprov=null;
         ModificarProveedor.frmodificarprov=null;
+        Menu.frproveedor=null;
     }//GEN-LAST:event_formWindowClosing
 
     private void tabla_provMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_provMouseClicked

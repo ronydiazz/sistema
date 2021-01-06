@@ -28,7 +28,7 @@ import javax.swing.table.TableColumnModel;
  */
 public class SqlProductos extends Conexion{
     
-    public static void cargar(String valor ){
+    public static void cargar(String valor){
          
     String mostrar="SELECT cod_producto, descripcion, precio_venta, stock, "
             + "unidad_med, descripcion_m, descripcion_c from productos "
@@ -61,10 +61,10 @@ public class SqlProductos extends Conexion{
                    Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
          columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(200);
+         columnModel.getColumn(1).setPreferredWidth(160);
          columnModel.getColumn(2).setPreferredWidth(150);
          columnModel.getColumn(3).setPreferredWidth(130);
-         columnModel.getColumn(4).setPreferredWidth(30);
+         columnModel.getColumn(4).setPreferredWidth(50);
          columnModel.getColumn(5).setPreferredWidth(150);
          columnModel.getColumn(6).setPreferredWidth(150);
         } catch (SQLException ex) {
@@ -81,7 +81,8 @@ public class SqlProductos extends Conexion{
     }
   }  
  }
-    public static List mostrarP(String valor ){
+    
+    public static List mostrarP(String valor){
          
     String mostrar="SELECT cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
             + "stock, obs, unidad_med, nombre_prov, descripcion_m, descripcion_c from productos "
@@ -131,7 +132,8 @@ public class SqlProductos extends Conexion{
  }
        return listpro;
     }
-     public boolean registrar(productos prod) {
+    
+    public boolean registrar(productos prod) {
 
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -165,9 +167,9 @@ public class SqlProductos extends Conexion{
             
         if(con!=null){  
         try {
-            ps.close();
+      //      ps.close();
             con.close();
-            ps=null;
+        //    ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -176,7 +178,7 @@ public class SqlProductos extends Conexion{
    }
   }
      
-     public int existeProducto(String producto) {
+    public int existeProducto(String producto) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
@@ -200,11 +202,11 @@ public class SqlProductos extends Conexion{
         }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
-            con.close();
-            rs=null;
-            ps=null;
+//            rs.close();
+//            ps.close();
+           con.close();
+//            rs=null;
+//            ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -246,6 +248,7 @@ public class SqlProductos extends Conexion{
     }
  }
 }
+    
     public boolean modificar(productos prod) {
 
         PreparedStatement ps = null;
@@ -281,9 +284,9 @@ public class SqlProductos extends Conexion{
             
         if(con!=null){  
         try {
-            ps.close();
+         //   ps.close();
             con.close();
-            ps=null;
+         //   ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);

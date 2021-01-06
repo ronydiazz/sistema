@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,13 +13,11 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author DELL
- */
+
+
 public class SqlCategoria extends Conexion{
     
-    public boolean registrar_categoria(categoria cat) {
+      public boolean registrar_categoria(categoria cat) {
 
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -42,7 +37,7 @@ public class SqlCategoria extends Conexion{
         } finally{
         if(con!=null){  
         try {
-            ps.close();
+        //    ps.close();
             con.close();
             con=null;
         } catch (SQLException ex) {
@@ -52,8 +47,7 @@ public class SqlCategoria extends Conexion{
  }
     }
     
-    
-     public void consultar_categoria(JComboBox cbx_categoria){
+      public void consultar_categoria(JComboBox cbx_categoria){
          
  Connection con = getConexion();    
 PreparedStatement ps = null;
@@ -62,7 +56,11 @@ String SSQL = "SELECT descripcion_c FROM categoria ORDER BY descripcion_c ASC";
 
 try {
 
-   ps = con.prepareStatement(SSQL);
+  
+    if(cbx_categoria.getSelectedIndex()>=0){
+      //  cbx_proveedor.removeAllItems();
+   }else{
+        ps = con.prepareStatement(SSQL);
    rs = ps.executeQuery();
    cbx_categoria.addItem("Seleccione una opción");
    
@@ -70,17 +68,17 @@ try {
    
        cbx_categoria.addItem(rs.getString("descripcion_c"));
    
-   }
+   }}
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(null, e);
 }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
+         //   rs.close();
+       //     ps.close();
             con.close();
-            rs=null;
-            ps=null;
+      //      rs=null;
+     //       ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -116,26 +114,29 @@ try {
         }
       }
       
-      public List mostrarCategoria( String v){
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         Connection con =getConexion();
+      public static List mostrarCategoria( String v){
+          Conexion cc= new Conexion();
+       //  Prepared
+      //           Statement ps = null;
+    //     ResultSet rs = null;
+         Connection con =cc.getConexion();
           String sql = "SELECT id_categoria,descripcion_c, nom_estado "
-                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%'" ;
-        List lista_marca = new ArrayList();
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%' or id_categoria ='"+v+"'";
+        List lista_cate = new ArrayList();
 
          try {
 
-            ps = con.prepareCall(sql);
-         rs = ps.executeQuery();
+   PreparedStatement         ps = con.prepareCall(sql);
+ResultSet         rs = ps.executeQuery();
 
             while (rs.next()) {
 
-           marca mar = new marca();
-           mar.setCodigo(rs.getInt("id_categoria"));
-           mar.setDescripcion(rs.getString("descripcion_c"));
-           mar.setNombre_est(rs.getString("nom_estado"));
-           lista_marca.add(mar);
+           categoria cat = new categoria();
+           cat.setId_categoria(rs.getInt("id_categoria"));
+           cat.setDescripcion_c(rs.getString("descripcion_c"));
+           cat.setNombre_est(rs.getString("nom_estado"));
+           
+           lista_cate.add(cat);
         
             }
         } catch (SQLException ex) {
@@ -151,7 +152,48 @@ try {
         }
     }
  }
-  return lista_marca;
+  return lista_cate;
+      }
+      
+       public static void mostrarCategoria2( String v){
+          Conexion cc= new Conexion();
+       //  Prepared
+      //           Statement ps = null;
+    //     ResultSet rs = null;
+         Connection con =cc.getConexion();
+          String sql = "SELECT id_categoria,descripcion_c, nom_estado "
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%'";
+      
+
+         try {
+
+   Statement         ps = con.createStatement();
+ResultSet         rs = ps.executeQuery(sql);
+
+            while (rs.next()) {
+
+           categoria cat = new categoria();
+           cat.setId_categoria(rs.getInt("id_categoria"));
+           cat.setDescripcion_c(rs.getString("descripcion_c"));
+           cat.setNombre_est(rs.getString("nom_estado"));
+           
+         //  lista_cate.add(cat);
+        
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
+        }finally{
+    if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+  //return lista_cate;
       }
       
       public boolean eliminarCategoria(categoria ma){

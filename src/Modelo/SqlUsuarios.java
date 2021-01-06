@@ -100,10 +100,10 @@ public class SqlUsuarios extends Conexion {
     if(con!=null){  
         try {
             
-            ps.close();
+      //      ps.close();
             con.close();
            
-            ps=null;
+       //     ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -136,11 +136,11 @@ public class SqlUsuarios extends Conexion {
         }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
+//            rs.close();
+//            ps.close();
             con.close();
-            rs=null;
-            ps=null;
+//            rs=null;
+//            ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -184,9 +184,9 @@ public class SqlUsuarios extends Conexion {
         }finally{
     if(con!=null){  
         try {
-            ps.close();
+        //    ps.close();
             con.close();
-            ps=null;
+        //    ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -230,11 +230,11 @@ public class SqlUsuarios extends Conexion {
         }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
+//            rs.close();
+//            ps.close();
             con.close();
-            rs=null;
-            ps=null;
+//            rs=null;
+//            ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -290,12 +290,12 @@ public class SqlUsuarios extends Conexion {
         }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
-            con.close();
-            rs=null;
-            ps=null;
-            con=null;
+//            rs.close();
+//            ps.close();
+           con.close();
+//            rs=null;
+//            ps=null;
+           con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -337,11 +337,7 @@ public class SqlUsuarios extends Conexion {
         }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
             con.close();
-            rs=null;
-            ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -350,7 +346,7 @@ public class SqlUsuarios extends Conexion {
  }
         return listaUsuarios;
 
-    }
+}
  
     
     /*

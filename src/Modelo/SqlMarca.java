@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class SqlMarca extends Conexion{
     
-    public boolean registrar_marca(marca mar) {
+      public boolean registrar_marca(marca mar) {
 
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -50,10 +50,9 @@ public class SqlMarca extends Conexion{
         }
     }
  }
-    }
+}
     
-    
-     public void consultar_marca(JComboBox cbx_marca){
+      public void consultar_marca(JComboBox cbx_marca){
          
  Connection con = getConexion();    
 PreparedStatement ps = null;
@@ -62,25 +61,29 @@ String SSQL = "SELECT descripcion_m FROM marca ORDER BY descripcion_m ASC";
 
 try {
 
-   ps = con.prepareStatement(SSQL);
+   
+    if(cbx_marca.getSelectedIndex()>=0){
+      //  cbx_proveedor.removeAllItems();
+   }else{
+        ps = con.prepareStatement(SSQL);
    rs = ps.executeQuery();
    cbx_marca.addItem("Seleccione una opción");
    
    while(rs.next()){
    
        cbx_marca.addItem(rs.getString("descripcion_m"));
-   
+   }
    }
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(null, e);
 }finally{
     if(con!=null){  
         try {
-            rs.close();
-            ps.close();
+//            rs.close();
+//            ps.close();
             con.close();
-            rs=null;
-            ps=null;
+//            rs=null;
+//            ps=null;
             con=null;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -88,12 +91,6 @@ try {
     }
  }
 }
-     
-
-   
-        
-  
-
      
       public boolean modificar(marca marc){
           
@@ -127,7 +124,7 @@ try {
          ResultSet rs = null;
          Connection con =getConexion();
           String sql = "SELECT id_marca,descripcion_m, nom_estado "
-                + "from marca inner join estado on marca.estado1=estado.id_estado WHERE LIKE '%"+m+"%'";
+                + "from marca inner join estado on marca.estado1=estado.id_estado WHERE descripcion_m LIKE '%"+m+"%'";
         List lista_marca = new ArrayList();
 
          try {

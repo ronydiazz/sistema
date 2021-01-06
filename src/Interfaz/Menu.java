@@ -6,10 +6,16 @@
 package Interfaz;
 
 
+import Modelo.SqlCategoria;
+import Modelo.SqlMarca;
 import Modelo.SqlProductos;
 import Modelo.SqlUsuarios;
+import Modelo.categoria;
+import Modelo.marca;
 import Modelo.productos;
 import Modelo.usuarios;
+import controlador.ctrlCategoria;
+import controlador.ctrlMarca;
 import controlador.ctrlProductos;
 import controlador.ctrlUsuarios;
 
@@ -27,14 +33,23 @@ public static Registro frregistro;
 public static IniciarSesion frlogin;
 public static ctrlUsuarios ctr;
 public static ctrlProductos ctrp;
+public static ctrlCategoria ctrc;
+public static ctrlMarca ctrm;
 
+
+SqlUsuarios usuario = new SqlUsuarios();
+usuarios usu = new usuarios();
+   
 SqlProductos sqlpro= new SqlProductos();
 productos pro = new productos();
-SqlUsuarios usuario = new SqlUsuarios();
-    usuarios usu = new usuarios();
-   
-usuarios mod;   
 
+SqlCategoria sqlcat= new SqlCategoria();
+categoria cat=new categoria();
+
+SqlMarca sqlmarca= new SqlMarca();
+marca mar= new marca();
+
+usuarios mod;   
     public Menu() {
         initComponents();
          setLocationRelativeTo(null);
@@ -203,6 +218,12 @@ usuarios mod;
        frproductos = new Productos(frmenu, true);
           ctrp= new ctrlProductos(pro, sqlpro, frproductos);
           ctrp.iniciar();
+          
+          ctrc= new ctrlCategoria(cat, sqlcat, frproductos);
+          ctrc.iniciar();
+          
+          ctrm= new ctrlMarca(mar, sqlmarca, frproductos);
+          ctrm.iniciar();
         frproductos.setVisible(true);
        
         }

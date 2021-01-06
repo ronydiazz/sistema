@@ -27,8 +27,12 @@ ResultSet result = null;
 String SSQL = "SELECT nom_estado FROM estado ORDER BY nom_estado ASC";
 
 try {
-
-   pst = con.prepareStatement(SSQL);
+ if(cbx_estado.getSelectedIndex()>=0){
+ 
+ //   if(cbx_estado.getSelectedIndex()>=0){
+      //  cbx_proveedor.removeAllItems();
+   }else{
+       pst = con.prepareStatement(SSQL);
    result = pst.executeQuery();
    cbx_estado.addItem("Seleccione una opción");
    
@@ -36,7 +40,7 @@ try {
    
        cbx_estado.addItem(result.getString("nom_estado"));
    
-   }
+   }}
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(null, e);
 }finally{
@@ -44,12 +48,12 @@ try {
     if(con!=null){
         
         try {
-            result.close();
-            pst.close();
+//            result.close();
+     //       pst.close();
             con.close();
             
-            result=null;
-            pst.close();
+      //      result=null;
+     //       pst.close();
             con=null;
             
             
