@@ -20,8 +20,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 
 public class ctrlProductos implements ActionListener {
@@ -56,7 +54,7 @@ public class ctrlProductos implements ActionListener {
        frpro.Pane_Prod.setEnabledAt(3, false);
     }
      
-   ActionEvent ae;
+  
    @Override
    public void actionPerformed(ActionEvent ae) {
       // Boton Buscar
@@ -78,10 +76,9 @@ public class ctrlProductos implements ActionListener {
       if(ae.getSource()== frpro.btnEliminar){
           eliminar();
     }
-      
-      // Boton Gestionar Categoria
-      // Boton Gestionar Marca
+   
     }
+   
    KeyListener tecla = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent ke) {
@@ -94,7 +91,7 @@ public class ctrlProductos implements ActionListener {
         @Override
         public void keyReleased(KeyEvent ke) {
             if(ke.getSource()==frpro.txt_buscod){
-           SqlProductos.cargar(frpro.txt_buscod.getText());
+        //   SqlProductos.cargar(frpro.txt_buscod.getText());
             }
          
             if(ke.getSource()==frpro.txt_busdesc){
@@ -102,14 +99,18 @@ public class ctrlProductos implements ActionListener {
             }
         }
     };
- 
-   public void mostrar(){
+   
+  
+   public void mostrar(){    
     int fila = Productos.tabla_prod.getSelectedRow();
     String codigo;
     codigo=String.valueOf(Productos.tabla_prod.getValueAt(fila, 0));
     List ls;
     
     try{
+        if(fila<0){
+        
+        }
         ls=SqlProductos.mostrarP(codigo);
         for(int i = 0; i<ls.size();i++){
  
@@ -242,8 +243,8 @@ public class ctrlProductos implements ActionListener {
            cate.consultar_categoria(frpro.combo_cate);
     prove.consultar_proveedores(frpro.combo_pro);
     marca.consultar_marca(frpro.como_marca);
-            mostrar();
-            }else{
+    mostrar();
+           }else{
               if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_descue.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
        }else{
@@ -309,6 +310,7 @@ public class ctrlProductos implements ActionListener {
         if(this.frpro.Pane_Prod.getSelectedIndex()==1 ||this.frpro.Pane_Prod.getSelectedIndex()==2 || this.frpro.Pane_Prod.getSelectedIndex()==3){
          frpro.Pane_Prod.setSelectedIndex(0);
         SqlProductos.cargar("");
+      //  SqlProductos.cargar("");
           frpro.Pane_Prod.setEnabledAt(0, true);
           frpro.Pane_Prod.setEnabledAt(1, false);
           frpro.Pane_Prod.setEnabledAt(2, false);
@@ -316,23 +318,54 @@ public class ctrlProductos implements ActionListener {
         }
    }
    
+   
+   
+   
+   
+   
+   
+   
+   
        /*
-    ChangeListener evt= new ChangeListener() {
-        @Override
-        public void stateChanged(ChangeEvent ce) {
-            
-        if(ce.getSource()== frpro.Pane_Prod){
-       if(frpro.Pane_Prod.getSelectedIndex()==0 ||frpro.Pane_Prod.getSelectedIndex()==2 || frpro.Pane_Prod.getSelectedIndex()==3){
-   frpro.combo_pro.removeAllItems();
-   // JOptionPane.showMessageDialog(null,"estas en la pestaña buscar o categoria o marca");
-       }else{
-       // JOptionPane.showMessageDialog(null,"registro");
-//     if(ae.getSource()!=frpro.btnModificar){
-//       limpiar();
-//      }
-       }
-      }
-     }
-    };
+public void mostrar_ndoikoi( String v){    
+      
+          String []titulos={"CODIGO","PRODUCTO","PRECIO","STOCK","U.M","MARCA","CATEGORIA"};
+    Object []Registros=new String[7];
+    DefaultTableModel model= new DefaultTableModel(null,titulos);
+    
+    List ls;
+    
+    try{
+       
+        ls=SqlProductos.mostrarP(v);
+        for(int i = 0; i<ls.size();i++){
+ 
+    productos prod = new productos();
+    prod= (productos) ls.get(i);
+    Registros[0]=prod.getCodigo();
+    Registros[1]=prod.getDescripcion();
+    Registros[2]=prod.getPrecio_venta();
+    Registros[3]=prod.getStock();
+    Registros[4]=prod.getUnidad_med();
+    Registros[5]=prod.getId_marca();
+    Registros[6]=prod.getId_categoria();
+    
+      model.addRow(Registros); 
+        }
+         Productos.tabla_prod.setModel(model);
+         Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(50);
+         columnModel.getColumn(1).setPreferredWidth(160);
+         columnModel.getColumn(2).setPreferredWidth(150);
+         columnModel.getColumn(3).setPreferredWidth(130);
+         columnModel.getColumn(4).setPreferredWidth(50);
+         columnModel.getColumn(5).setPreferredWidth(150);
+         columnModel.getColumn(6).setPreferredWidth(150);
+         
+    }catch(Exception e){
+    System.out.println(e);
+    }
+    }
    */ 
 }

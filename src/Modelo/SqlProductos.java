@@ -6,7 +6,6 @@
 package Modelo;
 
 import Interfaz.Productos;
-import Modelo.productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -52,13 +50,13 @@ public class SqlProductos extends Conexion{
                   Registros[2]= rs.getString("precio_venta");
                   Registros[3]= rs.getString("stock");
                   Registros[4]= rs.getString("unidad_med");        
-                 Registros[5]= rs.getString("descripcion_m");        
-                 Registros[6]= rs.getString("descripcion_c");        
+                  Registros[5]= rs.getString("descripcion_m");        
+                  Registros[6]= rs.getString("descripcion_c");        
                   model.addRow(Registros); 
                   
               }
-            Productos.tabla_prod.setModel(model);
-                   Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         Productos.tabla_prod.setModel(model);
+         Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
          columnModel.getColumn(0).setPreferredWidth(50);
          columnModel.getColumn(1).setPreferredWidth(160);
@@ -89,7 +87,7 @@ public class SqlProductos extends Conexion{
             + "inner join proveedor on productos.id_proveedor1=proveedor.id_proveedor "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
-            + "WHERE cod_producto ="+valor+"";
+            + "WHERE cod_producto ='"+valor+"'";
   
     List listpro=new ArrayList();
           Conexion cc = new Conexion(); 
@@ -100,21 +98,21 @@ public class SqlProductos extends Conexion{
               ResultSet rs = st.executeQuery(mostrar);
               while(rs.next())
               {
-                  productos prod = new productos();
+                 productos prod = new productos();
                  prod.setCodigo(rs.getString("cod_producto"));
-                  prod.setDescripcion(rs.getString("descripcion"));
-                  prod.setPrecio_costo(rs.getFloat("precio_costo"));
-                  prod.setPrecio_venta(rs.getFloat("precio_venta"));
-                  prod.setPrecio_mayor(rs.getFloat("precio_mayori"));        
+                 prod.setDescripcion(rs.getString("descripcion"));
+                 prod.setPrecio_costo(rs.getFloat("precio_costo"));
+                 prod.setPrecio_venta(rs.getFloat("precio_venta"));
+                 prod.setPrecio_mayor(rs.getFloat("precio_mayori"));        
                  prod.setDescuento(rs.getFloat("descuento"));        
-                prod.setIva(rs.getInt("iva")); 
+                 prod.setIva(rs.getInt("iva")); 
                  prod.setStock(rs.getInt("stock")); 
                  prod.setObs(rs.getString("obs")); 
                  prod.setUnidad_med(rs.getString("unidad_med")); 
-                prod.setId_proveedor(rs.getString("nombre_prov"));  
+                 prod.setId_proveedor(rs.getString("nombre_prov"));  
                  prod.setId_marca(rs.getString("descripcion_m")); 
                  prod.setId_categoria(rs.getString("descripcion_c")); 
-                  listpro.add(prod);
+                 listpro.add(prod);
               }
         } catch (SQLException ex) {
             Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,7 +136,7 @@ public class SqlProductos extends Conexion{
         PreparedStatement ps = null;
         Connection con = getConexion();
         String sql = "INSERT INTO productos (cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, stock, obs, id_proveedor1, id_marca1, id_categoria1, unidad_med)"
-                + " VALUES (?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),(SELECT id_categoria FROM categoria WHERE descripcion_c=?),?)";
+                + " VALUES (?,?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),(SELECT id_categoria FROM categoria WHERE descripcion_c=?),?)";
 
         try {
             ps = con.prepareStatement(sql);

@@ -7,11 +7,9 @@ package Modelo;
 
 
 import Interfaz.Usuarios;
-import Modelo.usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -195,7 +193,7 @@ public class SqlUsuarios extends Conexion {
  }
     }
     
-     public boolean contraseña_actual (usuarios usr) {
+    public boolean contraseña_actual (usuarios usr) {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -243,6 +241,7 @@ public class SqlUsuarios extends Conexion {
  }
 
     }
+    
     public boolean login(usuarios usr) {
 
         PreparedStatement ps = null;
@@ -303,7 +302,7 @@ public class SqlUsuarios extends Conexion {
  }
 }
     
- public List mostrarUsuarios () {
+    public List mostrarUsuarios () {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -347,8 +346,64 @@ public class SqlUsuarios extends Conexion {
         return listaUsuarios;
 
 }
+  
+    public boolean eliminarUsuario(usuarios usr){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "delete from usuarios where id_usuario=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, usr.getId());
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                 
+                return true;
+
+            }
+            return false;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+    if(con!=null){  
+        try {
+            rs.close();
+            ps.close();
+            con.close();
+            rs=null;
+            ps=null;
+            con=null;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    }
  
-    
+ 
+ 
+ }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
      public void mostrarUsuarios () {
 
@@ -399,48 +454,5 @@ public class SqlUsuarios extends Conexion {
    
     }
 */
-    
- public boolean eliminarUsuario(usuarios usr){
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        Connection con = getConexion();
-        String sql = "delete from usuarios where id_usuario=?";
-
-        try {
-            ps = con.prepareStatement(sql);
-
-            ps.setInt(1, usr.getId());
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                 
-                return true;
-
-            }
-            return false;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex);
-            return false;
-        }finally{
-    if(con!=null){  
-        try {
-            rs.close();
-            ps.close();
-            con.close();
-            rs=null;
-            ps=null;
-            con=null;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
- }
-    }
- 
- 
- 
- }
  
  

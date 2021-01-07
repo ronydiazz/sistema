@@ -1,17 +1,19 @@
 
 package Modelo;
 
+import Interfaz.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 
 
@@ -113,49 +115,11 @@ try {
         }
         }
       }
-      
-      public static List mostrarCategoria( String v){
-          Conexion cc= new Conexion();
-       //  Prepared
-      //           Statement ps = null;
-    //     ResultSet rs = null;
-         Connection con =cc.getConexion();
-          String sql = "SELECT id_categoria,descripcion_c, nom_estado "
-                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%' or id_categoria ='"+v+"'";
-        List lista_cate = new ArrayList();
 
-         try {
-
-   PreparedStatement         ps = con.prepareCall(sql);
-ResultSet         rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-           categoria cat = new categoria();
-           cat.setId_categoria(rs.getInt("id_categoria"));
-           cat.setDescripcion_c(rs.getString("descripcion_c"));
-           cat.setNombre_est(rs.getString("nom_estado"));
-           
-           lista_cate.add(cat);
-        
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
-              JOptionPane.showMessageDialog(null, ex);
-            System.out.println(ex);
-        }finally{
-    if(con!=null){  
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
- }
-  return lista_cate;
-      }
-      
-       public static void mostrarCategoria2( String v){
+      public static void mostrarCategoria(String v){
+           String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
+    Object[] obj= new Object[3];
+    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
           Conexion cc= new Conexion();
        //  Prepared
       //           Statement ps = null;
@@ -167,19 +131,24 @@ ResultSet         rs = ps.executeQuery();
 
          try {
 
-   Statement         ps = con.createStatement();
-ResultSet         rs = ps.executeQuery(sql);
+       Statement ps = con.createStatement();
+       ResultSet rs = ps.executeQuery(sql);
 
             while (rs.next()) {
 
-           categoria cat = new categoria();
-           cat.setId_categoria(rs.getInt("id_categoria"));
-           cat.setDescripcion_c(rs.getString("descripcion_c"));
-           cat.setNombre_est(rs.getString("nom_estado"));
-           
-         //  lista_cate.add(cat);
-        
+           obj[0]= rs.getInt("id_categoria");
+           obj[1]=rs.getString("descripcion_c");
+           obj[2]=rs.getString("nom_estado");
+            Tabla.addRow(obj);
+     
             }
+            Productos.tabla_categoria.setModel(Tabla);
+               Productos.tabla_categoria.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Productos.tabla_categoria.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(80);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+            
         } catch (SQLException ex) {
             Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
               JOptionPane.showMessageDialog(null, ex);
@@ -230,5 +199,66 @@ ResultSet         rs = ps.executeQuery(sql);
  }
     }
       
-      
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         /*  
+      public static List mostrarCategoriaoriginal( String v){
+          Conexion cc= new Conexion();
+       //  Prepared
+      //           Statement ps = null;
+    //     ResultSet rs = null;
+         Connection con =cc.getConexion();
+          String sql = "SELECT id_categoria,descripcion_c, nom_estado "
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%' or id_categoria ='"+v+"'";
+        List lista_cate = new ArrayList();
+
+         try {
+
+   PreparedStatement         ps = con.prepareCall(sql);
+ResultSet         rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+           categoria cat = new categoria();
+           cat.setId_categoria(rs.getInt("id_categoria"));
+           cat.setDescripcion_c(rs.getString("descripcion_c"));
+           cat.setNombre_est(rs.getString("nom_estado"));
+           
+           lista_cate.add(cat);
+        
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
+        }finally{
+    if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+  return lista_cate;
+      }
+*/
+
