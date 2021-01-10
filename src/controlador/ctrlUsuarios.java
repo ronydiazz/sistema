@@ -37,8 +37,7 @@ public class ctrlUsuarios implements ActionListener  {
       bloqueoform();
     }
     
-   
-    
+
     @Override
     public void actionPerformed(ActionEvent e){
     //Boton Registrar

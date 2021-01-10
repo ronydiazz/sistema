@@ -31,7 +31,7 @@ public class SqlUsuarios extends Conexion {
      
     public static void cargar(String valor){
          
-    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%'";
+    String mostrar="SELECT id_usuario, usuario, nombre, correo, nombreTipo from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario WHERE nombre LIKE '%"+valor+"%' ORDER BY id_usuario ASC";
     String []titulos={"ID","USUARIO","NOMBRE","CORREO","TIPO"};
     String []Registros=new String[5];
     DefaultTableModel model= new DefaultTableModel(null,titulos);
@@ -302,50 +302,63 @@ public class SqlUsuarios extends Conexion {
  }
 }
     
-    public List mostrarUsuarios () {
-
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        Connection con = getConexion();
-        String sql = "SELECT id_usuario, usuario, nombre, correo, nombretipo "
-                + "from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario ";
-        List listaUsuarios = new ArrayList();
-
-         try {
-
-            ps = con.prepareCall(sql);
-         rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-           usuarios usu = new usuarios();
-           usu.setId(rs.getInt("id_usuario"));
-           usu.setUsuario(rs.getString("usuario"));
-           usu.setNombre(rs.getString("nombre"));
-           usu.setCorreo(rs.getString("correo"));
-           usu.setNombre_tipo(rs.getString("nombretipo"));
-           listaUsuarios.add(usu);
-        
-            }
-           
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-              JOptionPane.showMessageDialog(null, ex);
-            System.out.println(ex);
-        }finally{
-    if(con!=null){  
-        try {
-            con.close();
-            con=null;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
- }
-        return listaUsuarios;
-
-}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    public List mostrarUsuarios () {
+//
+//        PreparedStatement ps = null;
+//        ResultSet rs = null;
+//        Connection con = getConexion();
+//        String sql = "SELECT id_usuario, usuario, nombre, correo, nombretipo "
+//                + "from usuarios inner join tipo_usuario on usuarios.id_tipo=tipo_usuario.id_tipousuario ";
+//        List listaUsuarios = new ArrayList();
+//
+//         try {
+//
+//            ps = con.prepareCall(sql);
+//         rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//
+//           usuarios usu = new usuarios();
+//           usu.setId(rs.getInt("id_usuario"));
+//           usu.setUsuario(rs.getString("usuario"));
+//           usu.setNombre(rs.getString("nombre"));
+//           usu.setCorreo(rs.getString("correo"));
+//           usu.setNombre_tipo(rs.getString("nombretipo"));
+//           listaUsuarios.add(usu);
+//        
+//            }
+//           
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+//              JOptionPane.showMessageDialog(null, ex);
+//            System.out.println(ex);
+//        }finally{
+//    if(con!=null){  
+//        try {
+//            con.close();
+//            con=null;
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        }
+//    }
+// }
+//        return listaUsuarios;
+//
+//}
   
     public boolean eliminarUsuario(usuarios usr){
         PreparedStatement ps = null;

@@ -1201,7 +1201,7 @@ public class Productos extends JDialog {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     public static javax.swing.JTable tabla_categoria;
-    public javax.swing.JTable tabla_marca;
+    public static javax.swing.JTable tabla_marca;
     public static javax.swing.JTable tabla_prod;
     public javax.swing.JTextField txt_bus_m;
     public javax.swing.JTextField txt_buscar_c;

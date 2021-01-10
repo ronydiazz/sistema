@@ -26,9 +26,9 @@ marca m = new marca();
     public RegistrarMarca() {
         initComponents();
          setLocationRelativeTo(null);
-        
-        est.consultar_estado(combo_estado);
-        tablaMarca();
+//        
+//        est.consultar_estado(combo_estado);
+//        tablaMarca();
     }
 
 
@@ -237,86 +237,86 @@ marca m = new marca();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        marca marca= new marca();
-        if(txt_desc.getText().equals(""))
-        { 
-            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-        }else{
-            
-            marca.setDescripcion(txt_desc.getText());
-            if(combo_estado.getSelectedItem().toString().equals("Activo")){
-             marca.setEstado1(1);
-            }else{
-            marca.setEstado1(2);
-            }
-            if(mar.registrar_marca(marca)){
-                
-       JOptionPane.showMessageDialog(null, "Registro Guardado");
-       tablaMarca();
-      
-      }else{
-      
-       JOptionPane.showMessageDialog(null, "Error al Guardar");   
-       
-      }
-        }
+//        marca marca= new marca();
+//        if(txt_desc.getText().equals(""))
+//        { 
+//            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+//        }else{
+//            
+//            marca.setDescripcion(txt_desc.getText());
+//            if(combo_estado.getSelectedItem().toString().equals("Activo")){
+//             marca.setEstado1(1);
+//            }else{
+//            marca.setEstado1(2);
+//            }
+//            if(mar.registrar_marca(marca)){
+//                
+//       JOptionPane.showMessageDialog(null, "Registro Guardado");
+//       tablaMarca();
+//      
+//      }else{
+//      
+//       JOptionPane.showMessageDialog(null, "Error al Guardar");   
+//       
+//      }
+//        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-         marca marca= new marca();
-        if(txt_desc.getText().equals(""))
-        { 
-            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-        }else{
-            
-            marca.setDescripcion(txt_desc.getText());
-            if(combo_estado.getSelectedItem().toString().equals("Activo")){
-            marca.setEstado1(1);    
-            }else{
-            marca.setEstado1(2);
-            }
-              
-            if(mar.modificar(marca)){
-       JOptionPane.showMessageDialog(null, "Registro Modificado");
-       tablaMarca();
-      
-      }else{
-      
-       JOptionPane.showMessageDialog(null, "Error al Modificar");   
-       
-      }
-        }
+//         marca marca= new marca();
+//        if(txt_desc.getText().equals(""))
+//        { 
+//            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+//        }else{
+//            
+//            marca.setDescripcion(txt_desc.getText());
+//            if(combo_estado.getSelectedItem().toString().equals("Activo")){
+//            marca.setEstado1(1);    
+//            }else{
+//            marca.setEstado1(2);
+//            }
+//              
+//            if(mar.modificar(marca)){
+//       JOptionPane.showMessageDialog(null, "Registro Modificado");
+//       tablaMarca();
+//      
+//      }else{
+//      
+//       JOptionPane.showMessageDialog(null, "Error al Modificar");   
+//       
+//      }
+//        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
     
-        int fila= tabla_marca.getSelectedRow();
-        int id =(int) tabla_marca.getValueAt(fila, 0);
-        DefaultTableModel Tabla = new DefaultTableModel();
-        try {
-            if(fila<0){
-            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
-           
-            }else {
-                 m.setCodigo(id);
-                if(JOptionPane.showConfirmDialog(this, "¿Eliminar el registro?", "",
-                        JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
-                if(mar.eliminarMarca(m)){
-                tablaMarca();
-                JOptionPane.showMessageDialog(this, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
-                Tabla.removeRow(id);
-                }else{
-                JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
-                }
-                }
-            }
-            JOptionPane.showMessageDialog(null, "Error al eliminar");
-            
-     
-        }catch (Exception e){
-        e.printStackTrace();
-        }
+//        int fila= tabla_marca.getSelectedRow();
+//        int id =(int) tabla_marca.getValueAt(fila, 0);
+//        DefaultTableModel Tabla = new DefaultTableModel();
+//        try {
+//            if(fila<0){
+//            JOptionPane.showMessageDialog(this, "Seleccione alguna fila");
+//           
+//            }else {
+//                 m.setCodigo(id);
+//                if(JOptionPane.showConfirmDialog(this, "¿Eliminar el registro?", "",
+//                        JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+//                if(mar.eliminarMarca(m)){
+//                tablaMarca();
+//                JOptionPane.showMessageDialog(this, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
+//                Tabla.removeRow(id);
+//                }else{
+//                JOptionPane.showMessageDialog(this, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
+//                }
+//                }
+//            }
+//            JOptionPane.showMessageDialog(null, "Error al eliminar");
+//            
+//     
+//        }catch (Exception e){
+//        e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tabla_marcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_marcaMouseClicked
@@ -333,34 +333,34 @@ marca m = new marca();
     }//GEN-LAST:event_formWindowClosing
 
 
-    
-   public void tablaMarca(){
-         
-    String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
-    Object[] obj= new Object[3];
-    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
-    List ls;
-    try{
-    ls= mar.mostrarMarca("");
-    for (int i=0;i<ls.size(); i++){
-        m = (marca) ls.get(i);
-        obj[0] = m.getCodigo();
-        obj[1] = m.getDescripcion();
-        obj[2] = m.getEstado1(); 
-        Tabla.addRow(obj);
-    }
-    tabla_marca.setModel(Tabla);
-   }catch (Exception e){
- //  e.printStackTrace();
-   System.out.println(e);
-   }
-           tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = tabla_marca.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(80);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(200);
-  
-    }
+//    
+//   public void tablaMarca(){
+//         
+//    String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
+//    Object[] obj= new Object[3];
+//    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+//    List ls;
+//    try{
+//    ls= mar.mostrarMarca("");
+//    for (int i=0;i<ls.size(); i++){
+//        m = (marca) ls.get(i);
+//        obj[0] = m.getCodigo();
+//        obj[1] = m.getDescripcion();
+//        obj[2] = m.getEstado1(); 
+//        Tabla.addRow(obj);
+//    }
+//    tabla_marca.setModel(Tabla);
+//   }catch (Exception e){
+// //  e.printStackTrace();
+//   System.out.println(e);
+//   }
+//           tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//         TableColumnModel columnModel = tabla_marca.getColumnModel();
+//         columnModel.getColumn(0).setPreferredWidth(80);
+//         columnModel.getColumn(1).setPreferredWidth(150);
+//         columnModel.getColumn(2).setPreferredWidth(200);
+//  
+//    }
     
    
             

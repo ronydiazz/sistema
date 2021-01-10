@@ -50,6 +50,7 @@ public class ctrlCategoria implements ActionListener {
           
           frpro.Pane_Prod.setSelectedIndex(2);
      //   mostrar_categ();
+     frpro.txt_cod_c.setEnabled(false);
      SqlCategoria.mostrarCategoria("");
         SqlEstado est= new SqlEstado(); 
         est.consultar_estado(frpro.combo_estado_c);
@@ -178,13 +179,14 @@ public class ctrlCategoria implements ActionListener {
     
      public void eliminar(){
         int fila= Productos.tabla_categoria.getSelectedRow();
-        int id =Integer.parseInt(Productos.tabla_categoria.getValueAt(fila, 0).toString());
-        DefaultTableModel Tabla = new DefaultTableModel();
+        
         try {
             if(fila<0){
                 JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
 
             }else {
+                
+        int id =Integer.parseInt(Productos.tabla_categoria.getValueAt(fila, 0).toString());
                cat.setId_categoria(id);
                 if(JOptionPane.showConfirmDialog(null, "¿Eliminar el registro?", "",
                     JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){

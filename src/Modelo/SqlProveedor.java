@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Modelo.proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,7 +58,7 @@ public class SqlProveedor extends Conexion  {
     }
     
     
-     public void consultar_proveedores(JComboBox cbx_proveedor){
+    public void consultar_proveedores(JComboBox cbx_proveedor){
          
  Connection con = getConexion();
 //Creamos objeto tipo Connection    
@@ -111,7 +110,7 @@ try {
  }
 }
      
-     public boolean modificar (proveedor prov) {
+    public boolean modificar (proveedor prov) {
 
         PreparedStatement ps = null;
         
@@ -145,12 +144,12 @@ try {
  }
 }
      
-      public List mostrarProveedores () {
+    public List mostrarProveedores () {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor";
+        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor ORDER BY id_proveedor ASC";
         List listaProveedor = new ArrayList();
 
          try {
@@ -186,7 +185,7 @@ try {
   return listaProveedor;
 }
  
- public boolean eliminarUsuario(proveedor prov){
+    public boolean eliminarUsuario(proveedor prov){
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();

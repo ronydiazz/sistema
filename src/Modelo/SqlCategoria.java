@@ -126,7 +126,7 @@ try {
     //     ResultSet rs = null;
          Connection con =cc.getConexion();
           String sql = "SELECT id_categoria,descripcion_c, nom_estado "
-                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%'";
+                + "from categoria inner join estado on categoria.estadoc=estado.id_estado where descripcion_c LIKE '%"+v+"%' ORDER BY id_categoria ASC";
       
 
          try {
@@ -148,6 +148,7 @@ try {
          columnModel.getColumn(0).setPreferredWidth(80);
          columnModel.getColumn(1).setPreferredWidth(150);
          columnModel.getColumn(2).setPreferredWidth(200);
+         
             
         } catch (SQLException ex) {
             Logger.getLogger(SqlCategoria.class.getName()).log(Level.SEVERE, null, ex);

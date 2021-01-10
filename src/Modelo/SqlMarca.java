@@ -5,16 +5,21 @@
  */
 package Modelo;
 
+import Interfaz.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -119,42 +124,50 @@ try {
         }
       }
       
-      public List mostrarMarca( String m){
-         PreparedStatement ps = null;
+      public static void mostrarMarca( String m){
+                  String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
+    Object[] obj= new Object[3];
+    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+       Statement ps = null;
          ResultSet rs = null;
-         Connection con =getConexion();
+         Conexion con =new Conexion();
+         Connection cc= con.getConexion();
           String sql = "SELECT id_marca,descripcion_m, nom_estado "
-                + "from marca inner join estado on marca.estado1=estado.id_estado WHERE descripcion_m LIKE '%"+m+"%'";
-        List lista_marca = new ArrayList();
+                + "from marca inner join estado on marca.estado1=estado.id_estado WHERE descripcion_m LIKE '%"+m+"%' ORDER BY id_marca ASC";
+      
 
          try {
 
-            ps = con.prepareCall(sql);
-         rs = ps.executeQuery();
+            ps = cc.createStatement();
+         rs = ps.executeQuery(sql);
 
             while (rs.next()) {
-
-           marca mar = new marca();
-           mar.setCodigo(rs.getInt("id_marca"));
-           mar.setDescripcion(rs.getString("descripcion_m"));
-           mar.setNombre_est(rs.getString("nom_estado"));
-           lista_marca.add(mar);
+                
+           obj[0]=rs.getInt("id_marca");
+          obj[1]=rs.getString("descripcion_m");
+           obj[2]=rs.getString("nom_estado");
+           Tabla.addRow(obj);
         
             }
+             Productos.tabla_marca.setModel(Tabla);
+               Productos.tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Productos.tabla_marca.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(80);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
         } catch (SQLException ex) {
             Logger.getLogger(SqlMarca.class.getName()).log(Level.SEVERE, null, ex);
               JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex);
         }finally{
-    if(con!=null){  
+    if(cc!=null){  
         try {
-            con.close();
+            cc.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
  }
-  return lista_marca;
       }
       
       public boolean eliminarMarca(marca ma){

@@ -292,6 +292,10 @@ public class ctrlProductos implements ActionListener {
        if(fila<0){
        JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
        frpro.Pane_Prod.setSelectedIndex(0);
+           frpro.Pane_Prod.setEnabledAt(0, true);
+          frpro.Pane_Prod.setEnabledAt(1, false);
+          frpro.Pane_Prod.setEnabledAt(2, false);
+          frpro.Pane_Prod.setEnabledAt(3, false);
        }else{
            String ide = Productos.tabla_prod.getValueAt(fila, 0).toString();
        pro.setCodigo(ide);

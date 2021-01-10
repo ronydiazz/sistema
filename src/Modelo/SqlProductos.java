@@ -32,7 +32,7 @@ public class SqlProductos extends Conexion{
             + "unidad_med, descripcion_m, descripcion_c from productos "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
-            + "WHERE descripcion LIKE '%"+valor+"%' or cod_producto LIKE '%"+valor+"%'";
+            + "WHERE descripcion LIKE '%"+valor+"%' or cod_producto LIKE '%"+valor+"%' ORDER BY id_producto ASC";
     String []titulos={"CODIGO","PRODUCTO","PRECIO","STOCK","U.M","MARCA","CATEGORIA"};
     String []Registros=new String[7];
     DefaultTableModel model= new DefaultTableModel(null,titulos);

@@ -49,7 +49,8 @@ public class ctrlMarca implements ActionListener {
           frpro.Pane_Prod.setEnabledAt(3, true);
           
         frpro.Pane_Prod.setSelectedIndex(3);
-        mostrar_m();
+        frpro.txt_cod_m.setEnabled(false);
+      SqlMarca.mostrarMarca("");
         SqlEstado est= new SqlEstado();
         est.consultar_estado(frpro.combo_estado_m);
      }
@@ -84,7 +85,7 @@ public class ctrlMarca implements ActionListener {
         public void keyReleased(KeyEvent ke) {
             if(ke.getSource()==frpro.txt_bus_m){
                 
-                 sqlmarca.mostrarMarca(frpro.txt_bus_m.getText());
+                 SqlMarca.mostrarMarca(frpro.txt_bus_m.getText());
             
             }
        }
@@ -106,7 +107,7 @@ public class ctrlMarca implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Registro Guardado");
             //    tablaMarca();
-            mostrar_m();
+             SqlMarca.mostrarMarca("");
 
             }else{
 
@@ -117,13 +118,15 @@ public class ctrlMarca implements ActionListener {
     }
     
     public void modificar(){
-     int fila = frpro.tabla_marca.getSelectedRow();
+     int fila = Productos.tabla_marca.getSelectedRow();
          
           if(fila<0){
           JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
    
            }else{
               mostrar_entxt();
+              if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+                    JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
          if(frpro.txt_desc_m.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
@@ -139,7 +142,7 @@ public class ctrlMarca implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Modificación Guardada");
             //    tablaMarca();
-             mostrar_m();
+            SqlMarca.mostrarMarca("");
 
             }else{
 
@@ -148,16 +151,18 @@ public class ctrlMarca implements ActionListener {
             }
         }
       }
+          }
     }
     
     public void eliminar(){
-    int fila= frpro.tabla_marca.getSelectedRow();
-        int id =Integer.parseInt(frpro.tabla_categoria.getValueAt(fila, 0).toString());
+    int fila= Productos.tabla_marca.getSelectedRow();
         try {
             if(fila<0){
                 JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
 
             }else {
+                
+        int id =Integer.parseInt(Productos.tabla_categoria.getValueAt(fila, 0).toString());
                mar.setCodigo(id);
                 if(JOptionPane.showConfirmDialog(null, "¿Eliminar el registro?", "Información",
                     JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
@@ -165,7 +170,7 @@ public class ctrlMarca implements ActionListener {
                //     tablaMarca();
                     JOptionPane.showMessageDialog(null, "Eliminado correctamente", "Información", JOptionPane.OK_OPTION);
                 //    Tabla.removeRow(id);
-                 mostrar_m();
+                 SqlMarca.mostrarMarca("");
                 }else{
                     JOptionPane.showMessageDialog(null, "Error al eliminar", "Información", JOptionPane.OK_CANCEL_OPTION);
                 }
@@ -177,47 +182,41 @@ public class ctrlMarca implements ActionListener {
         }
     }
     
-    public void mostrar_m(){
-         
-    String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
-    Object[] obj= new Object[3];
-    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
-    List ls;
-    try{
-    ls= sqlmarca.mostrarMarca("");
-    for (int i=0;i<ls.size(); i++){
-        mar = (marca) ls.get(i);
-        obj[0] = mar.getCodigo();
-        obj[1] = mar.getDescripcion();
-        obj[2] = mar.getNombre_est(); 
-        Tabla.addRow(obj);
-    }
-    frpro.tabla_marca.setModel(Tabla);
-   }catch (Exception e){
- //  e.printStackTrace();
-   System.out.println(e);
-   }
-           frpro.tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = frpro.tabla_marca.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(80);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(200);
-  
-    }
+//    public void mostrar_m(){
+//         
+//    String [] columnas ={"CODIGO","DESCRIPCION","ESTADO"};
+//    Object[] obj= new Object[3];
+//    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+//    List ls;
+//    try{
+//    ls= sqlmarca.mostrarMarca("");
+//    for (int i=0;i<ls.size(); i++){
+//        mar = (marca) ls.get(i);
+//        obj[0] = mar.getCodigo();
+//        obj[1] = mar.getDescripcion();
+//        obj[2] = mar.getNombre_est(); 
+//        Tabla.addRow(obj);
+//    }
+//    frpro.tabla_marca.setModel(Tabla);
+//   }catch (Exception e){
+// //  e.printStackTrace();
+//   System.out.println(e);
+//   }
+//           frpro.tabla_marca.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//         TableColumnModel columnModel = frpro.tabla_marca.getColumnModel();
+//         columnModel.getColumn(0).setPreferredWidth(80);
+//         columnModel.getColumn(1).setPreferredWidth(150);
+//         columnModel.getColumn(2).setPreferredWidth(200);
+//  
+//    }
     
      public void mostrar_entxt(){
-    int fila = frpro.tabla_marca.getSelectedRow();
-    
-    String codigo= frpro.tabla_marca.getValueAt(fila, 0).toString();
-    List ls;
+    int fila = Productos.tabla_marca.getSelectedRow();
     try{
-        ls=sqlmarca.mostrarMarca(codigo);
-        for(int i= 0; i<ls.size();i++){
-    mar= (marca) ls.get(i);
-    frpro.txt_cod_m.setText(Integer.toString(mar.getCodigo()));
-    frpro.combo_estado_m.setSelectedItem(mar.getNombre_est());
-    frpro.txt_desc_m.setText(mar.getDescripcion());
-        }
+    
+        this.frpro.txt_cod_m.setText(String.valueOf(Productos.tabla_marca.getValueAt(fila, 0)));
+        this.frpro.txt_desc_m.setText(String.valueOf(Productos.tabla_marca.getValueAt(fila, 1)));
+        this.frpro.combo_estado_m.setSelectedItem(String.valueOf(Productos.tabla_marca.getValueAt(fila, 2)));
     }catch(Exception e){
     JOptionPane.showMessageDialog(null, e);
     }
