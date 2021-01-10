@@ -6,14 +6,11 @@
 package controlador;
 
 import Interfaz.Productos;
-import Interfaz.Usuarios;
 import Modelo.SqlCategoria;
 import Modelo.SqlMarca;
 import Modelo.SqlProductos;
 import Modelo.SqlProveedor;
-import Modelo.SqlUsuarios;
 import Modelo.productos;
-import Modelo.usuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -91,7 +88,7 @@ public class ctrlProductos implements ActionListener {
         @Override
         public void keyReleased(KeyEvent ke) {
             if(ke.getSource()==frpro.txt_buscod){
-        //   SqlProductos.cargar(frpro.txt_buscod.getText());
+          SqlProductos.cargar(frpro.txt_buscod.getText());
             }
          
             if(ke.getSource()==frpro.txt_busdesc){
@@ -108,9 +105,9 @@ public class ctrlProductos implements ActionListener {
     List ls;
     
     try{
-        if(fila<0){
-        
-        }
+//        if(fila<0){
+//        
+//        }
         ls=SqlProductos.mostrarP(codigo);
         for(int i = 0; i<ls.size();i++){
  

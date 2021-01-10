@@ -55,7 +55,7 @@ public class SqlUsuarios extends Conexion {
                     Usuarios.tabla_usu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = Usuarios.tabla_usu.getColumnModel();
          columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(1).setPreferredWidth(120);
          columnModel.getColumn(2).setPreferredWidth(200);
          columnModel.getColumn(3).setPreferredWidth(200);
          columnModel.getColumn(4).setPreferredWidth(200);

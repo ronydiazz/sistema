@@ -24,7 +24,7 @@ public final class ModificarProveedor extends javax.swing.JFrame {
     public ModificarProveedor() {
         initComponents();
          setLocationRelativeTo(null);
-         selectTablaprov();
+      //   selectTablaprov();
     }
 
     /**
@@ -276,29 +276,29 @@ public final class ModificarProveedor extends javax.swing.JFrame {
        SqlProveedor provSql= new SqlProveedor();
         Proveedor pro =new Proveedor();
         proveedor prov= new proveedor();
-        if(txt_cod.getText().equals("")|| txt_nomp.getText().equals("") || txt_cont.getText().equals("") || txt_cont2.getText().equals("") || txt_sitio.getText().equals("") || txt_email.getText().equals("") || txt_direc.getText().equals(""))
-        { 
-            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-        }else{
-            
-            prov.setNombre_prov(txt_nomp.getText());
-            prov.setContacto(txt_cont.getText());
-            prov.setContacto2(txt_cont2.getText());
-            prov.setSitioweb(txt_sitio.getText());
-            prov.setEmail(txt_email.getText());
-            prov.setEmail(txt_direc.getText());
-            
-            if(provSql.modificar(prov)){
-                
-       JOptionPane.showMessageDialog(null, "Modificación Guardada");
-       pro.tablaProveedor();
-      
-      }else{
-      
-       JOptionPane.showMessageDialog(null, "Error al Modificar");   
-       
-      }
-        }
+//        if(txt_cod.getText().equals("")|| txt_nomp.getText().equals("") || txt_cont.getText().equals("") || txt_cont2.getText().equals("") || txt_sitio.getText().equals("") || txt_email.getText().equals("") || txt_direc.getText().equals(""))
+//        { 
+//            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+//        }else{
+//            
+//            prov.setNombre_prov(txt_nomp.getText());
+//            prov.setContacto(txt_cont.getText());
+//            prov.setContacto2(txt_cont2.getText());
+//            prov.setSitioweb(txt_sitio.getText());
+//            prov.setEmail(txt_email.getText());
+//            prov.setEmail(txt_direc.getText());
+//            
+//            if(provSql.modificar(prov)){
+//                
+//       JOptionPane.showMessageDialog(null, "Modificación Guardada");
+//       pro.tablaProveedor();
+//      
+//      }else{
+//      
+//       JOptionPane.showMessageDialog(null, "Error al Modificar");   
+//       
+//      }
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contActionPerformed
@@ -335,20 +335,20 @@ public final class ModificarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
    
-       public void selectTablaprov(){
-           try{
-           proveedor p=new proveedor();
-           SqlProveedor provSql= new SqlProveedor();
-          List ls;
-           ls=provSql.mostrarProveedores();
-           
-         for(int i=0; i<ls.size(); i++)
-          {
-           p= (proveedor) ls.get(i);
-           ModificarProveedor.txt_cont2.setText(p.getContacto2());
-     ModificarProveedor.txt_sitio.setText(p.getSitioweb());
-     ModificarProveedor.txt_direc.setText(p.getDireccion_pro());
-          }
+//       public void selectTablaprov(){
+//           try{
+//           proveedor p=new proveedor();
+//           SqlProveedor provSql= new SqlProveedor();
+//          List ls;
+//           ls=provSql.mostrarProveedores("");
+//           
+//         for(int i=0; i<ls.size(); i++)
+//          {
+//           p= (proveedor) ls.get(i);
+//           ModificarProveedor.txt_cont2.setText(p.getContacto2());
+//     ModificarProveedor.txt_sitio.setText(p.getSitioweb());
+//     ModificarProveedor.txt_direc.setText(p.getDireccion_pro());
+//          }
          
            
 //     int fila = tabla_prov.getSelectedRow();
@@ -357,9 +357,9 @@ public final class ModificarProveedor extends javax.swing.JFrame {
 //       ModificarProveedor.txt_email.setText(String.valueOf(tabla_prov.getValueAt(fila, 2)));
 //       ModificarProveedor.txt_cont.setText(String.valueOf(tabla_prov.getValueAt(fila, 3)));
        
-           }catch(Exception e){
-           System.out.println(e);}
-    }
+//           }catch(Exception e){
+//           System.out.println(e);}
+//    }
        
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

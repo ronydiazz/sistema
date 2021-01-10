@@ -265,29 +265,29 @@ SqlProveedor provSql= new SqlProveedor();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Proveedor pro =new Proveedor();
-        proveedor prov= new proveedor();
-        if(txt_cod.getText().equals("")|| txt_nomp.getText().equals("") || txt_cont.getText().equals("") || txt_cont2.getText().equals("") || txt_sitio.getText().equals("") || txt_email.getText().equals("") || txt_direc.getText().equals(""))
-        { 
-            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-        }else{
-            
-            prov.setNombre_prov(txt_nomp.getText());
-            prov.setContacto(txt_cont.getText());
-            prov.setContacto2(txt_cont2.getText());
-            prov.setSitioweb(txt_sitio.getText());
-            prov.setEmail(txt_email.getText());
-            prov.setDireccion_pro(txt_direc.getText());
-            
-            if(provSql.registrar_prov(prov)){
-       JOptionPane.showMessageDialog(null, "Registro Guardado");
-      pro.tablaProveedor();
-      }else{
-      
-       JOptionPane.showMessageDialog(null, "Error al Guardar");   
-       
-      }
-        }
+//    Proveedor pro =new Proveedor();
+//        proveedor prov= new proveedor();
+//        if(txt_cod.getText().equals("")|| txt_nomp.getText().equals("") || txt_cont.getText().equals("") || txt_cont2.getText().equals("") || txt_sitio.getText().equals("") || txt_email.getText().equals("") || txt_direc.getText().equals(""))
+//        { 
+//            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+//        }else{
+//            
+//            prov.setNombre_prov(txt_nomp.getText());
+//            prov.setContacto(txt_cont.getText());
+//            prov.setContacto2(txt_cont2.getText());
+//            prov.setSitioweb(txt_sitio.getText());
+//            prov.setEmail(txt_email.getText());
+//            prov.setDireccion_pro(txt_direc.getText());
+//            
+//            if(provSql.registrar_prov(prov)){
+//       JOptionPane.showMessageDialog(null, "Registro Guardado");
+//      pro.tablaProveedor();
+//      }else{
+//      
+//       JOptionPane.showMessageDialog(null, "Error al Guardar");   
+//       
+//      }
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contActionPerformed

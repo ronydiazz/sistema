@@ -5,16 +5,21 @@
  */
 package Modelo;
 
+import static Interfaz.Proveedor.tabla_prov;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -144,12 +149,12 @@ try {
  }
 }
      
-    public List mostrarProveedores () {
+    public List mostrar_en_txt (String v) {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor ORDER BY id_proveedor ASC";
+        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor WHERE id_proveedor ='"+v+"' ORDER BY id_proveedor ASC";
         List listaProveedor = new ArrayList();
 
          try {
@@ -185,6 +190,50 @@ try {
   return listaProveedor;
 }
  
+    public void mostrarProveedores (String v) {
+
+    String [] columnas ={"CODIGO","PROVEEDOR","EMAIL", "CONTACTO"};
+    Object[] obj= new Object[4];
+    DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
+    
+        Connection con = getConexion();
+        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor WHERE nombre_prov LIKE '%"+v+"%' ORDER BY id_proveedor ASC";
+
+         try {
+
+          Statement  ps = con.createStatement();
+        ResultSet rs = ps.executeQuery(sql);
+
+            while (rs.next()) {
+
+           obj[0]=rs.getInt("id_proveedor");
+           obj[1]=rs.getString("nombre_prov");
+           obj[2]=rs.getString("email");
+           obj[3]=rs.getString("contacto");
+             Tabla.addRow(obj);
+            }
+            tabla_prov.setModel(Tabla);
+             tabla_prov.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = tabla_prov.getColumnModel();
+         columnModel.getColumn(0).setPreferredWidth(80);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(200);
+         columnModel.getColumn(3).setPreferredWidth(200);
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlProveedor.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
+        }finally{
+    if(con!=null){  
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+}
+    
     public boolean eliminarUsuario(proveedor prov){
         PreparedStatement ps = null;
         ResultSet rs = null;

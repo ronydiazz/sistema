@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 public class ctrlCategoria implements ActionListener {
@@ -154,12 +153,14 @@ public class ctrlCategoria implements ActionListener {
             if(fila<0){
                 JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
 
-            }else if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
-                    JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
-                 if(frpro.txt_desc_c.getText().equals(""))
-        {
+            }else {
+                 mostrar_entxt();
+              if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+               JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+               
+                if(frpro.txt_desc_c.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-        }else{
+            }else{
                      
                  cat.setDescripcion_c(frpro.txt_desc_c.getText());
             if(frpro.combo_estado_c.getSelectedItem().toString().equals("Activo"))
@@ -175,6 +176,7 @@ public class ctrlCategoria implements ActionListener {
                 }
             }
       } 
+            }
  }
     
      public void eliminar(){
