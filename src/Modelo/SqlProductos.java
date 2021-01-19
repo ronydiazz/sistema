@@ -89,7 +89,7 @@ public class SqlProductos extends Conexion{
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
             + "WHERE cod_producto ='"+valor+"'";
   
-    List listpro=new ArrayList();
+    List listpro=new ArrayList(13);
           Conexion cc = new Conexion(); 
           Connection cn=cc.getConexion();
           

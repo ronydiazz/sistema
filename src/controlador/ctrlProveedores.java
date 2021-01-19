@@ -29,26 +29,28 @@ import javax.swing.table.DefaultTableModel;
     this.frprov.btnRegProv.addActionListener(this);
     this.frprov.btnModificarProv.addActionListener(this);
     this.frprov.btnEliminarProv.addActionListener(this);
-     frprov.txt_busdesc.addKeyListener(tecla);
+    this. frprov.txt_busdesc.addKeyListener(tecla);
     
   //  this.frpro.Pane_Prod.addChangeListener(evt);
     }
     
-    
+    public void iniciar(){
+      sqlprov.mostrarProveedores("");
+    }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
    if(ae.getSource() == frprov.btnRegProv){
-   
+   registrar();
    
    }
    if(ae.getSource() == frprov.btnModificarProv){
-   
+   modificar();
    
     }
    
    if(ae.getSource() == frprov.btnEliminarProv){
-   
+   eliminar();
    
    }
  } 
@@ -73,6 +75,11 @@ import javax.swing.table.DefaultTableModel;
     }};
      
      public void registrar(){
+          if(this.frprov.PanelPestaña.getSelectedIndex()==0 || this.frprov.PanelPestaña.getSelectedIndex()==2){
+            frprov.PanelPestaña.setSelectedIndex(1);
+            frprov.txt_cod.setEnabled(false);
+      //  frusu.panel_reg.setVisible(true);
+        }else{
       if(frprov.txt_cod.getText().equals("")|| frprov.txt_nomp.getText().equals("") || frprov.txt_cont.getText().equals("") || frprov.txt_cont2.getText().equals("") || frprov.txt_sitio.getText().equals("") || frprov.txt_email.getText().equals("") || frprov.txt_direc.getText().equals(""))
         { 
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
@@ -94,17 +101,21 @@ import javax.swing.table.DefaultTableModel;
        
       }
         }
-     }
+     }}
      
      public void modificar(){
          int fila = Proveedor.tabla_prov.getSelectedRow();
-         if(fila<0){
+           if(fila<0){
                 
             JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
-           
+           frprov.PanelPestaña.setSelectedIndex(0);
             }else {
-         mostrar_txt();
-         }if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+               
+           if(this.frprov.PanelPestaña.getSelectedIndex()==0 || this.frprov.PanelPestaña.getSelectedIndex()==1){
+            frprov.PanelPestaña.setSelectedIndex(2);
+            frprov.txt_cod1.setEnabled(false);
+             mostrar_txt();
+          }else if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
                     JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
        if(frprov.txt_cod1.getText().equals("")|| frprov.txt_nomp1.getText().equals("") || frprov.txt_cont1.getText().equals("") || frprov.txt_cont3.getText().equals("") || frprov.txt_sitio1.getText().equals("") || frprov.txt_email1.getText().equals("") || frprov.txt_direc1.getText().equals(""))
         { 
@@ -131,14 +142,17 @@ import javax.swing.table.DefaultTableModel;
        
       }
       }
-     }
+     
    }
-    }
+    }}
+     }
      
      public void eliminar(){
-     
+       if(this.frprov.PanelPestaña.getSelectedIndex()==0 || this.frprov.PanelPestaña.getSelectedIndex()==1){
+            frprov.PanelPestaña.setSelectedIndex(2);
+      //  frusu.panel_reg.setVisible(true);
+        }else{
         int fila = tabla_prov.getSelectedRow();
-        int id = (int) tabla_prov.getValueAt(fila, 0);
         DefaultTableModel tabla= new DefaultTableModel();
         
         try{
@@ -147,6 +161,8 @@ import javax.swing.table.DefaultTableModel;
             JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
            
             }else {
+                
+        int id = Integer.parseInt(tabla_prov.getValueAt(fila, 0).toString());
            prov.setId_prov(id);
            if(JOptionPane.showConfirmDialog(null, "¿Eliminar registro?", "", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
          
@@ -165,7 +181,7 @@ import javax.swing.table.DefaultTableModel;
         
         }
      }
-     
+     }   
      public void mostrar_txt(){
      int fila = Proveedor.tabla_prov.getSelectedRow();
     String codigo;

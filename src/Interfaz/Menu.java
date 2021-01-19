@@ -9,14 +9,17 @@ package Interfaz;
 import Modelo.SqlCategoria;
 import Modelo.SqlMarca;
 import Modelo.SqlProductos;
+import Modelo.SqlProveedor;
 import Modelo.SqlUsuarios;
 import Modelo.categoria;
 import Modelo.marca;
 import Modelo.productos;
+import Modelo.proveedor;
 import Modelo.usuarios;
 import controlador.ctrlCategoria;
 import controlador.ctrlMarca;
 import controlador.ctrlProductos;
+import controlador.ctrlProveedores;
 import controlador.ctrlUsuarios;
 
 /**
@@ -32,6 +35,7 @@ public static Menu frmenu;
 public static Registro frregistro;
 public static IniciarSesion frlogin;
 public static ctrlUsuarios ctr;
+public static ctrlProveedores ctrpr;
 public static ctrlProductos ctrp;
 public static ctrlCategoria ctrc;
 public static ctrlMarca ctrm;
@@ -48,6 +52,9 @@ categoria cat=new categoria();
 
 SqlMarca sqlmarca= new SqlMarca();
 marca mar= new marca();
+
+SqlProveedor sqlprov= new SqlProveedor();
+proveedor prov= new proveedor();
 
 usuarios mod;   
     public Menu() {
@@ -234,7 +241,11 @@ usuarios mod;
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         // TODO add your handling code here:
          if(frproveedor == null){
-           frproveedor = new Proveedor();
+             
+             
+           frproveedor = new Proveedor(frmenu, true);
+          ctrpr= new ctrlProveedores(prov, sqlprov, frproveedor);
+          ctrpr.iniciar();
         frproveedor.setVisible(true);
         }
     }//GEN-LAST:event_btnProveedoresActionPerformed

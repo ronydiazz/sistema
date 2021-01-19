@@ -170,6 +170,7 @@ public class ctrlProductos implements ActionListener {
       cate.consultar_categoria(frpro.combo_cate);
     prove.consultar_proveedores(frpro.combo_pro);
      marca.consultar_marca(frpro.como_marca);
+     frpro.txt_cod.setEnabled(false);
           frpro.Pane_Prod.setEnabledAt(0, false);
           frpro.Pane_Prod.setEnabledAt(1, true);
           frpro.Pane_Prod.setEnabledAt(2, false);
@@ -232,6 +233,7 @@ public class ctrlProductos implements ActionListener {
               
            if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==2 || this.frpro.Pane_Prod.getSelectedIndex()==3){
             frpro.Pane_Prod.setSelectedIndex(1);
+            frpro.txt_cod.setEnabled(false);
           frpro.Pane_Prod.setEnabledAt(0, false);
           frpro.Pane_Prod.setEnabledAt(1, true);
           frpro.Pane_Prod.setEnabledAt(2, false);
@@ -245,7 +247,7 @@ public class ctrlProductos implements ActionListener {
               if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_descue.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
        }else{
-      if(sqlpro.existeProducto(frpro.txt_cod.getText()) == 0){
+  
        pro.setCodigo(frpro.txt_cod.getText());
        pro.setDescripcion(frpro.txt_desc.getText());
        pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
@@ -272,11 +274,7 @@ public class ctrlProductos implements ActionListener {
        JOptionPane.showMessageDialog(null, "Error al Guardar");   
        
       }
-      } else {
-
-             JOptionPane.showMessageDialog(null, "El producto ya existe");
-
-           }
+    
         }
             
         }

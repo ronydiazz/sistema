@@ -29,7 +29,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" pref="817" max="-2" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="901" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -63,7 +63,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="8" y="10" width="630" height="410"/>
+              <AbsoluteConstraints x="8" y="10" width="720" height="410"/>
             </Constraint>
           </Constraints>
 
@@ -129,7 +129,7 @@
                                       <Component id="txt_bus" min="-2" pref="268" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="134" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                               </Group>
@@ -1261,7 +1261,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="10" width="150" height="410"/>
+              <AbsoluteConstraints x="740" y="10" width="150" height="410"/>
             </Constraint>
           </Constraints>
 

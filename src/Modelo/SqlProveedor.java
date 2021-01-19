@@ -155,7 +155,7 @@ try {
         ResultSet rs = null;
         Connection con = getConexion();
         String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor WHERE id_proveedor ='"+v+"' ORDER BY id_proveedor ASC";
-        List listaProveedor = new ArrayList();
+        List listaProveedor = new ArrayList(7);
 
          try {
 
