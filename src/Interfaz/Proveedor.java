@@ -567,7 +567,7 @@ public final class Proveedor extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegProvActionPerformed
-        // TODO add your handling code here:
+       
   
     }//GEN-LAST:event_btnRegProvActionPerformed
 
@@ -578,7 +578,6 @@ public final class Proveedor extends JDialog {
     private void btnModificarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProvActionPerformed
 
    
-    
     }//GEN-LAST:event_btnModificarProvActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
