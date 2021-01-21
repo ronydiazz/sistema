@@ -118,6 +118,7 @@ public class ctrlProductos implements ActionListener {
     frpro.txt_costo.setText(Float.toString(prod.getPrecio_costo()));
     frpro.txt_venta.setText(Float.toString(prod.getPrecio_venta()));
     frpro.txt_mayo.setText(Float.toString(prod.getPrecio_mayor()));
+    frpro.txt_precio_cred.setText(Float.toString(prod.getPrecio_mayor()));
     frpro.txt_descue.setText(Float.toString(prod.getDescuento()));
     frpro.txt_iva.setText(Integer.toString(prod.getIva()));
     frpro.txt_stock.setText(Integer.toString(prod.getStock()));
@@ -186,6 +187,7 @@ public class ctrlProductos implements ActionListener {
        pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
        pro.setPrecio_venta(Float.parseFloat(frpro.txt_venta.getText()));
        pro.setPrecio_mayor(Float.parseFloat(frpro.txt_mayo.getText()));
+       pro.setPrecio_credito(Float.parseFloat(frpro.txt_precio_cred.getText()));
        pro.setDescuento(Float.parseFloat(frpro.txt_descue.getText()));
        pro.setIva(Integer.parseInt(frpro.txt_iva.getText()));
        pro.setStock(Integer.parseInt(frpro.txt_stock.getText()));
@@ -253,6 +255,7 @@ public class ctrlProductos implements ActionListener {
        pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
        pro.setPrecio_venta(Float.parseFloat(frpro.txt_venta.getText()));
        pro.setPrecio_mayor(Float.parseFloat(frpro.txt_mayo.getText()));
+       pro.setPrecio_credito(Float.parseFloat(frpro.txt_precio_cred.getText()));
        pro.setDescuento(Float.parseFloat(frpro.txt_descue.getText()));
        pro.setIva(Integer.parseInt(frpro.txt_iva.getText()));
        pro.setStock(Integer.parseInt(frpro.txt_stock.getText()));

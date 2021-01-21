@@ -89,7 +89,7 @@ public class SqlProductos extends Conexion{
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
             + "WHERE cod_producto ='"+valor+"'";
   
-    List listpro=new ArrayList(13);
+    List listpro=new ArrayList(14);
           Conexion cc = new Conexion(); 
           Connection cn=cc.getConexion();
           
@@ -112,6 +112,7 @@ public class SqlProductos extends Conexion{
                  prod.setId_proveedor(rs.getString("nombre_prov"));  
                  prod.setId_marca(rs.getString("descripcion_m")); 
                  prod.setId_categoria(rs.getString("descripcion_c")); 
+                 prod.setPrecio_credito(rs.getFloat("precio_cred")); 
                  listpro.add(prod);
               }
         } catch (SQLException ex) {
@@ -135,8 +136,8 @@ public class SqlProductos extends Conexion{
 
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql = "INSERT INTO productos (cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, stock, obs, id_proveedor1, id_marca1, id_categoria1, unidad_med)"
-                + " VALUES (?,?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),(SELECT id_categoria FROM categoria WHERE descripcion_c=?),?)";
+        String sql = "INSERT INTO productos (cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, stock, obs, id_proveedor1, id_marca1, id_categoria1, unidad_med, precio_cred)"
+                + " VALUES (?,?,?,?,?,?,?,?,?, (SELECT id_proveedor FROM proveedor WHERE nombre_prov=?),(SELECT id_marca FROM marca WHERE descripcion_m=?),(SELECT id_categoria FROM categoria WHERE descripcion_c=?),?,?)";
 
         try {
             ps = con.prepareStatement(sql);
@@ -153,6 +154,7 @@ public class SqlProductos extends Conexion{
             ps.setString(11, prod.getId_marca());
             ps.setString(12, prod.getId_categoria());
             ps.setString(13, prod.getUnidad_med());
+            ps.setFloat(14, prod.getPrecio_credito());
             ps.execute();
             return true;
             
@@ -253,7 +255,7 @@ public class SqlProductos extends Conexion{
         Connection con = getConexion();
         String sql = "UPDATE productos set descripcion=?, precio_costo=?, precio_venta=?, precio_mayori=?, descuento=?, iva=?, stock=?, obs=?, "
                 + "id_proveedor1=(SELECT id_proveedor FROM proveedor WHERE nombre_prov=?), id_marca1=(SELECT id_marca FROM marca WHERE descripcion_m=?),"
-                + "id_categoria1=(SELECT id_categoria FROM categoria WHERE descripcion_c=?), unidad_med=? where cod_producto=?";
+                + "id_categoria1=(SELECT id_categoria FROM categoria WHERE descripcion_c=?), unidad_med=?,  precio_cred=? where cod_producto=?";
 
         try {
             ps = con.prepareStatement(sql);
@@ -270,6 +272,7 @@ public class SqlProductos extends Conexion{
             ps.setString(11, prod.getId_categoria());
             ps.setString(12, prod.getUnidad_med());
             ps.setString(13, prod.getCodigo());
+            ps.setFloat(14, prod.getPrecio_credito());
             ps.execute();
             return true;
             

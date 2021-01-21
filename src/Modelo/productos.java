@@ -17,6 +17,9 @@ public class productos {
     private float precio_costo;
     private float precio_venta;
     private float precio_mayor;
+    private float precio_credito;
+
+   
     private float descuento;
     private int iva;
     private int stock;
@@ -27,6 +30,13 @@ public class productos {
     private String unidad_med;
     private String id_categoria;
 
+     public float getPrecio_credito() {
+        return precio_credito;
+    }
+
+    public void setPrecio_credito(float precio_credito) {
+        this.precio_credito = precio_credito;
+    }
     public String getId_categoria() {
         return id_categoria;
     }

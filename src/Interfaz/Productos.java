@@ -51,33 +51,6 @@ public class Productos extends JDialog {
         txt_busdesc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_prod = new javax.swing.JTable();
-        P_reg_mod = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txt_cod = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        combo_pro = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        txt_desc = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        combo_medida = new javax.swing.JComboBox<>();
-        txt_descue = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txt_iva = new javax.swing.JTextField();
-        como_marca = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txt_obs = new javax.swing.JTextField();
-        txt_stock = new javax.swing.JTextField();
-        txt_venta = new javax.swing.JTextField();
-        txt_mayo = new javax.swing.JTextField();
-        txt_costo = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        combo_cate = new javax.swing.JComboBox<>();
         P_ges_c = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         btnModificar_c = new javax.swing.JButton();
@@ -107,6 +80,35 @@ public class Productos extends JDialog {
         btnModificar_m = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         btnEliminar_m = new javax.swing.JButton();
+        P_reg_mod = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_cod = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        combo_pro = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        txt_desc = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        combo_medida = new javax.swing.JComboBox<>();
+        txt_descue = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txt_iva = new javax.swing.JTextField();
+        como_marca = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txt_obs = new javax.swing.JTextField();
+        txt_stock = new javax.swing.JTextField();
+        txt_venta = new javax.swing.JTextField();
+        txt_mayo = new javax.swing.JTextField();
+        txt_costo = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        combo_cate = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        txt_precio_cred = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -287,288 +289,6 @@ public class Productos extends JDialog {
         );
 
         Pane_Prod.addTab("Buscar", P_buscar);
-
-        P_reg_mod.setBackground(new java.awt.Color(33, 45, 62));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Código:");
-
-        txt_cod.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_cod.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_cod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_codActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Precio de costo:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Proveedor:");
-
-        combo_pro.setBackground(new java.awt.Color(33, 45, 62));
-        combo_pro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        combo_pro.setForeground(new java.awt.Color(255, 255, 255));
-        combo_pro.setMinimumSize(new java.awt.Dimension(67, 25));
-        combo_pro.setPreferredSize(new java.awt.Dimension(67, 25));
-        combo_pro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_proActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Precio de venta:");
-
-        txt_desc.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_desc.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_desc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_descActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Descripción:");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Descuento:");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("I.V.A:");
-
-        combo_medida.setBackground(new java.awt.Color(33, 45, 62));
-        combo_medida.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        combo_medida.setForeground(new java.awt.Color(255, 255, 255));
-        combo_medida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Unidad", "Metro", "Kg", "Caja", "Mt2" }));
-        combo_medida.setMinimumSize(new java.awt.Dimension(67, 25));
-        combo_medida.setPreferredSize(new java.awt.Dimension(67, 25));
-        combo_medida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_medidaActionPerformed(evt);
-            }
-        });
-
-        txt_descue.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_descue.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_descue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_descueActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Stock:");
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Marca:");
-
-        txt_iva.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_iva.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_iva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ivaActionPerformed(evt);
-            }
-        });
-
-        como_marca.setBackground(new java.awt.Color(33, 45, 62));
-        como_marca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        como_marca.setForeground(new java.awt.Color(255, 255, 255));
-        como_marca.setToolTipText("");
-        como_marca.setMinimumSize(new java.awt.Dimension(67, 25));
-        como_marca.setPreferredSize(new java.awt.Dimension(67, 25));
-        como_marca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                como_marcaActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Unidad de medida:");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Observación:");
-
-        txt_obs.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_obs.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_obs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_obsActionPerformed(evt);
-            }
-        });
-
-        txt_stock.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_stock.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_stock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_stockActionPerformed(evt);
-            }
-        });
-
-        txt_venta.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_venta.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ventaActionPerformed(evt);
-            }
-        });
-
-        txt_mayo.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_mayo.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_mayo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_mayoActionPerformed(evt);
-            }
-        });
-
-        txt_costo.setMinimumSize(new java.awt.Dimension(6, 25));
-        txt_costo.setPreferredSize(new java.awt.Dimension(6, 25));
-        txt_costo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_costoActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Precio mayorista:");
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Categoria:");
-
-        combo_cate.setBackground(new java.awt.Color(33, 45, 62));
-        combo_cate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        combo_cate.setForeground(new java.awt.Color(255, 255, 255));
-        combo_cate.setToolTipText("");
-        combo_cate.setMinimumSize(new java.awt.Dimension(67, 25));
-        combo_cate.setPreferredSize(new java.awt.Dimension(67, 25));
-        combo_cate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_cateActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout P_reg_modLayout = new javax.swing.GroupLayout(P_reg_mod);
-        P_reg_mod.setLayout(P_reg_modLayout);
-        P_reg_modLayout.setHorizontalGroup(
-            P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_reg_modLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_obs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(P_reg_modLayout.createSequentialGroup()
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_mayo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_cod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(combo_pro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_venta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel15))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(como_marca, 0, 217, Short.MAX_VALUE)
-                            .addComponent(txt_descue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(combo_medida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_iva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(combo_cate, 0, 217, Short.MAX_VALUE))))
-                .addGap(14, 14, 14))
-        );
-        P_reg_modLayout.setVerticalGroup(
-            P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_reg_modLayout.createSequentialGroup()
-                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(P_reg_modLayout.createSequentialGroup()
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(como_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_descue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(combo_medida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(20, 20, 20)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15)
-                            .addComponent(combo_cate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(P_reg_modLayout.createSequentialGroup()
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_reg_modLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel3))
-                            .addGroup(P_reg_modLayout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(17, 17, 17)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txt_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(combo_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(23, 23, 23)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_venta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_mayo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))))
-                .addGap(18, 18, 18)
-                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
-
-        Pane_Prod.addTab("Registrar/Modificar", P_reg_mod);
 
         P_ges_c.setBackground(new java.awt.Color(33, 45, 62));
 
@@ -886,6 +606,296 @@ public class Productos extends JDialog {
 
         Pane_Prod.addTab("Gestionar marca", P_ges_m);
 
+        P_reg_mod.setBackground(new java.awt.Color(33, 45, 62));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Código:");
+
+        txt_cod.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_cod.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_cod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Precio de costo:");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Proveedor:");
+
+        combo_pro.setBackground(new java.awt.Color(33, 45, 62));
+        combo_pro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        combo_pro.setForeground(new java.awt.Color(255, 255, 255));
+        combo_pro.setMinimumSize(new java.awt.Dimension(67, 25));
+        combo_pro.setPreferredSize(new java.awt.Dimension(67, 25));
+        combo_pro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_proActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Precio de venta:");
+
+        txt_desc.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_desc.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_desc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_descActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Descripción:");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Descuento:");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("I.V.A:");
+
+        combo_medida.setBackground(new java.awt.Color(33, 45, 62));
+        combo_medida.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        combo_medida.setForeground(new java.awt.Color(255, 255, 255));
+        combo_medida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Unidad", "Metro", "Kg", "Caja", "Mt2" }));
+        combo_medida.setMinimumSize(new java.awt.Dimension(67, 25));
+        combo_medida.setPreferredSize(new java.awt.Dimension(67, 25));
+        combo_medida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_medidaActionPerformed(evt);
+            }
+        });
+
+        txt_descue.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_descue.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_descue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_descueActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Stock:");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Marca:");
+
+        txt_iva.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_iva.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_iva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ivaActionPerformed(evt);
+            }
+        });
+
+        como_marca.setBackground(new java.awt.Color(33, 45, 62));
+        como_marca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        como_marca.setForeground(new java.awt.Color(255, 255, 255));
+        como_marca.setToolTipText("");
+        como_marca.setMinimumSize(new java.awt.Dimension(67, 25));
+        como_marca.setPreferredSize(new java.awt.Dimension(67, 25));
+        como_marca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                como_marcaActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Unidad de medida:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Observación:");
+
+        txt_obs.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_obs.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_obs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_obsActionPerformed(evt);
+            }
+        });
+
+        txt_stock.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_stock.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_stock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_stockActionPerformed(evt);
+            }
+        });
+
+        txt_venta.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_venta.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ventaActionPerformed(evt);
+            }
+        });
+
+        txt_mayo.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_mayo.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_mayo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_mayoActionPerformed(evt);
+            }
+        });
+
+        txt_costo.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_costo.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_costo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_costoActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Precio mayorista:");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Categoria:");
+
+        combo_cate.setBackground(new java.awt.Color(33, 45, 62));
+        combo_cate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        combo_cate.setForeground(new java.awt.Color(255, 255, 255));
+        combo_cate.setToolTipText("");
+        combo_cate.setMinimumSize(new java.awt.Dimension(67, 25));
+        combo_cate.setPreferredSize(new java.awt.Dimension(67, 25));
+        combo_cate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_cateActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Precio a credito:");
+
+        javax.swing.GroupLayout P_reg_modLayout = new javax.swing.GroupLayout(P_reg_mod);
+        P_reg_mod.setLayout(P_reg_modLayout);
+        P_reg_modLayout.setHorizontalGroup(
+            P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_reg_modLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_precio_cred, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                    .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txt_mayo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                        .addComponent(txt_desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_cod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combo_pro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_venta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_costo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 47, Short.MAX_VALUE)
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_obs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(como_marca, 0, 217, Short.MAX_VALUE)
+                    .addComponent(txt_descue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combo_medida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_iva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combo_cate, 0, 217, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
+        );
+        P_reg_modLayout.setVerticalGroup(
+            P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_reg_modLayout.createSequentialGroup()
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(P_reg_modLayout.createSequentialGroup()
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(como_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_descue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(combo_medida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(20, 20, 20)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15)
+                            .addComponent(combo_cate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_reg_modLayout.createSequentialGroup()
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_reg_modLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(jLabel3))
+                            .addGroup(P_reg_modLayout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txt_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(combo_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(23, 23, 23)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_venta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_mayo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))))
+                .addGap(18, 18, 18)
+                .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10))
+                    .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel16)
+                        .addComponent(txt_precio_cred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
+        Pane_Prod.addTab("Registrar/Modificar", P_reg_mod);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1178,6 +1188,7 @@ public class Productos extends JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1218,6 +1229,7 @@ public class Productos extends JDialog {
     public javax.swing.JTextField txt_iva;
     public javax.swing.JTextField txt_mayo;
     public javax.swing.JTextField txt_obs;
+    public javax.swing.JTextField txt_precio_cred;
     public javax.swing.JTextField txt_stock;
     public javax.swing.JTextField txt_venta;
     // End of variables declaration//GEN-END:variables
