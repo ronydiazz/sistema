@@ -1,8 +1,7 @@
 
 package controlador;
 
-import Interfaz.Proveedor;
-import static Interfaz.Proveedor.tabla_prov;
+import Vendedor.Proveedor;
 import Modelo.SqlProveedor;
 import Modelo.proveedor;
 import java.awt.HeadlessException;
@@ -13,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+//import static Interfaz.Proveedor.tabla_prov;
 
 
  public class ctrlProveedores implements ActionListener {
@@ -80,7 +80,8 @@ import javax.swing.table.DefaultTableModel;
             frprov.txt_cod.setEnabled(false);
       //  frusu.panel_reg.setVisible(true);
         }else{
-      if(frprov.txt_cod.getText().equals("")|| frprov.txt_nomp.getText().equals("") || frprov.txt_cont.getText().equals("") || frprov.txt_cont2.getText().equals("") || frprov.txt_sitio.getText().equals("") || frprov.txt_email.getText().equals("") || frprov.txt_direc.getText().equals(""))
+              //frprov.txt_cod.getText().equals("")||
+      if( frprov.txt_nomp.getText().equals("") || frprov.txt_cont.getText().equals("") || frprov.txt_cont2.getText().equals("") || frprov.txt_sitio.getText().equals("") || frprov.txt_email.getText().equals("") || frprov.txt_direc.getText().equals(""))
         { 
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
         }else{
@@ -94,7 +95,9 @@ import javax.swing.table.DefaultTableModel;
             
             if(sqlprov.registrar_prov(prov)){
        JOptionPane.showMessageDialog(null, "Registro Guardado");
+       limpiar();
     sqlprov.mostrarProveedores("");
+    
       }else{
       
        JOptionPane.showMessageDialog(null, "Error al Guardar");   
@@ -115,9 +118,7 @@ import javax.swing.table.DefaultTableModel;
             frprov.PanelPestaña.setSelectedIndex(2);
             frprov.txt_cod1.setEnabled(false);
              mostrar_txt();
-          }else if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
-                    JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
-       if(frprov.txt_cod1.getText().equals("")|| frprov.txt_nomp1.getText().equals("") || frprov.txt_cont1.getText().equals("") || frprov.txt_cont3.getText().equals("") || frprov.txt_sitio1.getText().equals("") || frprov.txt_email1.getText().equals("") || frprov.txt_direc1.getText().equals(""))
+          }else if(frprov.txt_cod1.getText().equals("")|| frprov.txt_nomp1.getText().equals("") || frprov.txt_cont1.getText().equals("") || frprov.txt_cont3.getText().equals("") || frprov.txt_sitio1.getText().equals("") || frprov.txt_email1.getText().equals("") || frprov.txt_direc1.getText().equals(""))
         { 
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
         }else{
@@ -127,7 +128,7 @@ import javax.swing.table.DefaultTableModel;
             prov.setContacto2(frprov.txt_cont3.getText());
             prov.setSitioweb(frprov.txt_sitio1.getText());
             prov.setEmail(frprov.txt_email1.getText());
-            prov.setEmail(frprov.txt_direc1.getText());
+           prov.setDireccion_pro(frprov.txt_direc1.getText());
             
           if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
                JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){  
@@ -144,7 +145,7 @@ import javax.swing.table.DefaultTableModel;
       }
      
    }
-    }}
+    }
      }
      
      public void eliminar(){
@@ -152,7 +153,7 @@ import javax.swing.table.DefaultTableModel;
             frprov.PanelPestaña.setSelectedIndex(2);
       //  frusu.panel_reg.setVisible(true);
         }else{
-        int fila = tabla_prov.getSelectedRow();
+        int fila = Proveedor.tabla_prov.getSelectedRow();
         DefaultTableModel tabla= new DefaultTableModel();
         
         try{
@@ -162,7 +163,7 @@ import javax.swing.table.DefaultTableModel;
            
             }else {
                 
-        int id = Integer.parseInt(tabla_prov.getValueAt(fila, 0).toString());
+        int id = Integer.parseInt(Proveedor.tabla_prov.getValueAt(fila, 0).toString());
            prov.setId_prov(id);
            if(JOptionPane.showConfirmDialog(null, "¿Eliminar registro?", "", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
          
@@ -207,5 +208,15 @@ import javax.swing.table.DefaultTableModel;
     System.out.println(e);
     }
      
+     }
+     public void limpiar(){
+     
+     frprov.txt_cod1.setText("");
+    frprov.txt_nomp1.setText("");
+    frprov.txt_cont1.setText("");
+    frprov.txt_cont3.setText("");
+    frprov.txt_sitio1.setText("");
+    frprov.txt_email1.setText("");
+    frprov.txt_direc1.setText("");
      }
  }

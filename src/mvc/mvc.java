@@ -6,7 +6,7 @@
 package mvc;
 
 
-import Interfaz.Usuarios;
+import Vendedor.Usuarios;
 import Modelo.SqlUsuarios;
 import Modelo.usuarios;
 import controlador.ctrlUsuarios;

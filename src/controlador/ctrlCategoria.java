@@ -1,7 +1,7 @@
 
 package controlador;
 
-import Interfaz.Productos;
+import Vendedor.Productos;
 import Modelo.SqlCategoria;
 import Modelo.SqlEstado;
 import Modelo.categoria;
@@ -20,6 +20,8 @@ public class ctrlCategoria implements ActionListener {
     private SqlCategoria categ;
     private Productos frpro;
     
+     SqlEstado est= new SqlEstado(); 
+    
     public ctrlCategoria(categoria cat, SqlCategoria categ, Productos frpro){
    this.cat=cat;
    this.categ=categ;
@@ -34,26 +36,32 @@ public class ctrlCategoria implements ActionListener {
     
     public void iniciar(){
    // SqlCategoria m = new SqlCategoria();
-  //  categ.mostrarCategoria("");
+    SqlCategoria.mostrarCategoria("");
     }
     @Override
     public void actionPerformed(ActionEvent ae) {
     //BtnCategoria
     if(ae.getSource()==frpro.btnCategoria){
-     if(frpro.Pane_Prod.getSelectedIndex()==0 || frpro.Pane_Prod.getSelectedIndex()==1 || frpro.Pane_Prod.getSelectedIndex()==3){
+     if(frpro.Pane_Prod.getSelectedIndex()==0 || frpro.Pane_Prod.getSelectedIndex()==2 || frpro.Pane_Prod.getSelectedIndex()==3){
     
-          frpro.Pane_Prod.setEnabledAt(0, false);
-          frpro.Pane_Prod.setEnabledAt(1, false);
-          frpro.Pane_Prod.setEnabledAt(2, true);
+             
+              
+       frpro.Pane_Prod.setEnabledAt(0,false);
+       frpro.Pane_Prod.setEnabledAt(1,true);
+          frpro.Pane_Prod.setEnabledAt(2, false);
           frpro.Pane_Prod.setEnabledAt(3, false);
           
-          frpro.Pane_Prod.setSelectedIndex(2);
+      frpro.Pane_Prod.setSelectedIndex(1);
      //   mostrar_categ();
+     
      frpro.txt_cod_c.setEnabled(false);
-     SqlCategoria.mostrarCategoria("");
-        SqlEstado est= new SqlEstado(); 
+    
+    
+  //   SqlCategoria.mostrarCategoria("");
+   //     SqlEstado est= new SqlEstado(); 
         est.consultar_estado(frpro.combo_estado_c);
         
+          
      } //   }else{
     }  //BtnGuardar 
        if(ae.getSource()==frpro.btnGuardar_c){
@@ -65,8 +73,10 @@ public class ctrlCategoria implements ActionListener {
       //BtnModificar
       if(ae.getSource()==frpro.btnModificar_c){
           
+//             if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+//               JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
         modificar();
-        
+     //        }
      }
       
       //BtnEliminar
@@ -154,18 +164,26 @@ public class ctrlCategoria implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
 
             }else {
-                 mostrar_entxt();
-              if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
-               JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+               //  mostrar_entxt();
+               
+//              if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+//               JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
                
                 if(frpro.txt_desc_c.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-            }else{
+            }else  if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+              JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){{
                      
                  cat.setDescripcion_c(frpro.txt_desc_c.getText());
-            if(frpro.combo_estado_c.getSelectedItem().toString().equals("Activo"))
-            {cat.setEstado(1); }else{ cat.setEstado(2);}
+                 
+            if(frpro.combo_estado_c.getSelectedItem().toString().equals("Activo")){
+                cat.setEstado(1); 
+                }else{
+                cat.setEstado(2);}
             
+            
+            //ver si funa
+           cat.setId_categoria(Integer.parseInt(frpro.txt_cod_c.getText()));
               if(categ.modificar(cat)){
            
                     JOptionPane.showMessageDialog(null, "Modificado correctamente", "Información", JOptionPane.OK_OPTION);
@@ -175,7 +193,7 @@ public class ctrlCategoria implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Error al modificar", "Información", JOptionPane.OK_CANCEL_OPTION);
                 }
             }
-      } 
+      }
             }
  }
     

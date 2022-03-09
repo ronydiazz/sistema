@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Interfaz.Productos;
+import Vendedor.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +40,7 @@ public class SqlProductos extends Conexion{
           Conexion cc = new Conexion(); 
           Connection cn=cc.getConexion();
         try {
-          
+            
               Statement st = cn.createStatement();
               ResultSet rs = st.executeQuery(mostrar);
               while(rs.next())
@@ -58,32 +58,32 @@ public class SqlProductos extends Conexion{
          Productos.tabla_prod.setModel(model);
          Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(50);
-         columnModel.getColumn(1).setPreferredWidth(160);
-         columnModel.getColumn(2).setPreferredWidth(150);
-         columnModel.getColumn(3).setPreferredWidth(130);
-         columnModel.getColumn(4).setPreferredWidth(50);
-         columnModel.getColumn(5).setPreferredWidth(150);
+         columnModel.getColumn(0).setPreferredWidth(60);
+         columnModel.getColumn(1).setPreferredWidth(150);
+         columnModel.getColumn(2).setPreferredWidth(130);
+         columnModel.getColumn(3).setPreferredWidth(100);
+         columnModel.getColumn(4).setPreferredWidth(60);
+         columnModel.getColumn(5).setPreferredWidth(130);
          columnModel.getColumn(6).setPreferredWidth(150);
-        } catch (SQLException ex) {
-            Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
-            JOptionPane.showMessageDialog(null, ex);
-        }finally{
-    if(cn!=null){  
-        try {  cn.close();
-          
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+                JOptionPane.showMessageDialog(null, ex);
+            }finally{
+        if(cn!=null){  
+            try {  cn.close();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
-    }
-  }  
- }
+      }  
+     }
     
     public static List mostrarP(String valor){
          
     String mostrar="SELECT cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
-            + "stock, obs, unidad_med, nombre_prov, descripcion_m, descripcion_c from productos "
+            + "stock, obs, unidad_med, nombre_prov, descripcion_m, descripcion_c, precio_cred from productos "
             + "inner join proveedor on productos.id_proveedor1=proveedor.id_proveedor "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
@@ -103,7 +103,8 @@ public class SqlProductos extends Conexion{
                  prod.setDescripcion(rs.getString("descripcion"));
                  prod.setPrecio_costo(rs.getFloat("precio_costo"));
                  prod.setPrecio_venta(rs.getFloat("precio_venta"));
-                 prod.setPrecio_mayor(rs.getFloat("precio_mayori"));        
+                 prod.setPrecio_mayor(rs.getFloat("precio_mayori")); 
+                 prod.setPrecio_credito(rs.getFloat("precio_cred")); 
                  prod.setDescuento(rs.getFloat("descuento"));        
                  prod.setIva(rs.getInt("iva")); 
                  prod.setStock(rs.getInt("stock")); 
@@ -112,7 +113,6 @@ public class SqlProductos extends Conexion{
                  prod.setId_proveedor(rs.getString("nombre_prov"));  
                  prod.setId_marca(rs.getString("descripcion_m")); 
                  prod.setId_categoria(rs.getString("descripcion_c")); 
-                 prod.setPrecio_credito(rs.getFloat("precio_cred")); 
                  listpro.add(prod);
               }
         } catch (SQLException ex) {
@@ -270,9 +270,9 @@ public class SqlProductos extends Conexion{
             ps.setString(9, prod.getId_proveedor());
             ps.setString(10, prod.getId_marca());
             ps.setString(11, prod.getId_categoria());
-            ps.setString(12, prod.getUnidad_med());
-            ps.setString(13, prod.getCodigo());
-            ps.setFloat(14, prod.getPrecio_credito());
+            ps.setString(12, prod.getUnidad_med());         
+            ps.setFloat(13, prod.getPrecio_credito());
+              ps.setString(14, prod.getCodigo());
             ps.execute();
             return true;
             

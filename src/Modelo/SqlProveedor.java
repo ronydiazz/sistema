@@ -5,7 +5,8 @@
  */
 package Modelo;
 
-import static Interfaz.Proveedor.tabla_prov;
+//import static Interfaz.clieveedor.tabla_prov;
+import Vendedor.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+//import static Interfaz.Proveedor.tabla_prov;
 
 /**
  *
@@ -118,7 +120,6 @@ try {
     public boolean modificar (proveedor prov) {
 
         PreparedStatement ps = null;
-        
         Connection con = getConexion();
         String sql = "UPDATE proveedor SET nombre_prov=?, contacto=?, contacto2=?, sitioweb=?, "
                 + "email=?, direccion_pro=? WHERE id_proveedor=?";
@@ -197,7 +198,7 @@ try {
     DefaultTableModel Tabla = new DefaultTableModel(null, columnas);
     
         Connection con = getConexion();
-        String sql = "SELECT id_proveedor, nombre_prov, contacto, contacto2, sitioweb, email, direccion_pro from proveedor WHERE nombre_prov LIKE '%"+v+"%' ORDER BY id_proveedor ASC";
+        String sql = "SELECT id_proveedor, nombre_prov, contacto, email from proveedor WHERE nombre_prov LIKE '%"+v+"%' ORDER BY id_proveedor ASC";
 
          try {
 
@@ -212,9 +213,9 @@ try {
            obj[3]=rs.getString("contacto");
              Tabla.addRow(obj);
             }
-            tabla_prov.setModel(Tabla);
-             tabla_prov.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-         TableColumnModel columnModel = tabla_prov.getColumnModel();
+            Proveedor.tabla_prov.setModel(Tabla);
+            Proveedor.tabla_prov.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumnModel columnModel = Proveedor.tabla_prov.getColumnModel();
          columnModel.getColumn(0).setPreferredWidth(80);
          columnModel.getColumn(1).setPreferredWidth(150);
          columnModel.getColumn(2).setPreferredWidth(200);

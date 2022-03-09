@@ -1,7 +1,7 @@
 
 package controlador;
 
-import Interfaz.Productos;
+import Vendedor.Productos;
 import Modelo.SqlEstado;
 import Modelo.SqlMarca;
 import Modelo.marca;
@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -31,6 +33,7 @@ public class ctrlMarca implements ActionListener {
         this.frpro.btnModificar_m.addActionListener(this);
         this.frpro.btnEliminar_m.addActionListener(this);
         this.frpro.txt_bus_m.addKeyListener(tecla);
+          Productos.tabla_marca.addMouseListener(mous);
     }
     
     public void iniciar(){
@@ -41,14 +44,17 @@ public class ctrlMarca implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
     //BtnCategoria
     if(ae.getSource()==frpro.btnMarca){
-     if(frpro.Pane_Prod.getSelectedIndex()==0 || frpro.Pane_Prod.getSelectedIndex()==1 || frpro.Pane_Prod.getSelectedIndex()==2){
+     if(frpro.Pane_Prod.getSelectedIndex()==0 || frpro.Pane_Prod.getSelectedIndex()==1 || frpro.Pane_Prod.getSelectedIndex()==3){
           
+     
+             
           frpro.Pane_Prod.setEnabledAt(0, false);
           frpro.Pane_Prod.setEnabledAt(1, false);
-          frpro.Pane_Prod.setEnabledAt(2, false);
-          frpro.Pane_Prod.setEnabledAt(3, true);
+          frpro.Pane_Prod.setEnabledAt(2, true);
+          frpro.Pane_Prod.setEnabledAt(3, false);
           
-        frpro.Pane_Prod.setSelectedIndex(3);
+                  frpro.Pane_Prod.setSelectedIndex(2);
+    
         frpro.txt_cod_m.setEnabled(false);
       SqlMarca.mostrarMarca("");
         SqlEstado est= new SqlEstado();
@@ -90,7 +96,29 @@ public class ctrlMarca implements ActionListener {
             }
        }
     };
+    
+ MouseListener mous= new MouseListener() {
+       
+        @Override
+        public void mouseClicked(MouseEvent me) {
+            mostrar_entxt(); }
 
+        @Override
+        public void mousePressed(MouseEvent me) {
+            }
+
+        @Override
+        public void mouseReleased(MouseEvent me) {
+         }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent me) {
+         }
+    };
     public void registrar(){
     if(frpro.txt_desc_m.getText().equals(""))
         {
@@ -124,20 +152,25 @@ public class ctrlMarca implements ActionListener {
           JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
    
            }else{
-              mostrar_entxt();
-              if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
-                    JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+           //   mostrar_entxt();
+            
          if(frpro.txt_desc_m.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
         }else{
-
+             
+            if(JOptionPane.showConfirmDialog(null, "¿Modificar registro?", "",
+                    JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+                
             mar.setDescripcion(frpro.txt_desc_m.getText());
+                     
+                      
             if(frpro.combo_estado_m.getSelectedItem().toString().equals("Activo")){
                 mar.setEstado1(1);
             }else{
                 mar.setEstado1(2);
             }
+             mar.setCodigo(Integer.parseInt(frpro.txt_cod_m.getText()));
             if(sqlmarca.modificar(mar)){
 
                 JOptionPane.showMessageDialog(null, "Modificación Guardada");

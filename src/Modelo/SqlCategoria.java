@@ -1,7 +1,7 @@
 
 package Modelo;
 
-import Interfaz.Productos;
+import Vendedor.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,14 +57,14 @@ ResultSet rs = null;
 String SSQL = "SELECT descripcion_c FROM categoria ORDER BY descripcion_c ASC";
 
 try {
-
-  
+    
     if(cbx_categoria.getSelectedIndex()>=0){
       //  cbx_proveedor.removeAllItems();
    }else{
         ps = con.prepareStatement(SSQL);
    rs = ps.executeQuery();
    cbx_categoria.addItem("Seleccione una opción");
+   
    
    while(rs.next()){
    
@@ -200,6 +200,56 @@ try {
  }
     }
       
+//       public void consultar_estado(JComboBox cbx_estado){
+//         
+// Connection con = getConexion();    
+//PreparedStatement pst = null;
+//ResultSet result = null;
+//String SSQL = "SELECT nom_estado FROM estado ORDER BY nom_estado ASC";
+//
+//try {
+// if(cbx_estado.getSelectedIndex()>=0){
+// 
+// //   if(cbx_estado.getSelectedIndex()>=0){
+//      //  cbx_proveedor.removeAllItems();
+//   }else{
+//       pst = con.prepareStatement(SSQL);
+//   result = pst.executeQuery();
+//   cbx_estado.addItem("Seleccione una opción");
+////   result.next();
+////          JOptionPane.showMessageDialog(null,result.getString("nom_estado"));
+//   
+//   while(result.next()){
+//   
+//       cbx_estado.addItem(result.getString("nom_estado"));
+//       
+//   //    JOptionPane.showMessageDialog(null,"ingresa result while");
+//   
+//   }}
+//} catch (SQLException e) {
+//    JOptionPane.showMessageDialog(null, e);
+//}finally{
+//
+//    if(con!=null){
+//        
+//        try {
+////            result.close();
+//     //       pst.close();
+//            con.close();
+//            
+//      //      result=null;
+//     //       pst.close();
+//            con=null;
+//            
+//            
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//            JOptionPane.showMessageDialog(null, ex);
+//             
+//        }
+//    }
+// }
+//}
 }
 
 

@@ -2,8 +2,8 @@
 package controlador;
 
 
-import Interfaz.Menu;
-import Interfaz.Usuarios;
+import Vendedor.Menu;
+import Vendedor.Usuarios;
 
 import Modelo.SqlUsuarios;
 import Modelo.hash;

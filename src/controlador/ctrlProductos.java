@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import Interfaz.Productos;
+import Vendedor.Productos;
 import Modelo.SqlCategoria;
 import Modelo.SqlMarca;
 import Modelo.SqlProductos;
@@ -40,6 +40,19 @@ public class ctrlProductos implements ActionListener {
     this.frpro.btnMarca.addActionListener(this);
     this.frpro.txt_buscod.addKeyListener(tecla);
     this.frpro.txt_busdesc.addKeyListener(tecla);
+    this.frpro.txt_costo.addKeyListener(teclacosto);
+    this.frpro.txt_cod.addKeyListener(teclacod);
+    this.frpro.txt_desc.addKeyListener(tecladesc);
+    this.frpro.combo_pro.addActionListener(this);
+    this.frpro.como_marca.addActionListener(this);
+    this.frpro.combo_medida.addActionListener(this);
+    this.frpro.combo_cate.addActionListener(this);
+    this.frpro.txt_venta.addKeyListener(teclaventa);
+    this.frpro.txt_mayo.addKeyListener(teclamayo);
+    this.frpro.txt_precio_cred.addKeyListener(teclacred);
+    this.frpro.txt_descue.addKeyListener(tecladescue);
+    this.frpro.txt_iva.addKeyListener(teclaiva);
+    this.frpro.txt_stock.addKeyListener(teclastock);
   //  this.frpro.Pane_Prod.addChangeListener(evt);
     }
 
@@ -62,6 +75,7 @@ public class ctrlProductos implements ActionListener {
        if(ae.getSource()== frpro.btnRegProducto){
           
        registrar();
+        frpro.txt_cod.requestFocus();
     }
       
       // Boton Modificar Producto
@@ -74,9 +88,24 @@ public class ctrlProductos implements ActionListener {
           eliminar();
     }
    
+      if(ae.getSource()==frpro.combo_pro){
+           frpro.txt_costo.requestFocus();
+      }
+      
+      if(ae.getSource()==frpro.como_marca){
+           frpro.txt_descue.requestFocus();
+      }
+      if(ae.getSource()==frpro.combo_medida){
+           frpro.txt_iva.requestFocus();
+      }
+      if(ae.getSource()==frpro.combo_cate){
+           frpro.txt_obs.requestFocus();
+      }
+      
+      
     }
    
-   KeyListener tecla = new KeyListener() {
+     KeyListener tecla = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent ke) {
               }
@@ -96,6 +125,234 @@ public class ctrlProductos implements ActionListener {
             }
         }
     };
+     
+     KeyListener teclacosto = new KeyListener() {
+     @Override
+     public void keyTyped(KeyEvent ke) {
+//             if(((caracter < '0') ||
+//         (caracter > '9')) &&
+//         (caracter != '\b' /*corresponde a BACK_SPACE*/))
+//      {   ke.consume();  // ignorar el evento de teclado
+//      }
+      char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+}
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+//            if(ke.getSource()==frpro.txt_buscod){
+//          SqlProductos.cargar(frpro.txt_buscod.getText());
+//            }
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.txt_venta.requestFocus();
+        
+       
+        if(frpro.txt_costo.getText().equals("")){}
+        else{
+        int resultventa=((Integer.parseInt(frpro.txt_costo.getText())*15)/100)+Integer.parseInt(frpro.txt_costo.getText());
+        int resultmayo=((Integer.parseInt(frpro.txt_costo.getText())*10)/100)+Integer.parseInt(frpro.txt_costo.getText());
+        int resultcred=((Integer.parseInt(frpro.txt_costo.getText())*20)/100)+Integer.parseInt(frpro.txt_costo.getText());
+        
+         frpro.txt_venta.setText(String.valueOf(resultventa));
+         frpro.txt_mayo.setText(String.valueOf(resultmayo));
+         frpro.txt_precio_cred.setText(String.valueOf(resultcred)); 
+                }
+        }
+      
+        }
+    };
+    
+     KeyListener teclacod = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+            
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.txt_desc.requestFocus();
+        }
+      
+        }
+    };
+     
+     KeyListener tecladesc = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+       
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.combo_pro.requestFocus();
+        }
+        }
+    };
+     
+     KeyListener teclaventa = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+              char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.txt_mayo.requestFocus();
+        
+        }
+      
+        }
+    };
+       
+     KeyListener teclamayo = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+              char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.txt_precio_cred.requestFocus();
+       
+        }
+        }
+    };
+        
+     KeyListener teclacred = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+                  char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.como_marca.requestFocus();
+        
+        }
+      
+        }
+    };
+         
+     KeyListener tecladescue = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+                  char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.combo_medida.requestFocus();
+        
+        }
+      
+        }
+    };
+          
+     KeyListener teclaiva = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+                  char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.txt_stock.requestFocus();
+        
+        }
+      
+        }
+    };
+   
+     KeyListener teclastock = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent ke) {
+                  char validar=ke.getKeyChar();
+     if(Character.isLetter(validar)){
+   //  getToolkit().beep();
+     ke.consume();
+  }
+              }
+
+        @Override
+        public void keyPressed(KeyEvent ke) {
+         }
+
+        @Override
+        public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode()==KeyEvent.VK_ENTER){
+        frpro.combo_cate.requestFocus();
+        
+        }
+      
+        }
+    };
+   
+//  public static boolean validarNum(String datos){
+//  
+//return datos.matches("[0-9]*");
+//
+//}
    
   
    public void mostrar(){    
@@ -118,7 +375,7 @@ public class ctrlProductos implements ActionListener {
     frpro.txt_costo.setText(Float.toString(prod.getPrecio_costo()));
     frpro.txt_venta.setText(Float.toString(prod.getPrecio_venta()));
     frpro.txt_mayo.setText(Float.toString(prod.getPrecio_mayor()));
-    frpro.txt_precio_cred.setText(Float.toString(prod.getPrecio_mayor()));
+    frpro.txt_precio_cred.setText(Float.toString(prod.getPrecio_credito()));
     frpro.txt_descue.setText(Float.toString(prod.getDescuento()));
     frpro.txt_iva.setText(Integer.toString(prod.getIva()));
     frpro.txt_stock.setText(Integer.toString(prod.getStock()));
@@ -150,6 +407,7 @@ public class ctrlProductos implements ActionListener {
     //form buscar
     frpro.txt_busdesc.setText("");
     frpro.txt_buscod.setText("");
+    frpro.txt_precio_cred.setText("");
     
    //  frpro.como_marca.removeActionListener();
     // modificar();
@@ -165,30 +423,45 @@ public class ctrlProductos implements ActionListener {
     }
     
    public void registrar(){
-     if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==2 || this.frpro.Pane_Prod.getSelectedIndex()==3){
-         frpro.Pane_Prod.setSelectedIndex(1);
+     if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==1 || this.frpro.Pane_Prod.getSelectedIndex()==2){
+         frpro.Pane_Prod.setSelectedIndex(3);
          limpiar();
       cate.consultar_categoria(frpro.combo_cate);
     prove.consultar_proveedores(frpro.combo_pro);
      marca.consultar_marca(frpro.como_marca);
-     frpro.txt_cod.setEnabled(false);
+   //  frpro.txt_cod.setEnabled(false);
           frpro.Pane_Prod.setEnabledAt(0, false);
-          frpro.Pane_Prod.setEnabledAt(1, true);
+          frpro.Pane_Prod.setEnabledAt(1, false);
           frpro.Pane_Prod.setEnabledAt(2, false);
-          frpro.Pane_Prod.setEnabledAt(3, false);
+          frpro.Pane_Prod.setEnabledAt(3, true);
         }else{
         
-            if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_descue.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
+     //    frpro.txt_cod.getText().equals("") ||
+            if(  frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("")  || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+       }else if (Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_venta.getText()) || 
+               Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_precio_cred.getText())
+               || Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_mayo.getText()) ){
+          JOptionPane.showMessageDialog(null, "Precio costo no puede ser mayor a precio venta o precio credito o precio venta");
+       }else if (frpro.combo_pro.getSelectedItem().equals("Seleccione una opción") || frpro.como_marca.getSelectedItem().equals("Seleccione una opción") || frpro.combo_medida.getSelectedItem().equals("Seleccione una opción")  || frpro.combo_cate.getSelectedItem().equals("Seleccione una opción") ){
+          JOptionPane.showMessageDialog(null, "Seleccione una opción (Proveedor, Marca, Unidad de Medida o Categoria )");
+       
        }else{
       if(sqlpro.existeProducto(frpro.txt_cod.getText()) == 0){
+          
+          
        pro.setCodigo(frpro.txt_cod.getText());
        pro.setDescripcion(frpro.txt_desc.getText());
        pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
        pro.setPrecio_venta(Float.parseFloat(frpro.txt_venta.getText()));
        pro.setPrecio_mayor(Float.parseFloat(frpro.txt_mayo.getText()));
        pro.setPrecio_credito(Float.parseFloat(frpro.txt_precio_cred.getText()));
+       if (frpro.txt_descue.getText().equals("")){
+       
+       }else{
        pro.setDescuento(Float.parseFloat(frpro.txt_descue.getText()));
+       }
+       
        pro.setIva(Integer.parseInt(frpro.txt_iva.getText()));
        pro.setStock(Integer.parseInt(frpro.txt_stock.getText()));
        pro.setObs(frpro.txt_obs.getText());
@@ -233,21 +506,25 @@ public class ctrlProductos implements ActionListener {
           frpro.Pane_Prod.setEnabledAt(3, false);
            }else{
               
-           if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==2 || this.frpro.Pane_Prod.getSelectedIndex()==3){
-            frpro.Pane_Prod.setSelectedIndex(1);
+           if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==1 || this.frpro.Pane_Prod.getSelectedIndex()==2){
+            frpro.Pane_Prod.setSelectedIndex(3);
             frpro.txt_cod.setEnabled(false);
           frpro.Pane_Prod.setEnabledAt(0, false);
-          frpro.Pane_Prod.setEnabledAt(1, true);
+          frpro.Pane_Prod.setEnabledAt(1, false);
           frpro.Pane_Prod.setEnabledAt(2, false);
-          frpro.Pane_Prod.setEnabledAt(3, false);
+          frpro.Pane_Prod.setEnabledAt(3, true);
           limpiar();
            cate.consultar_categoria(frpro.combo_cate);
     prove.consultar_proveedores(frpro.combo_pro);
     marca.consultar_marca(frpro.como_marca);
     mostrar();
            }else{
-              if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_descue.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
+              if(frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("") || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
+       }else if (Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_venta.getText()) || 
+               Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_precio_cred.getText())
+               || Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_mayo.getText()) ){
+          JOptionPane.showMessageDialog(null, "Precio costo no puede ser mayor a precio venta o precio credito o precio venta");
        }else{
   
        pro.setCodigo(frpro.txt_cod.getText());
@@ -268,7 +545,7 @@ public class ctrlProductos implements ActionListener {
        
 
       if(sqlpro.modificar(pro)){
-       JOptionPane.showMessageDialog(null, "Registro Guardado");
+       JOptionPane.showMessageDialog(null, "Modificación Guardada");
     
       SqlProductos.cargar("");
         limpiar();
@@ -320,6 +597,7 @@ public class ctrlProductos implements ActionListener {
         }
    }
    
+ 
    
    
    

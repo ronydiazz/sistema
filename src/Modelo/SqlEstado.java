@@ -35,10 +35,14 @@ try {
        pst = con.prepareStatement(SSQL);
    result = pst.executeQuery();
    cbx_estado.addItem("Seleccione una opción");
+//   result.next();
+//          JOptionPane.showMessageDialog(null,result.getString("nom_estado"));
    
    while(result.next()){
    
        cbx_estado.addItem(result.getString("nom_estado"));
+       
+   //    JOptionPane.showMessageDialog(null,"ingresa result while");
    
    }}
 } catch (SQLException e) {
