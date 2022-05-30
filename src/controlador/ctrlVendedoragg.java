@@ -6,9 +6,14 @@ import Vista.Facturacion;
 import static Vista.Facturacion.tabla_fact;
 import Vista.Productos;
 import Modelo.SqlFacturacion;
+import Modelo.SqlUsuarios;
+import Modelo.SqlVendedor;
 import Modelo.cliente;
 import Modelo.facturacion;
 import Modelo.productos;
+import Modelo.vendedor;
+import Vista.BuscarVendedor;
+import Vista.Vendedor;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -25,36 +30,37 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 
-public class ctrlClienteagg implements ActionListener {
-       private Facturacion frfac;
-    private SqlFacturacion sqlfac;
+public class ctrlVendedoragg implements ActionListener {
+  //   Vendedor frvendedor= new Vendedor();
+    private SqlVendedor sqlvend;
+  //  private SqlUsuarios sqlUSU;
  
-     private cliente cli;
-    private BuscarCliente frcli;
+     private vendedor vend;
+    private BuscarVendedor frBusVend;
 //    SqlFacturacion sqlfac = new SqlFacturacion ();
 //    SqlProveedor prove = new SqlProveedor ();
 //    SqlMarca marca = new SqlMarca ();
     
-    public ctrlClienteagg (cliente cli,SqlFacturacion sqlfac , BuscarCliente frcli){
+    public ctrlVendedoragg (vendedor vend,SqlVendedor sqlvend , BuscarVendedor frBusVend){
   //, Facturacion frfac
-    this.sqlfac=sqlfac;
+    this.sqlvend=sqlvend;
     
-     this.cli=cli;
-    this.frcli=frcli;
+     this.vend=vend;
+    this.frBusVend=frBusVend;
     
   //  this.frfac=frfac;
 
-     this.frcli.btnagg.addActionListener(this);
+     this.frBusVend.btnagg.addActionListener(this);
     
-    frcli.txt_bus_ruc.addKeyListener(txtruc);
-    frcli.txt_bus_cli.addKeyListener(txtnom);
+    frBusVend.txt_bus_ruc.addKeyListener(txtruc);
+    frBusVend.txt_bus_cli.addKeyListener(txtnom);
     
 
     
      
 }
     public void iniciar(){
-       sqlfac.mostrarCliente_fac("");
+       SqlVendedor.cargar_usu("");
     }
     
          KeyListener txtruc = new KeyListener() {
@@ -70,9 +76,9 @@ public class ctrlClienteagg implements ActionListener {
         public void keyReleased(KeyEvent ke) {
             
      //     SqlFacturacion.cargar(frfac.txt_bus_pro.getText(),"");
-            if(ke.getSource()==frcli.txt_bus_ruc){
+            if(ke.getSource()==frBusVend.txt_bus_ruc){
            
-            sqlfac.mostrarCliente_fac(frcli.txt_bus_ruc.getText());
+            sqlvend.mostrarVendedor(frBusVend.txt_bus_ruc.getText());
            
        }
 
@@ -95,9 +101,9 @@ public class ctrlClienteagg implements ActionListener {
         public void keyReleased(KeyEvent ke) {
             
    
-         if(ke.getSource()==frcli.txt_bus_cli){
+         if(ke.getSource()==frBusVend.txt_bus_cli){
            
-            sqlfac.mostrarCliente_fac(frcli.txt_bus_cli.getText());
+            sqlvend.mostrarVendedor(frBusVend.txt_bus_cli.getText());
            
        }
             
@@ -110,10 +116,10 @@ public class ctrlClienteagg implements ActionListener {
    public void actionPerformed(ActionEvent ae) {
       // Boton agregar
    
-    if(ae.getSource()==frcli.btnagg){
+    if(ae.getSource()==frBusVend.btnagg){
         mostrar_txt();
-        Facturacion.frclientee.dispose();
-        Facturacion.frclientee=null;
+        Vendedor.frbusvendedor.dispose();
+        Vendedor.frbusvendedor=null;
     // JOptionPane.showMessageDialog(null,"btn jeje");
       }
    }
@@ -121,30 +127,36 @@ public class ctrlClienteagg implements ActionListener {
    
    
     public void mostrar_txt(){
-     int fila = BuscarCliente.tabla_cliente.getSelectedRow();
+     int fila = BuscarVendedor.tabla_vendedor.getSelectedRow();
 //     Facturacion frfacs= new Facturacion();
 
      if(fila>=0){
     String codigo;
-    codigo=String.valueOf(BuscarCliente.tabla_cliente.getValueAt(fila, 0));
+    codigo=String.valueOf(BuscarVendedor.tabla_vendedor.getValueAt(fila, 0));
     List ls;
     
     try{
-       
-        ls=sqlfac.mostrar_en_txt(codigo);
+     //  JOptionPane.showMessageDialog( null , codigo);
+        ls=sqlvend.mostrar_en_txt(codigo);
         for(int i = 0; i<ls.size();i++){
             
-    cli= (cliente) ls.get(i);
+    vend= (vendedor) ls.get(i);
 //    frfac.txt_num_cli.setText("num cl");
 //    frfac.txt_nom_cli.setText("nombre");
 //    frfac.txt_ruc.setText("ruc");
 //    frfac.txt_tel.setText("tel");
 //    frfac.txt_direc.setText("direc");
-    Facturacion.txt_num_cli.setText(Integer.toString(cli.getCodigo()));
-    Facturacion.txt_nom_cli.setText(cli.getNombre());
-    Facturacion.txt_ruc.setText(cli.getCedula());
-    Facturacion.txt_tel.setText(cli.getCelular());
-    Facturacion.txt_direc.setText(cli.getDireccion());
+//frvendedor.txt_cod.setText(String.valueOf(vend.getId()));
+
+// int fila = BuscarVendedor.tabla_vendedor.getSelectedRow();
+    Vendedor.txt_nomp.setText(vend.getNombre());
+    Vendedor.txt_email.setText(vend.getCorreo());
+    
+//    String resu=String.valueOf( BuscarVendedor.tabla_vendedor.getValueAt(fila, 4));
+//    JOptionPane.showMessageDialog( null , resu);
+  //   Vendedor.combo_tipo.setSelectedItem(String.valueOf( BuscarVendedor.tabla_vendedor.getValueAt(fila, 4)));
+     Vendedor.combo_tipo.setSelectedItem(String.valueOf( vend.getNombre_est()));
+
   // JOptionPane.showMessageDialog(null,"metodo try catch mostrar_txt jeje");
         }
     }catch(HeadlessException e){
@@ -152,6 +164,8 @@ public class ctrlClienteagg implements ActionListener {
     }
      }
     }
+    
+    
      
     
 //   public void Buscarcli(){

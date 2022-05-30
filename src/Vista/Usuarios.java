@@ -1,6 +1,6 @@
 
 
-package Vendedor;
+package Vista;
 
 import controlador.ctrlUsuarios;
 import javax.swing.JDialog;

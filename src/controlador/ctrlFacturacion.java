@@ -1,11 +1,13 @@
 
 package controlador;
 
-import Vendedor.BuscarCliente;
-import Vendedor.Facturacion;
-import static Vendedor.Facturacion.tabla_fact;
-import Vendedor.Productos;
+import Vista.BuscarCliente;
+import Vista.Facturacion;
+import static Vista.Facturacion.tabla_fact;
+import Vista.Productos;
 import Modelo.SqlFacturacion;
+import Modelo.SqlProveedor;
+import Modelo.SqlVendedor;
 import Modelo.cliente;
 import Modelo.facturacion;
 import Modelo.productos;
@@ -33,6 +35,8 @@ public class ctrlFacturacion implements ActionListener {
     
      private cliente cli;
     private BuscarCliente frcli;
+    
+     SqlVendedor sqlvend = new SqlVendedor ();
 //    SqlFacturacion sqlfac = new SqlFacturacion ();
 //    SqlProveedor prove = new SqlProveedor ();
 //    SqlMarca marca = new SqlMarca ();
@@ -74,6 +78,8 @@ public class ctrlFacturacion implements ActionListener {
 }
     public void iniciar(){
         SqlFacturacion.cargar("","");
+        
+          sqlvend.consultar_vendedor(frfac.combo_vendedor);
 //       frfac.Pane_Prod.setEnabledAt(1, false);
 //       frpro.Pane_Prod.setEnabledAt(2, false);
 //       frpro.Pane_Prod.setEnabledAt(3, false);

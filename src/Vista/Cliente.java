@@ -1,5 +1,5 @@
 //
-package Vendedor;
+package Vista;
 
 import controlador.ctrlCliente;
 import javax.swing.JDialog;

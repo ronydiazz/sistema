@@ -1,7 +1,7 @@
 
 package controlador;
 
-import Vendedor.Productos;
+import Vista.Productos;
 import Modelo.SqlEstado;
 import Modelo.SqlMarca;
 import Modelo.marca;

@@ -2,8 +2,8 @@
 package controlador;
 
 
-import Vendedor.Menu;
-import Vendedor.Usuarios;
+import Vista.Menu;
+import Vista.Usuarios;
 
 import Modelo.SqlUsuarios;
 import Modelo.hash;

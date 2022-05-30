@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vendedor.Productos;
+import Vista.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vendedor;
+package Vista;
 
 
 import Modelo.SqlUsuarios;
@@ -53,6 +53,7 @@ public static  Registro frmReg;
         loginlogo2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         loginlogo4 = new javax.swing.JLabel();
+        loginlogo7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         loginlogo3 = new javax.swing.JLabel();
         loginlogo5 = new javax.swing.JLabel();
@@ -73,63 +74,75 @@ public static  Registro frmReg;
 
         loginlogo.setFont(new java.awt.Font("Gotham Thin", 0, 40)); // NOI18N
         loginlogo.setForeground(new java.awt.Color(255, 255, 255));
-        loginlogo.setText("FACTURACION");
+        loginlogo.setText("GESTION");
 
         loginlogo1.setBackground(new java.awt.Color(255, 255, 255));
         loginlogo1.setFont(new java.awt.Font("Gotham Thin", 0, 40)); // NOI18N
         loginlogo1.setForeground(new java.awt.Color(255, 255, 255));
-        loginlogo1.setText("E");
+        loginlogo1.setText("DE");
 
         loginlogo2.setFont(new java.awt.Font("Gotham Thin", 0, 40)); // NOI18N
         loginlogo2.setForeground(new java.awt.Color(255, 255, 255));
-        loginlogo2.setText("INVENTARIO");
+        loginlogo2.setText("MINIMARKET");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PcMonitor.png"))); // NOI18N
 
         loginlogo4.setFont(new java.awt.Font("Gotham Thin", 0, 40)); // NOI18N
         loginlogo4.setForeground(new java.awt.Color(255, 255, 255));
-        loginlogo4.setText("SISTEMA DE");
+        loginlogo4.setText("SISTEMA ");
+
+        loginlogo7.setBackground(new java.awt.Color(255, 255, 255));
+        loginlogo7.setFont(new java.awt.Font("Gotham Thin", 0, 40)); // NOI18N
+        loginlogo7.setForeground(new java.awt.Color(255, 255, 255));
+        loginlogo7.setText("PARA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 82, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginlogo4, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(103, 103, 103))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(loginlogo, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addComponent(loginlogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(loginlogo2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(loginlogo4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(57, 57, 57)
+                        .addComponent(loginlogo2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(loginlogo1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(126, 126, 126)
+                    .addComponent(loginlogo7)
+                    .addContainerGap(164, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(20, 20, 20)
                 .addComponent(loginlogo4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginlogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(loginlogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginlogo)
+                .addGap(71, 71, 71)
                 .addComponent(loginlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(179, 179, 179)
+                    .addComponent(loginlogo7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(386, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
@@ -383,6 +396,7 @@ public static  Registro frmReg;
     private javax.swing.JLabel loginlogo4;
     private javax.swing.JLabel loginlogo5;
     private javax.swing.JLabel loginlogo6;
+    private javax.swing.JLabel loginlogo7;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

@@ -6,7 +6,7 @@
 package Modelo;
 
 //import static Interfaz.clieveedor.tabla_prov;
-import Vendedor.Proveedor;
+import Vista.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

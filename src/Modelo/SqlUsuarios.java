@@ -6,7 +6,7 @@
 package Modelo;
 
 
-import Vendedor.Usuarios;
+import Vista.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -301,7 +302,9 @@ public class SqlUsuarios extends Conexion {
     }
  }
 }
-    
+
+
+  
     
     
     

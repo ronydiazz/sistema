@@ -5,9 +5,9 @@
  */
 package Modelo;
 
-import Vendedor.BuscarCliente;
-import Vendedor.Cliente;
-import Vendedor.Productos;
+import Vista.BuscarCliente;
+import Vista.Cliente;
+import Vista.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,9 +65,6 @@ public class SqlCliente extends Conexion{
  }
     }
     
-    
- 
-     
     public boolean modificar (cliente cli) {
 
         PreparedStatement ps = null;

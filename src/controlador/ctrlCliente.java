@@ -1,8 +1,8 @@
 
 package controlador;
 
-import Vendedor.Cliente;
-import Vendedor.Productos;
+import Vista.Cliente;
+import Vista.Productos;
 import Modelo.SqlEstado;
 import Modelo.SqlCliente;
 import Modelo.cliente;

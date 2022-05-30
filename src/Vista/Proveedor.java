@@ -1,5 +1,5 @@
 //
-package Vendedor;
+package Vista;
 
 import javax.swing.JDialog;
 

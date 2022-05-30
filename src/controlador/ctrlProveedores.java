@@ -1,7 +1,7 @@
 
 package controlador;
 
-import Vendedor.Proveedor;
+import Vista.Proveedor;
 import Modelo.SqlProveedor;
 import Modelo.proveedor;
 import java.awt.HeadlessException;

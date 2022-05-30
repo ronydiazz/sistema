@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vendedor;
+package Vista;
 
 
 import Modelo.SqlCategoria;
@@ -14,6 +14,7 @@ import Modelo.SqlMarca;
 import Modelo.SqlProductos;
 import Modelo.SqlProveedor;
 import Modelo.SqlUsuarios;
+import Modelo.SqlVendedor;
 import Modelo.categoria;
 import Modelo.cliente;
 import Modelo.facturacion;
@@ -21,6 +22,7 @@ import Modelo.marca;
 import Modelo.productos;
 import Modelo.proveedor;
 import Modelo.usuarios;
+import Modelo.vendedor;
 import controlador.ctrlCategoria;
 import controlador.ctrlCliente;
 import controlador.ctrlClienteagg;
@@ -29,6 +31,7 @@ import controlador.ctrlMarca;
 import controlador.ctrlProductos;
 import controlador.ctrlProveedores;
 import controlador.ctrlUsuarios;
+import controlador.ctrlVendedor;
 
 /**
  *
@@ -44,14 +47,16 @@ public static BuscarCliente frcliente2;
 public static Proveedor frproveedor;
 public static RegistrarMarca frmarca;
 public static Usuarios frusuarios;
+public static Vendedor frvendedor;
 public static Menu frmenu;
 public static Registro frregistro;
 public static IniciarSesion frlogin;
+
 public static ctrlUsuarios ctr;
+public static ctrlVendedor ctrvend;
 public static ctrlProveedores ctrpr;
 public static ctrlProductos ctrp;
 public static ctrlFacturacion ctrf;
-
 public static ctrlCategoria ctrc;
 public static ctrlMarca ctrm;
 public static ctrlCliente ctrcli;
@@ -61,6 +66,9 @@ public static ctrlClienteagg ctrcli2;
 
 SqlUsuarios usuario = new SqlUsuarios();
 usuarios usu = new usuarios();
+
+SqlVendedor vendedor = new SqlVendedor();
+vendedor vend = new vendedor();
 
 SqlFacturacion facturacion = new SqlFacturacion();
 facturacion fact = new facturacion();
@@ -121,6 +129,7 @@ usuarios mod;
         usuadm = new javax.swing.JLabel();
         BtnClientes = new javax.swing.JButton();
         btnUsuario = new javax.swing.JButton();
+        btnVendedor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -200,6 +209,16 @@ usuarios mod;
             }
         });
 
+        btnVendedor.setBackground(new java.awt.Color(33, 45, 62));
+        btnVendedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVendedor.setForeground(new java.awt.Color(255, 255, 255));
+        btnVendedor.setText("Vendedor");
+        btnVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendedorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,13 +227,14 @@ usuarios mod;
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usuadm, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(BtnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                         .addComponent(btnFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(usuadm, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(831, Short.MAX_VALUE))
         );
@@ -234,10 +254,11 @@ usuarios mod;
                 .addGap(18, 18, 18)
                 .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(usuadm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(usuadm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(33, 45, 62));
@@ -270,11 +291,11 @@ usuarios mod;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -292,8 +313,7 @@ usuarios mod;
           
           ctrm= new ctrlMarca(mar, sqlmarca, frproductos);
           ctrm.iniciar();
-          
-          
+         
         frproductos.setVisible(true);
        
         }
@@ -388,6 +408,21 @@ frusuarios.setVisible(true);
         }
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
+    private void btnVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedorActionPerformed
+        // TODO add your handling code here:
+        
+          if(frvendedor == null){
+         //  frusuarios = new Usuarios();
+       // frusuarios.setVisible(true);
+ 
+   frvendedor = new Vendedor(Menu.frmenu, true);
+   ctrvend= new ctrlVendedor(vend, vendedor, frvendedor);
+
+  ctrvend.iniciar();
+frvendedor.setVisible(true);
+        }
+    }//GEN-LAST:event_btnVendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,6 +466,7 @@ frusuarios.setVisible(true);
     private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVendedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

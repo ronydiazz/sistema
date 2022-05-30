@@ -2,9 +2,9 @@
 
 package Modelo;
 
-import Vendedor.BuscarCliente;
-import Vendedor.Facturacion;
-import static Vendedor.Facturacion.tabla_fact;
+import Vista.BuscarCliente;
+import Vista.Facturacion;
+import static Vista.Facturacion.tabla_fact;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

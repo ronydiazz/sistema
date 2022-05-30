@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Vendedor;
+package Vista;
 
 import Modelo.SqlCategoria;
 import javax.swing.JDialog;

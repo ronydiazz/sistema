@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vendedor;
+package Vista;
 
 import Modelo.SqlFacturacion;
 import Modelo.cliente;
 import controlador.ctrlClienteagg;
+import controlador.ctrlVendedor;
 import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ public class Facturacion  extends JDialog {
 public static BuscarCliente frclientee;
    public static ctrlClienteagg ctrcli2;
     public static Facturacion frfacturacionn;
+    
+   // public static ctrlVendedor frvendedor;
   
    
     SqlFacturacion factura = new SqlFacturacion();

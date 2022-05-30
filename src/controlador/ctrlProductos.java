@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import Vendedor.Productos;
+import Vista.Productos;
 import Modelo.SqlCategoria;
 import Modelo.SqlMarca;
 import Modelo.SqlProductos;
@@ -353,7 +353,7 @@ public class ctrlProductos implements ActionListener {
 //return datos.matches("[0-9]*");
 //
 //}
-   
+     
   
    public void mostrar(){    
     int fila = Productos.tabla_prod.getSelectedRow();
@@ -423,7 +423,8 @@ public class ctrlProductos implements ActionListener {
     }
     
    public void registrar(){
-     if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==1 || this.frpro.Pane_Prod.getSelectedIndex()==2){
+     if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==1
+             || this.frpro.Pane_Prod.getSelectedIndex()==2){
          frpro.Pane_Prod.setSelectedIndex(3);
          limpiar();
       cate.consultar_categoria(frpro.combo_cate);
@@ -439,9 +440,9 @@ public class ctrlProductos implements ActionListener {
      //    frpro.txt_cod.getText().equals("") ||
             if(  frpro.txt_cod.getText().equals("") || frpro.txt_desc.getText().equals("") || frpro.txt_costo.getText().equals("") ||frpro.txt_venta.getText().equals("") || frpro.txt_mayo.getText().equals("")  || frpro.txt_iva.getText().equals("") || frpro.txt_obs.getText().equals("")){
        JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
-       }else if (Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_venta.getText()) || 
-               Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_precio_cred.getText())
-               || Integer.parseInt(frpro.txt_costo.getText())>Integer.parseInt(frpro.txt_mayo.getText()) ){
+       }else if (Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_venta.getText()) || 
+               Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_precio_cred.getText())
+               || Float.parseFloat(frpro.txt_costo.getText())>Float.parseFloat(frpro.txt_mayo.getText()) ){
           JOptionPane.showMessageDialog(null, "Precio costo no puede ser mayor a precio venta o precio credito o precio venta");
        }else if (frpro.combo_pro.getSelectedItem().equals("Seleccione una opción") || frpro.como_marca.getSelectedItem().equals("Seleccione una opción") || frpro.combo_medida.getSelectedItem().equals("Seleccione una opción")  || frpro.combo_cate.getSelectedItem().equals("Seleccione una opción") ){
           JOptionPane.showMessageDialog(null, "Seleccione una opción (Proveedor, Marca, Unidad de Medida o Categoria )");
