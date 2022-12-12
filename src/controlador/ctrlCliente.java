@@ -254,9 +254,7 @@ public class ctrlCliente implements ActionListener {
         }
      }
     }
-    
-
-    
+       
     public void mostrar_txt(){
      int fila = Cliente.tabla_cliente.getSelectedRow();
     String codigo;

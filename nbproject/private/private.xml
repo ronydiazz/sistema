@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/Modelo/SqlUsuarios.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/controlador/ctrlProductos.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/Modelo/SqlCliente.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/controlador/ctrlCliente.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/controlador/ctrlVendedor.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/controlador/ctrlVendedoragg.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/sistema/src/Modelo/SqlVendedor.java</file>
         </group>
     </open-files>

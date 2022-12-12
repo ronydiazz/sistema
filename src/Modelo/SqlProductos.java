@@ -28,13 +28,13 @@ public class SqlProductos extends Conexion{
     
     public static void cargar(String valor){
          
-    String mostrar="SELECT cod_producto, descripcion, precio_venta, stock, "
+    String mostrar="SELECT id_producto, cod_producto, descripcion, precio_venta, stock, "
             + "unidad_med, descripcion_m, descripcion_c from productos "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
             + "WHERE descripcion LIKE '%"+valor+"%' or cod_producto LIKE '%"+valor+"%' ORDER BY id_producto ASC";
-    String []titulos={"CODIGO","PRODUCTO","PRECIO","STOCK","U.M","MARCA","CATEGORIA"};
-    String []Registros=new String[7];
+    String []titulos={"ID_PRODUCTO","CODIGO","PRODUCTO","PRECIO","STOCK","U.M","MARCA","CATEGORIA"};
+    String []Registros=new String[8];
     DefaultTableModel model= new DefaultTableModel(null,titulos);
   
           Conexion cc = new Conexion(); 
@@ -45,26 +45,28 @@ public class SqlProductos extends Conexion{
               ResultSet rs = st.executeQuery(mostrar);
               while(rs.next())
               {
-                  Registros[0]= rs.getString("cod_producto");
-                  Registros[1]= rs.getString("descripcion");
-                  Registros[2]= rs.getString("precio_venta");
-                  Registros[3]= rs.getString("stock");
-                  Registros[4]= rs.getString("unidad_med");        
-                  Registros[5]= rs.getString("descripcion_m");        
-                  Registros[6]= rs.getString("descripcion_c");        
+                  Registros[0]= rs.getString("id_producto");
+                  Registros[1]= rs.getString("cod_producto");
+                  Registros[2]= rs.getString("descripcion");
+                  Registros[3]= rs.getString("precio_venta");
+                  Registros[4]= rs.getString("stock");
+                  Registros[5]= rs.getString("unidad_med");        
+                  Registros[6]= rs.getString("descripcion_m");        
+                  Registros[7]= rs.getString("descripcion_c");        
                   model.addRow(Registros); 
                   
               }
          Productos.tabla_prod.setModel(model);
          Productos.tabla_prod.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
          TableColumnModel columnModel = Productos.tabla_prod.getColumnModel();
-         columnModel.getColumn(0).setPreferredWidth(60);
-         columnModel.getColumn(1).setPreferredWidth(150);
-         columnModel.getColumn(2).setPreferredWidth(130);
-         columnModel.getColumn(3).setPreferredWidth(100);
-         columnModel.getColumn(4).setPreferredWidth(60);
-         columnModel.getColumn(5).setPreferredWidth(130);
-         columnModel.getColumn(6).setPreferredWidth(150);
+         columnModel.getColumn(0).setPreferredWidth(40);
+         columnModel.getColumn(1).setPreferredWidth(60);
+         columnModel.getColumn(2).setPreferredWidth(150);
+         columnModel.getColumn(3).setPreferredWidth(130);
+         columnModel.getColumn(4).setPreferredWidth(100);
+         columnModel.getColumn(5).setPreferredWidth(60);
+         columnModel.getColumn(6).setPreferredWidth(130);
+         columnModel.getColumn(7).setPreferredWidth(150);
             } catch (SQLException ex) {
                 Logger.getLogger(SqlProductos.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex);
@@ -82,14 +84,14 @@ public class SqlProductos extends Conexion{
     
     public static List mostrarP(String valor){
          
-    String mostrar="SELECT cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
+    String mostrar="SELECT id_producto, cod_producto, descripcion, precio_costo, precio_venta, precio_mayori, descuento, iva, "
             + "stock, obs, unidad_med, nombre_prov, descripcion_m, descripcion_c, precio_cred from productos "
             + "inner join proveedor on productos.id_proveedor1=proveedor.id_proveedor "
             + "inner join marca on productos.id_marca1=marca.id_marca "
            + "inner join categoria on productos.id_categoria1=categoria.id_categoria "
             + "WHERE cod_producto ='"+valor+"'";
   
-    List listpro=new ArrayList(14);
+    List listpro=new ArrayList(15);
           Conexion cc = new Conexion(); 
           Connection cn=cc.getConexion();
           
@@ -99,6 +101,7 @@ public class SqlProductos extends Conexion{
               while(rs.next())
               {
                  productos prod = new productos();
+                 prod.setCodigo(rs.getString("id_producto"));
                  prod.setCodigo(rs.getString("cod_producto"));
                  prod.setDescripcion(rs.getString("descripcion"));
                  prod.setPrecio_costo(rs.getFloat("precio_costo"));
@@ -255,7 +258,7 @@ public class SqlProductos extends Conexion{
         Connection con = getConexion();
         String sql = "UPDATE productos set descripcion=?, precio_costo=?, precio_venta=?, precio_mayori=?, descuento=?, iva=?, stock=?, obs=?, "
                 + "id_proveedor1=(SELECT id_proveedor FROM proveedor WHERE nombre_prov=?), id_marca1=(SELECT id_marca FROM marca WHERE descripcion_m=?),"
-                + "id_categoria1=(SELECT id_categoria FROM categoria WHERE descripcion_c=?), unidad_med=?,  precio_cred=? where cod_producto=?";
+                + "id_categoria1=(SELECT id_categoria FROM categoria WHERE descripcion_c=?), unidad_med=?,  precio_cred=?,  cod_producto=? where cod_producto=?";
 
         try {
             ps = con.prepareStatement(sql);
@@ -272,7 +275,9 @@ public class SqlProductos extends Conexion{
             ps.setString(11, prod.getId_categoria());
             ps.setString(12, prod.getUnidad_med());         
             ps.setFloat(13, prod.getPrecio_credito());
-              ps.setString(14, prod.getCodigo());
+              ps.setInt(14, prod.getId());
+               ps.setString(15, prod.getCodigo());
+              
             ps.execute();
             return true;
             

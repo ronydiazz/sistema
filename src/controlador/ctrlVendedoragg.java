@@ -149,7 +149,8 @@ public class ctrlVendedoragg implements ActionListener {
 //frvendedor.txt_cod.setText(String.valueOf(vend.getId()));
 
 // int fila = BuscarVendedor.tabla_vendedor.getSelectedRow();
-    Vendedor.txt_nomp.setText(vend.getNombre());
+    Vendedor.txt_usu.setText(vend.getId_usuario());
+     Vendedor.txt_nomp.setText(vend.getNombre());
     Vendedor.txt_email.setText(vend.getCorreo());
     
 //    String resu=String.valueOf( BuscarVendedor.tabla_vendedor.getValueAt(fila, 4));

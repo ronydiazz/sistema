@@ -84,7 +84,7 @@ public static ctrlUsuarios ctrlusu;
         txt_cod1 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnEliminarProv = new javax.swing.JButton();
-        btnModificarProv = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         btnRegUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -398,7 +398,7 @@ public static ctrlUsuarios ctrlusu;
         loginlogo14.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         loginlogo14.setForeground(new java.awt.Color(255, 255, 255));
         loginlogo14.setText("CONFIRMAR CONTRASEÑA");
-        panel_mod.add(loginlogo14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
+        panel_mod.add(loginlogo14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 340, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
         panel_mod.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 29, -1));
@@ -447,7 +447,7 @@ public static ctrlUsuarios ctrlusu;
 
         loginlogo18.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         loginlogo18.setForeground(new java.awt.Color(255, 255, 255));
-        loginlogo18.setText("CONTRASEÑA");
+        loginlogo18.setText("CONTRASEÑA NUEVA");
         panel_mod.add(loginlogo18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 190, 41));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Lock_25px.png"))); // NOI18N
@@ -527,13 +527,13 @@ public static ctrlUsuarios ctrlusu;
             }
         });
 
-        btnModificarProv.setBackground(new java.awt.Color(33, 45, 62));
-        btnModificarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnModificarProv.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificarProv.setText("Modificar ");
-        btnModificarProv.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(new java.awt.Color(33, 45, 62));
+        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar ");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarProvActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -555,7 +555,7 @@ public static ctrlUsuarios ctrlusu;
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -565,7 +565,7 @@ public static ctrlUsuarios ctrlusu;
                 .addGap(26, 26, 26)
                 .addComponent(btnRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnModificarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(176, Short.MAX_VALUE))
@@ -595,9 +595,9 @@ public static ctrlUsuarios ctrlusu;
       
     }//GEN-LAST:event_btnEliminarProvActionPerformed
 
-    private void btnModificarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProvActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 
-    }//GEN-LAST:event_btnModificarProvActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void tabla_usuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_usuMouseClicked
  
@@ -701,7 +701,7 @@ public static ctrlUsuarios ctrlusu;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnEliminarProv;
-    public javax.swing.JButton btnModificarProv;
+    public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnRegUsuario;
     public javax.swing.JComboBox<String> combo_tipo;
     public javax.swing.JComboBox<String> combo_tipo1;

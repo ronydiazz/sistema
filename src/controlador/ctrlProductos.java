@@ -509,7 +509,7 @@ public class ctrlProductos implements ActionListener {
               
            if(this.frpro.Pane_Prod.getSelectedIndex()==0 ||this.frpro.Pane_Prod.getSelectedIndex()==1 || this.frpro.Pane_Prod.getSelectedIndex()==2){
             frpro.Pane_Prod.setSelectedIndex(3);
-            frpro.txt_cod.setEnabled(false);
+       //     frpro.txt_cod.setEnabled(false);
           frpro.Pane_Prod.setEnabledAt(0, false);
           frpro.Pane_Prod.setEnabledAt(1, false);
           frpro.Pane_Prod.setEnabledAt(2, false);
@@ -528,7 +528,7 @@ public class ctrlProductos implements ActionListener {
           JOptionPane.showMessageDialog(null, "Precio costo no puede ser mayor a precio venta o precio credito o precio venta");
        }else{
   
-       pro.setCodigo(frpro.txt_cod.getText());
+    //   pro.setCodigo(frpro.txt_cod.getText());
        pro.setDescripcion(frpro.txt_desc.getText());
        pro.setPrecio_costo(Float.parseFloat(frpro.txt_costo.getText()));
        pro.setPrecio_venta(Float.parseFloat(frpro.txt_venta.getText()));
@@ -542,6 +542,8 @@ public class ctrlProductos implements ActionListener {
        pro.setId_marca(frpro.como_marca.getSelectedItem().toString());
        pro.setId_categoria(frpro.combo_cate.getSelectedItem().toString());
        pro.setUnidad_med(frpro.combo_medida.getSelectedItem().toString());
+             pro.setId(Integer.parseInt(frpro.txt_id.getText()));
+             pro.setCodigo(frpro.txt_cod.getText());
        
        
 

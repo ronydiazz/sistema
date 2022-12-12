@@ -74,6 +74,8 @@ SqlVendedor vendedor = new SqlVendedor();
         txt_obs = new javax.swing.JTextField();
         btnbuscarusu = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_usu = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_cod2 = new javax.swing.JTextField();
@@ -95,6 +97,9 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         txt_nomp2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txt_usu1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         PanelBoton = new javax.swing.JPanel();
         btnReg = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -211,6 +216,7 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel3.setText("Nombre y Apellido:");
 
         txt_nomp.setEditable(false);
+        txt_nomp.setEnabled(false);
         txt_nomp.setMinimumSize(new java.awt.Dimension(6, 25));
         txt_nomp.setPreferredSize(new java.awt.Dimension(6, 25));
         txt_nomp.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +266,7 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel14.setText("E-mail:");
 
         txt_email.setEditable(false);
+        txt_email.setEnabled(false);
         txt_email.setMinimumSize(new java.awt.Dimension(6, 25));
         txt_email.setPreferredSize(new java.awt.Dimension(6, 25));
         txt_email.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +332,22 @@ SqlVendedor vendedor = new SqlVendedor();
             }
         });
 
-        jLabel6.setText("Obs: Para modificar nombre/tipo/email debe ser realizado en el modulo de usuarios");
+        jLabel6.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel6.setText("Obs: Para modificar usuario/nombre/tipo/email debe ser realizado en el modulo de usuarios");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Usuario:");
+
+        txt_usu.setEditable(false);
+        txt_usu.setEnabled(false);
+        txt_usu.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_usu.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_usu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PregLayout = new javax.swing.GroupLayout(Preg);
         Preg.setLayout(PregLayout);
@@ -357,15 +379,18 @@ SqlVendedor vendedor = new SqlVendedor();
                                         .addComponent(txt_celular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txt_ci, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(PregLayout.createSequentialGroup()
-                                .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PregLayout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addComponent(jLabel1)
-                                        .addGap(186, 186, 186))
-                                    .addGroup(PregLayout.createSequentialGroup()
-                                        .addGap(143, 143, 143)
-                                        .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(btnbuscarusu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(143, 143, 143)
+                                .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(btnbuscarusu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PregLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_usu, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
                         .addGap(58, 58, 58)
                         .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14)
@@ -381,12 +406,16 @@ SqlVendedor vendedor = new SqlVendedor();
                 .addContainerGap(206, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PregLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel6))
         );
         PregLayout.setVerticalGroup(
             PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PregLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(30, 30, 30)
+                .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_usu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -419,7 +448,7 @@ SqlVendedor vendedor = new SqlVendedor();
                 .addGroup(PregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(txt_obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -432,6 +461,8 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Código:");
 
+        txt_cod2.setEditable(false);
+        txt_cod2.setEnabled(false);
         txt_cod2.setMinimumSize(new java.awt.Dimension(6, 25));
         txt_cod2.setPreferredSize(new java.awt.Dimension(6, 25));
         txt_cod2.addActionListener(new java.awt.event.ActionListener() {
@@ -439,6 +470,8 @@ SqlVendedor vendedor = new SqlVendedor();
                 txt_cod2ActionPerformed(evt);
             }
         });
+
+        combo_estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Administrador", "Usuario" }));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -473,6 +506,7 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel24.setText("E-mail:");
 
         txt_email2.setEditable(false);
+        txt_email2.setEnabled(false);
         txt_email2.setMinimumSize(new java.awt.Dimension(6, 25));
         txt_email2.setPreferredSize(new java.awt.Dimension(6, 25));
         txt_email2.addActionListener(new java.awt.event.ActionListener() {
@@ -534,6 +568,7 @@ SqlVendedor vendedor = new SqlVendedor();
         jLabel29.setText("Nombre y Apellido:");
 
         txt_nomp2.setEditable(false);
+        txt_nomp2.setEnabled(false);
         txt_nomp2.setMinimumSize(new java.awt.Dimension(6, 25));
         txt_nomp2.setPreferredSize(new java.awt.Dimension(6, 25));
         txt_nomp2.addActionListener(new java.awt.event.ActionListener() {
@@ -541,6 +576,23 @@ SqlVendedor vendedor = new SqlVendedor();
                 txt_nomp2ActionPerformed(evt);
             }
         });
+
+        jLabel7.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel7.setText("Obs: Para modificar usuario/nombre/tipo/email debe ser realizado en el modulo de usuarios");
+
+        txt_usu1.setEditable(false);
+        txt_usu1.setEnabled(false);
+        txt_usu1.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_usu1.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_usu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usu1ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Usuario:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -558,11 +610,6 @@ SqlVendedor vendedor = new SqlVendedor();
                         .addComponent(txt_direc2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel29)
@@ -575,7 +622,18 @@ SqlVendedor vendedor = new SqlVendedor();
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txt_celular2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txt_ci2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txt_ci2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_usu1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(61, 61, 61)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel24)
@@ -589,11 +647,18 @@ SqlVendedor vendedor = new SqlVendedor();
                             .addComponent(txt_comision1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(combo_estado1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_usu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_cod2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
@@ -625,7 +690,9 @@ SqlVendedor vendedor = new SqlVendedor();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(txt_obs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addContainerGap())
         );
 
         PanelPestaña.addTab("Modificar", jPanel3);
@@ -866,6 +933,14 @@ frbusvendedor.setVisible(true);
     private void combo_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_tipoActionPerformed
+
+    private void txt_usuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usuActionPerformed
+
+    private void txt_usu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usu1ActionPerformed
     
  
     
@@ -914,7 +989,7 @@ frbusvendedor.setVisible(true);
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnReg;
     public javax.swing.JButton btnbuscarusu;
-    private javax.swing.JComboBox<String> combo_estado1;
+    public static javax.swing.JComboBox<String> combo_estado1;
     public static javax.swing.JComboBox<String> combo_tipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -939,6 +1014,9 @@ frbusvendedor.setVisible(true);
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -957,12 +1035,14 @@ frbusvendedor.setVisible(true);
     public javax.swing.JTextField txt_direc;
     public javax.swing.JTextField txt_direc2;
     public static javax.swing.JTextField txt_email;
-    public javax.swing.JTextField txt_email2;
+    public static javax.swing.JTextField txt_email2;
     public static javax.swing.JTextField txt_nomp;
-    public javax.swing.JTextField txt_nomp2;
+    public static javax.swing.JTextField txt_nomp2;
     public javax.swing.JTextField txt_obs;
     public javax.swing.JTextField txt_obs1;
     public javax.swing.JTextField txt_salario;
     public javax.swing.JTextField txt_salario1;
+    public static javax.swing.JTextField txt_usu;
+    public static javax.swing.JTextField txt_usu1;
     // End of variables declaration//GEN-END:variables
 }

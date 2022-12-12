@@ -27,7 +27,7 @@ public class ctrlUsuarios implements ActionListener  {
     this.sqlusu=sqlusu;
     this.frusu= frusu;
     this.frusu.btnRegUsuario.addActionListener(this);
-    this.frusu.btnModificarProv.addActionListener(this);
+    this.frusu.btnModificar.addActionListener(this);
     this.frusu.btnEliminarProv.addActionListener(this);
      frusu.txt_bus.addKeyListener(tecla);
     }
@@ -101,7 +101,7 @@ public class ctrlUsuarios implements ActionListener  {
     }
     
     //Boton Modificar
-    if(e.getSource() == frusu.btnModificarProv){
+    if(e.getSource() == frusu.btnModificar){
         int fila= Usuarios.tabla_usu.getSelectedRow();
                     if(fila<0){
             JOptionPane.showMessageDialog(null, "Seleccione alguna fila");
@@ -131,7 +131,12 @@ public class ctrlUsuarios implements ActionListener  {
             if(sqlusu.contraseña_actual(mod1)){
                 
                if (pass.equals(passCon)) {
-                    if (sqlusu.esEmail(frusu.txtCorreo1.getText())) {
+                   
+                  //   if (sqlusu.existeUsusario(frusu.txtUsuario.getText()) == 0) {
+                     if ( sqlusu.existeUsusario2(frusu.txtUsuario1.getText(), frusu.txt_cod1.getText()) == 0 ) {
+                   //  if ( sqlvend.existeVendedor(Vendedor.txt_usu1.getText()) == 0 && sqlvend.existeVendedor2(frvendedor.txt_cod2.getText())== Integer.parseInt(frvendedor.txt_cod2.getText())) {
+                   
+                         if (sqlusu.esEmail(frusu.txtCorreo1.getText())) {
                         usu.setUsuario(frusu.txtUsuario1.getText());
                         usu.setPassword(nuevoPass);
                         usu.setNombre(frusu.txtNombre1.getText());
@@ -157,6 +162,13 @@ public class ctrlUsuarios implements ActionListener  {
                     } else {
                          JOptionPane.showMessageDialog(null,"El correo electronico no es valido");
                     }
+                    
+                    } else {
+
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+
+                }
+                    
             } else {
 
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coiciden");

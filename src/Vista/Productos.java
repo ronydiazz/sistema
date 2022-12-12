@@ -110,6 +110,8 @@ public class Productos extends JDialog {
         combo_cate = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         txt_precio_cred = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -791,6 +793,18 @@ public class Productos extends JDialog {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Precio a credito:");
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Id:");
+
+        txt_id.setMinimumSize(new java.awt.Dimension(6, 25));
+        txt_id.setPreferredSize(new java.awt.Dimension(6, 25));
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout P_reg_modLayout = new javax.swing.GroupLayout(P_reg_mod);
         P_reg_mod.setLayout(P_reg_modLayout);
         P_reg_modLayout.setHorizontalGroup(
@@ -833,10 +847,16 @@ public class Productos extends JDialog {
                     .addComponent(txt_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(combo_cate, 0, 217, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
+            .addGroup(P_reg_modLayout.createSequentialGroup()
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_reg_modLayout.setVerticalGroup(
             P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_reg_modLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(P_reg_modLayout.createSequentialGroup()
                         .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -863,13 +883,17 @@ public class Productos extends JDialog {
                             .addComponent(jLabel15)
                             .addComponent(combo_cate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(P_reg_modLayout.createSequentialGroup()
+                        .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(2, 2, 2)
                         .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P_reg_modLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
+                                .addGap(41, 41, 41)
                                 .addComponent(jLabel3))
                             .addGroup(P_reg_modLayout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(40, 40, 40)
+                                .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(17, 17, 17)
                         .addGroup(P_reg_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -1136,6 +1160,10 @@ public class Productos extends JDialog {
         
     }//GEN-LAST:event_txt_costoKeyTyped
 
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1204,6 +1232,7 @@ public class Productos extends JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1241,6 +1270,7 @@ public class Productos extends JDialog {
     public javax.swing.JTextField txt_desc_c;
     public javax.swing.JTextField txt_desc_m;
     public javax.swing.JTextField txt_descue;
+    public javax.swing.JTextField txt_id;
     public javax.swing.JTextField txt_iva;
     public javax.swing.JTextField txt_mayo;
     public javax.swing.JTextField txt_obs;

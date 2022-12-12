@@ -264,9 +264,7 @@ public class ctrlFacturacion implements ActionListener {
 //      }
 //      
    }
-   
   
-    
    
      
      public void mostrar(){    
@@ -298,7 +296,7 @@ public class ctrlFacturacion implements ActionListener {
     }
     }
        
-       public void total (){
+     public void total (){
 //   DecimalFormatSymbols qp = new DecimalFormatSymbols(); 
 //   qp.setDecimalSeparator('.');
 //   

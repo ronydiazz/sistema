@@ -147,6 +147,43 @@ public class SqlUsuarios extends Conexion {
     }
  }
     }
+    public int existeUsusario2(String usuario, String id_usua) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        String sql = "SELECT count(id_usuario) FROM usuarios WHERE usuario=? and not id_usuario=? ";
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, usuario);
+            ps.setString(2, id_usua);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+            return 1;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            return 1;
+        }finally{
+    if(con!=null){  
+        try {
+//            rs.close();
+//            ps.close();
+            con.close();
+//            rs=null;
+//            ps=null;
+            con=null;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+ }
+    }
 
     public boolean esEmail(String correo) {
         //patron para validar el email

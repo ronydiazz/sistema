@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class Conexion {
    // private final String base ="SISTEMA";
     private final String user ="SISTEMA";
-    private final String password="12345";
+    private final String password="123456";
     private final String url="jdbc:oracle:thin:@localhost:1521:XE";
   //   private final String url="jdbc:mysql://localhost:3306/" + base;
     private Connection con = null;

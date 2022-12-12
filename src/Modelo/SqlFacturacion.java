@@ -70,7 +70,7 @@ try {
  }
 
       public  void cargarfac(String valor){
-String mostrar="SELECT stock, unidad_med, cod_producto, descripcion, precio_venta, iva,  precio_mayori, precio_cred from productos where cod_producto like '%"+valor+"%'  order by id_producto ASC";
+String mostrar="SELECT stock, unidad_med, cod_producto, descripcion, precio_venta, iva,  precio_mayori, precio_cred from productos where cod_producto='"+valor+"' order by id_producto ASC";
 
 
 model1=(DefaultTableModel)Facturacion.tabla_fact.getModel();
@@ -174,9 +174,9 @@ try {
         int stock=Integer.parseInt(registros[0]);
         
       //  JOptionPane.showMessageDialog(null, registros[0]);
-      
-       if (fcantidad<0){
-        JOptionPane.showMessageDialog(null, "Cantidad no puede ser un numero negativo");
+   //   if(fcantidad){
+       if (fcantidad<=0){
+        JOptionPane.showMessageDialog(null, "Cantidad no puede ser un numero negativo o igual a 0, sera devuelto el valor 1 por defecto ");
              Facturacion.tabla_fact.setValueAt(1, fila, 0);
              
               String  cantidadneg=String.valueOf(Facturacion.tabla_fact.getValueAt(fila, 0));
@@ -199,7 +199,7 @@ try {
      Facturacion.tabla_fact.setValueAt(resultstring, fila, 5);
   //  mostrarsub=String.valueOf(Facturacion.tabla_fact.setValueAt(fila, 4));
        }else if (fcantidad>=0){
-          JOptionPane.showMessageDialog(null, "La cantidad introducida supera el stock actual");
+          JOptionPane.showMessageDialog(null, "La cantidad introducida supera el stock actual, sera devuelta la mayor cantidad");
             Facturacion.tabla_fact.setValueAt(registros[0], fila, 0);
         String  cantidadpos=String.valueOf(Facturacion.tabla_fact.getValueAt(fila, 0));
              
@@ -212,6 +212,8 @@ try {
      Facturacion.tabla_fact.setValueAt(resultstring, fila, 5);
             
           }
+       
+     //  }
        }
       
         public static List mostrartxt(String valor){
